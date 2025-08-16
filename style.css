@@ -1,0 +1,128 @@
+/* Base & Background Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #e0f7fa, #ffffff, #e1effd, #f0f4f8);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Accent Color */
+.accent-color { color: #0EA5E9; }
+.accent-bg { background-color: #0EA5E9; }
+.accent-border { border-color: #0EA5E9; }
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Tooltip */
+.social-link-wrapper {
+  position: relative;
+  display: inline-block;
+}
+.social-tooltip {
+  visibility: hidden;
+  width: 80px;
+  background-color: #1F2937;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -40px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.social-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #1F2937 transparent transparent transparent;
+}
+.social-link-wrapper:hover .social-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Typewriter Cursor */
+.typewriter::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  color: #0EA5E9;
+}
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Active Nav Link */
+.nav-link.active {
+  color: #0EA5E9;
+  position: relative;
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #0EA5E9;
+  bottom: -6px;
+  left: 0;
+  transition: all 0.3s ease;
+}
+
+/* Contact Icon Background */
+.contact-icon-bg {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: #0EA5E9;
+  padding: 12px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container img {
+  mix-blend-mode: multiply; /* This can help in some cases */
+}

@@ -10,136 +10,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <style>
-        /* --- Base & Background Styles --- */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f0f4f8;
-            color: #1F2937;
-            overflow-x: hidden;
-        }
-
-        .animated-gradient {
-            background: linear-gradient(-45deg, #e0f7fa, #ffffff, #e1effd, #f0f4f8);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- Accent Color --- */
-        .accent-color { color: #0EA5E9; } /* Brighter Sky Blue */
-        .accent-bg { background-color: #0EA5E9; }
-        .accent-border { border-color: #0EA5E9; }
-        
-        /* --- Card & Interactive Styles --- */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        /* --- Tooltip for Social Icons --- */
-        .social-link-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        .social-tooltip {
-            visibility: hidden;
-            width: 80px;
-            background-color: #1F2937;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -40px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .social-tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #1F2937 transparent transparent transparent;
-        }
-        .social-link-wrapper:hover .social-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        /* --- Typewriter Effect Cursor --- */
-        .typewriter::after {
-            content: '|';
-            animation: blink 1s step-end infinite;
-            color: #0EA5E9;
-        }
-        @keyframes blink {
-            from, to { opacity: 1; }
-            50% { opacity: 0; }
-        }
-        
-        /* --- Scroll Reveal Animation --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Active Navigation Link Indicator --- */
-        .nav-link.active {
-            color: #0EA5E9;
-            position: relative;
-        }
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #0EA5E9;
-            bottom: -6px;
-            left: 0;
-            transition: all 0.3s ease;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body class="antialiased animated-gradient">
-
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#hero" class="text-2xl font-bold">
-                Lourd<span class="accent-color">.</span>
+                <span class="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Lou</span><span>rd</span>
             </a>
             <div id="desktop-nav" class="hidden md:flex space-x-8 items-center font-medium text-gray-600">
                 <a href="#hero" class="nav-link hover:text-sky-500 transition-colors duration-300">Home</a>
                 <a href="#about" class="nav-link hover:text-sky-500 transition-colors duration-300">About</a>
                 <a href="#skills" class="nav-link hover:text-sky-500 transition-colors duration-300">Skills</a>
                 <a href="#projects" class="nav-link hover:text-sky-500 transition-colors duration-300">Projects</a>
-                <a href="#contact" class="nav-link text-sky-500 px-4 py-2 border-2 accent-border rounded-full hover:accent-bg hover:text-white transition-all duration-300">Contact</a>
+                <a href="#contact" class="nav-link text-sky-500 px-4 py-2 border-2 accent-border rounded-full hover:accent-bg hover:text-sky-700 transition-all duration-300">Contact</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden z-50">
                 <i class="fas fa-bars text-2xl"></i>
@@ -160,7 +45,7 @@
         <section id="hero" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center md:justify-center md:gap-x-24 pt-24 md:pt-0">
             <div class="text-center md:text-left max-w-xl">
                 <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-2">
-                    Hi! I'm Lourd Angelou D. Bufete
+                    Hi! I'm <span class="bg-gradient-to-r from-sky-500 to-indigo-500 bg-clip-text text-transparent">Lourd Angelou D. Bufete</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl accent-color font-semibold mb-4">
                     BSIT Student
@@ -195,16 +80,16 @@
                 </div>
             </div>
             <div class="mb-12 md:mb-0 md:ml-12">
-                <img src="https://placehold.co/400x400/F0F9FF/0EA5E9?text=LB" alt="Lourd Angelou D. Bufete Portrait" class="w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-8 border-white shadow-2xl">
+                <img src="lourd.jpg" alt="Lourd Angelou D. Bufete Portrait" class="w-64 h-64 md:w-96 md:h-96 rounded-full object-cover border-8 border-white shadow-2xl">
             </div>
         </section>
         
         <section id="about" class="py-20 reveal">
             <h2 class="text-3xl font-bold text-center mb-2">About Me</h2>
-            <div class="w-20 h-1 accent-bg mx-auto mb-12"></div>
+            <div class="w-24 h-1 accent-bg mx-auto mb-12"></div>
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/3">
-                    <img src="https://placehold.co/600x600/F0F9FF/E0E0E0?text=Student" alt="Student at work" class="rounded-lg shadow-xl">
+                    <img src="lourid.jpg" alt="Lourd Angelou at work" class="rounded-lg shadow-xl w-full h-96 object-cover">
                 </div>
                 <div class="md:w-2/3 text-lg text-gray-700 space-y-4">
                     <p>As a Bachelor of Science in Information Technology student, I have a deep fascination for how technology can solve real-world problems. This curiosity drives my journey in web development, where I enjoy turning complex ideas into intuitive and effective digital solutions.</p>
@@ -215,47 +100,88 @@
         </section>
 
         <section id="skills" class="py-20 reveal">
-            <h2 class="text-3xl font-bold text-center mb-12">My Technical Skills</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-icon.svg" alt="HTML5" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">HTML5</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/w3_css/w3_css-icon.svg" alt="CSS3" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">CSS3</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/javascript/javascript-icon.svg" alt="JavaScript" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">JavaScript</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">Tailwind CSS</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" alt="React" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">React</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/python/python-icon.svg" alt="Python" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">Python</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/java/java-icon.svg" alt="Java" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">Java</span>
-                </div>
-                <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/mysql/mysql-icon.svg" alt="MySQL" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">MySQL</span>
-                </div>
-                 <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="Git" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">Git</span>
-                </div>
-                 <div class="skill-card flex flex-col items-center p-6 glass-card rounded-xl">
-                    <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="Figma" class="w-16 h-16 mb-4 skill-icon">
-                    <span class="font-semibold text-lg">Figma</span>
+            <h2 class="text-3xl md:text-4xl text-center font-bold mb-2">
+                Tools and <span class="text-sky-500">Frameworks</span>
+            </h2>
+            <div class="w-20 h-1 accent-bg mx-auto mb-12"></div>
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <img src="https://img.freepik.com/free-vector/web-development-concept-with-programmer-ar_107791-17049.jpg" alt="Developer Illustration" class="transition-transform duration-500 hover:scale-105">
+                        </div>
+                    <div>
+                        <div>
+                            <h3 class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Expertise</h3>
+                            <div class="flex flex-wrap gap-x-8 gap-y-6 mb-8">
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-14 h-14 mx-auto mb-2">
+                                    <p class="font-semibold">HTML5</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-14 h-14 mx-auto mb-2">
+                                    <p class="font-semibold">CSS3</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-14 h-14 mx-auto mb-2">
+                                    <p class="font-semibold">JavaScript</p>
+                                </div>
+                                 <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="Tailwind CSS" class="w-14 h-14 mx-auto mb-2">
+                                    <p class="font-semibold">Tailwind</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-14 h-14 mx-auto mb-2">
+                                    <p class="font-semibold">React</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Others</h3>
+                            <div class="grid grid-cols-4 sm:grid-cols-5 gap-x-6 gap-y-8">   
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">Node.js</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">Express</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://www.vectorlogo.zone/logos/laravel/laravel-icon.svg" alt="Laravel" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">Laravel</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">GitHub</p>
+                                </div>
+                                 <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">C#</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">C++</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="VB.NET" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">VB.NET</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">MySQL</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <i class="fas fa-brain text-4xl text-sky-500 mx-auto mb-1"></i>
+                                    <p class="text-sm">P-Solving</p>
+                                </div>
+                                <div class="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1">
+                                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-10 h-10 mx-auto mb-1">
+                                    <p class="text-sm">Git</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -301,18 +227,76 @@
         </section>
 
         <section id="contact" class="py-20 reveal">
-            <h2 class="text-3xl font-bold text-center mb-2">Get In Touch</h2>
-            <div class="w-20 h-1 accent-bg mx-auto mb-12"></div>
-            <div class="max-w-3xl mx-auto text-center">
-                <p class="text-lg text-gray-600 mb-8">Have a project in mind or just want to say hello? My inbox is always open. I'll get back to you as soon as possible!</p>
-                <form id="contact-form" class="space-y-6">
-                    <div class="flex flex-col md:flex-row gap-6">
-                        <input type="text" placeholder="Your Name" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-200">
-                        <input type="email" placeholder="Your Email" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-200">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-4xl font-bold">
+                        <span class="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Let's Connect</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mt-4">
+                        Ready to bring your next project to life? I'd love to hear about your ideas and discuss how we can work together.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-start">
+                    
+                    <div class="text-gray-700">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Get in Touch</h3>
+                        <p class="mb-8">
+                            I'm currently available for new opportunities and exciting projects. Whether you want to discuss a potential collaboration or just say hello, I'd be happy to hear from you.
+                        </p>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon-bg">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Email</h4>
+                                    <p>lourdangeloubufete17@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon-bg">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Phone</h4>
+                                    <p>+63 (966) 804-4546</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="contact-icon-bg">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Location</h4>
+                                    <p>Cubacub Mandaue City</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-50 p-6 rounded-lg border border-sky-100">
+                             <h4 class="font-semibold text-gray-800 mb-2">Response Time</h4>
+                             <p class="text-gray-600 text-sm">I typically respond to emails within 24 hours. For urgent matters, feel free to reach out via phone.</p>
+                        </div>
                     </div>
-                    <textarea placeholder="Your Message" rows="5" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-200"></textarea>
-                    <button type="submit" class="px-8 py-3 accent-bg text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300">Send Message</button>
-                </form>
+
+                    <div>
+                        <form id="contact-form" class="space-y-6">
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <input type="text" placeholder="First Name" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 text-gray-900">
+                                <input type="text" placeholder="Last Name" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 text-gray-900">
+                            </div>
+                            <input type="email" placeholder="Email" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 text-gray-900">
+                            <input type="text" placeholder="Subject" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 text-gray-900">
+                            <textarea placeholder="Your Message" rows="5" class="w-full p-3 bg-white/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 text-gray-900"></textarea>
+                            <button type="submit" class="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-sky-500 text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -323,114 +307,7 @@
             <p class="text-sm mt-2">Designed & Built by Lourd Angelou D. Bufete</p>
         </div>
     </footer>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // --- Header scroll effect ---
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('bg-white/80', 'backdrop-blur-sm', 'shadow-md');
-            } else {
-                header.classList.remove('bg-white/80', 'backdrop-blur-sm', 'shadow-md');
-            }
-        });
-
-        // --- Mobile Menu Toggle ---
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuIcon = mobileMenuBtn.querySelector('i');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenuIcon.classList.remove('fa-times');
-                mobileMenuIcon.classList.add('fa-bars');
-            } else {
-                mobileMenuIcon.classList.remove('fa-bars');
-                mobileMenuIcon.classList.add('fa-times');
-            }
-        }
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // --- Typewriter Effect ---
-        const typewriterElement = document.querySelector('.typewriter');
-        const words = ["learning.", "creating.", "innovating."];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-
-        function type() {
-            const currentWord = words[wordIndex];
-            typewriterElement.textContent = currentWord.substring(0, charIndex);
-            
-            if (!isDeleting && charIndex < currentWord.length) {
-                charIndex++;
-                setTimeout(type, 120);
-            } else if (isDeleting && charIndex > 0) {
-                charIndex--;
-                setTimeout(type, 80);
-            } else {
-                isDeleting = !isDeleting;
-                if (!isDeleting) {
-                    wordIndex = (wordIndex + 1) % words.length;
-                }
-                setTimeout(type, 1200);
-            }
-        }
-        type();
-
-        // --- Scroll Reveal Animation ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // --- Active Nav Link on Scroll ---
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('#desktop-nav a.nav-link');
-        const mobileNavLinks = document.querySelectorAll('#mobile-menu a.nav-link');
-
-        const observerOptions = {
-            rootMargin: '-50% 0px -50% 0px'
-        };
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.getAttribute('id');
-                    
-                    navLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-                    });
-                     mobileNavLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-                    });
-                }
-            });
-        }, observerOptions);
-        sections.forEach(section => sectionObserver.observe(section));
-
-        // --- Contact Form Submission (Mock) ---
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! This is a demo form.');
-            contactForm.reset();
-        });
-
-    });
-    </script>
+    
+    <script src="script.js"></script>
 </body>
 </html>
