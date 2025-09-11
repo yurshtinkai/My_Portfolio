@@ -1,6 +1,20 @@
 Lourd Angelou D. Bufete - Personal Portfolio Website
 This is the source code for my personal portfolio website, designed to showcase my skills, projects, and journey as a BSIT student and aspiring web developer.
 
+React (non‑Vite) setup added
+
+Run locally:
+
+1. Install Node.js 18+.
+2. In this folder run:
+
+```
+npm install
+npm start
+```
+
+Your existing `style.css`, images, and content have been migrated into React components (`src/App.jsx`). Tailwind is loaded via CDN in `public/index.html` for simplicity.
+
 🚀 Features
 Responsive Design: Fully responsive layout that looks great on desktops, tablets, and mobile devices.
 

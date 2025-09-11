@@ -1,16 +1,26 @@
 /* Base & Background Styles */
 body {
   font-family: 'Poppins', sans-serif;
+  /* Light mode default colors */
   background-color: #f0f4f8;
   color: #1f2937;
   overflow-x: hidden;
 }
 
+/* Light Mode Animated Gradient */
 .animated-gradient {
   background: linear-gradient(-45deg, #e0f7fa, #ffffff, #e1effd, #f0f4f8);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
 }
+
+/* Dark Mode Animated Gradient */
+.dark .animated-gradient {
+  background: linear-gradient(-45deg, #0f172a, #111827, #1e293b, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
 
 @keyframes gradientBG {
   0% { background-position: 0% 50%; }
@@ -31,9 +41,22 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
+.dark .glass-card {
+  background: rgba(31, 41, 55, 0.5); /* Darker glass */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
 .glass-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+.dark .glass-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Social Icons */
+.social-icon {
+  @apply text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors duration-300 p-3 bg-white/70 dark:bg-gray-800/70 rounded-full shadow-md flex items-center justify-center;
 }
 
 /* Tooltip */
@@ -57,6 +80,10 @@ body {
   opacity: 0;
   transition: opacity 0.3s;
 }
+.dark .social-tooltip {
+    background-color: #f3f4f6;
+    color: #1f2937;
+}
 .social-tooltip::after {
   content: "";
   position: absolute;
@@ -66,6 +93,9 @@ body {
   border-width: 5px;
   border-style: solid;
   border-color: #1F2937 transparent transparent transparent;
+}
+.dark .social-tooltip::after {
+    border-color: #f3f4f6 transparent transparent transparent;
 }
 .social-link-wrapper:hover .social-tooltip {
   visibility: visible;
@@ -123,6 +153,14 @@ body {
   justify-content: center;
 }
 
-.image-container img {
-  mix-blend-mode: multiply; /* This can help in some cases */
+/* Form Input Styling */
+.form-input {
+  @apply w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400;
 }
+
+/* Skill Icon Hover Effects */
+.skill-icon, .other-skill-icon {
+    @apply text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1;
+}
+
+
