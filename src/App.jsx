@@ -26,7 +26,7 @@ function Header({ onToggleTheme, theme }) {
   }, []);
   return (
     <header id="header" className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="container mx-auto px-6 py-2 flex justify-between items-center">
         <a href="#home" className="text-2xl font-bold"><span className="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Lou</span><span>rd</span></a>
         <div id="desktop-nav" className="hidden md:flex space-x-8 items-center font-medium text-gray-600 dark:text-gray-300">
           <a href="#home" className="nav-link hover:text-sky-500 transition-colors duration-300">Home</a>
@@ -44,19 +44,56 @@ function Header({ onToggleTheme, theme }) {
   );
 }
 
+// src/App.jsx
+
 function MobileMenu({ onToggleTheme, theme }) {
   const [open, setOpen] = useState(false);
+
+  // New: Add an effect to prevent body scroll when the menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    // Cleanup function to reset the style when the component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [open]);
+
   return (
     <div className="flex items-center md:hidden">
+      {/* --- Theme Toggle Button (no change here) --- */}
       <button onClick={onToggleTheme} aria-label="Toggle theme" className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5 mr-2">
         <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'} text-xl`}></i>
       </button>
+
+      {/* --- Hamburger Button (no change here) --- */}
       <button className="z-50" onClick={() => setOpen(o => !o)}>
         <i className={`fas ${open ? 'fa-times' : 'fa-bars'} text-2xl dark:text-white`}></i>
       </button>
-      <div id="mobile-menu" className={`${open ? '' : 'hidden'} fixed inset-0 bg-white/95 z-40 flex flex-col items-center justify-center space-y-8 text-2xl`}>
-        {['home','about','skills','projects','contact'].map(id => (
-          <a key={id} href={`#${id}`} className="nav-link mobile-link" onClick={() => setOpen(false)}>{id[0].toUpperCase()+id.slice(1)}</a>
+      
+      {/* --- New: Background Overlay --- */}
+      {/* This div will dim the main content when the menu is open */}
+      <div 
+        className={`fixed inset-0 bg-black/50 z-30 transition-opacity duration-300 
+                   ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={() => setOpen(false)}
+      ></div>
+
+      {/* --- Updated: The Sidebar Menu --- */}
+      <div 
+        id="mobile-menu" 
+        className={`fixed top-0 right-0 bottom-0 bg-white dark:bg-gray-900 z-40 
+                   w-2/3 max-w-sm p-8 pt-20 flex flex-col items-start space-y-8 text-2xl
+                   transform transition-transform duration-300 ease-in-out
+                   ${open ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        {['home', 'about', 'skills', 'projects', 'contact'].map(id => (
+          <a key={id} href={`#${id}`} className="nav-link mobile-link font-medium text-gray-700 dark:text-gray-300" onClick={() => setOpen(false)}>
+            {id[0].toUpperCase() + id.slice(1)}
+          </a>
         ))}
       </div>
     </div>
@@ -132,7 +169,7 @@ export default function App() {
             <a href="#projects" className="inline-block px-8 py-3 accent-bg text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300">View My Work</a>
             <div className="flex items-center space-x-2">
               {[
-                { href: 'https://github.com', label: 'GitHub', svg: (
+                { href: 'https://github.com/yurshtinkai', label: 'GitHub', svg: (
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clipRule="evenodd"></path></svg>
                 )},
                 { href: 'https://linkedin.com', label: 'LinkedIn', svg: (
@@ -171,7 +208,7 @@ export default function App() {
 
       {/* Skills (illustration and icons kept) */}
       <section id="skills" className="py-20 reveal">
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-2">Tools and <span className="text-sky-500">Frameworks</span></h2>
+        <h2 className="text-3xl md:text-4xl text-center font-bold mb-2 dark:text-white">Tools and <span className="text-sky-500">Frameworks</span></h2>
         <div className="w-20 h-1 accent-bg mx-auto mb-12"></div>
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -270,7 +307,7 @@ export default function App() {
                   </div>
                 )}
                 <div className="flex space-x-4">
-                  <a href="#" className="accent-color hover:underline font-medium">Live Demo</a>
+                  <a href="https://rms-front-9our.onrender.com" target="_blank" rel="noopener noreferrer" className="accent-color hover:underline font-medium">Live Demo</a>
                   <a href="#" className="accent-color hover:underline font-medium">Source Code</a>
                 </div>
               </div>
@@ -312,12 +349,12 @@ export default function App() {
             <div>
               <form onSubmit={(e) => { e.preventDefault(); alert('Thank you for your message! This is a demo form.'); e.currentTarget.reset(); }} className="space-y-6">
                 <div className="flex flex-col md:flex-row gap-6">
-                  <input type="text" placeholder="First Name" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900" />
-                  <input type="text" placeholder="Last Name" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900" />
+                  <input type="text" placeholder="First Name" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
+                  <input type="text" placeholder="Last Name" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
                 </div>
-                <input type="email" placeholder="Email" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900" />
-                <input type="text" placeholder="Subject" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900" />
-                <textarea placeholder="Your Message" rows="5" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900"></textarea>
+                <input type="email" placeholder="Email" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
+                <input type="text" placeholder="Subject" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
+                <textarea placeholder="Your Message" rows="5" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200"></textarea>
                 <button type="submit" className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-sky-500 text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"><i className="fas fa-paper-plane"></i>Send Message</button>
               </form>
             </div>
