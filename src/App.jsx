@@ -215,17 +215,18 @@ export default function App() {
             <div><img src="/about.png" alt="Developer Illustration" className="transition-transform duration-500 hover:scale-105" /></div>
             <div>
               <h3 className="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Technical Skills</h3>
-              <div className="flex flex-wrap gap-x-8 gap-y-6 mb-8">
+              <div className="grid grid-cols-3 md:grid-cols-6 gap-8 mb-8">
                 {[
-                  ['HTML5','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
-                  ['CSS3','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
-                  ['JavaScript','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
-                  ['Tailwind','https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg'],
-                  ['React','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg']
-                ].map(([name, src]) => (
+    ['HTML5','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg'],
+    ['CSS3','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg'],
+    ['JavaScript','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg'],
+    ['Tailwind CSS','https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg'],
+    ['React','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg'],
+    ['TypeScript', 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg'] // <-- Add this line
+  ].map(([name, src]) => (
                   <div className="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1" key={name}>
-                    <img src={src} alt={name} className="w-14 h-14 mx-auto mb-2" />
-                    <p className="font-semibold">{name}</p>
+                    <img src={src} alt={name} className="w-12 h-12 mx-auto mb-2" />
+                    <p className="text-sm font-semibold">{name}</p>
                   </div>
                 ))}
               </div>
@@ -233,16 +234,31 @@ export default function App() {
               <div className="grid grid-cols-4 sm:grid-cols-5 gap-x-6 gap-y-8">
                 {[
                   ['Node.js','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg'],
-                  ['Express','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg'],
+                  ['Express.js', 'custom'],
                   ['Laravel','https://www.vectorlogo.zone/logos/laravel/laravel-icon.svg'],
-                  ['GitHub','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'],
+                  ['GitHub', 'custom'],
                   ['C#','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg'],
                   ['C++','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg'],
-                  ['VB.NET','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg'],
-                  ['MySQL','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg']
+                  ['MySQL','https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
                 ].map(([name, src]) => (
                   <div className="text-center transition-transform duration-300 hover:scale-110 hover:-translate-y-1" key={name}>
-                    <img src={src} alt={name} className="w-10 h-10 mx-auto mb-1" />
+                    {src === 'custom' ? (
+                      name === 'Express.js' ? (
+                        <div className="w-10 h-10 mx-auto mb-1 flex items-center justify-center">
+                          <svg className="w-8 h-8 text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 18.588a1.529 1.529 0 01-1.895-.72l-3.45-4.771-.5-.667-4.003 5.444a1.466 1.466 0 01-1.802.708l5.158-6.92-4.798-6.251a1.595 1.595 0 011.9.666l3.576 4.83 3.596-4.81a1.435 1.435 0 011.788-.668L21.708 7.9l-2.522 3.283a.666.666 0 000 .994l4.804 6.412zM.002 11.576l.42-2.075c1.154-4.103 5.858-5.81 9.094-3.27 1.895 1.489 2.368 3.597 2.275 5.713H.024c-.112 1.143.2 2.34 1.067 3.162 1.17 1.1 2.88 1.288 4.316.58 1.09-.526 1.835-1.433 2.126-2.464h3.43c-.36 3.906-3.354 6.78-7.19 6.78-3.65 0-6.714-2.624-7.302-6.1zm8.83-2.246c-1.44 0-2.666 1.16-2.666 2.597 0 1.437 1.226 2.597 2.666 2.597s2.666-1.16 2.666-2.597c0-1.437-1.226-2.597-2.666-2.597z"/>
+                          </svg>
+                        </div>
+                      ) : name === 'GitHub' ? (
+                        <div className="w-10 h-10 mx-auto mb-1 flex items-center justify-center">
+                          <svg className="w-8 h-8 text-gray-700 dark:text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                          </svg>
+                        </div>
+                      ) : null
+                    ) : (
+                      <img src={src} alt={name} className="w-10 h-10 mx-auto mb-1" />
+                    )}
                     <p className="text-sm">{name}</p>
                   </div>
                 ))}
@@ -265,12 +281,12 @@ export default function App() {
             <div className="glass-card rounded-lg overflow-hidden group" key={i}>
               <img
                 src={i===1 ? '/inventoryPic.png' : i===2 ? '/registrarPic.png' : 'https://placehold.co/600x400/1F2937/E0F2FE?text=Personal+Portfolio'}
-                alt={i===1 ? 'Inventory System [Capstone 1]' : i===2 ? 'Registrar System [Capstone 2]' : 'Personal Portfolio Website'}
+                alt={i===1 ? 'Inventory System [App Dev]' : i===2 ? 'Registrar System [Capstone 2]' : 'Personal Portfolio Website'}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
-                  {i===1 ? 'Inventory System [Capstone 1]' : i===2 ? 'Registrar System [Capstone 2]' : 'Personal Portfolio Website'}
+                  {i===1 ? 'Inventory System [App Dev]' : i===2 ? 'Registrar System [Capstone 2]' : 'Personal Portfolio Website'}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 mb-4">
                   {i===1
@@ -281,7 +297,7 @@ export default function App() {
                 </p>
                 {i===1 && (
                   <div className="mb-4 flex flex-wrap items-center gap-2">
-                    {['Laravel','MySQL'].map(tag => (
+                    {['Laravel','php','MySQL'].map(tag => (
                       <span key={tag} className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-700/80 text-indigo-100 dark:bg-indigo-600/80">
                         {tag}
                       </span>
