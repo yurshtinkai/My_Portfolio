@@ -4,7 +4,7 @@
 
 Welcome to the source code for my personal portfolio website. This project is a fully responsive, single-page application built with **React** and **Tailwind CSS** to showcase my skills, featured projects, and professional background as an aspiring web developer.
 
-**Check out the live demo:** **[https://<YOUR_LIVE_URL_HERE.com>](https://lourd-portfolio.onrender.com)**
+Check out the live demo: **[https://lourd-portfolio.onrender.com](https://lourd-portfolio.onrender.com)**
 
 ---
 
