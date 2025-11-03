@@ -27,24 +27,15 @@ function useDarkMode() {
   return { theme, toggle: () => setTheme(t => (t === 'dark' ? 'light' : 'dark')) };
 }
 
-// === UPDATED HEADER ===
-// === UPDATED HEADER ===
-// === UPDATED HEADER ===
 function Header({ onToggleTheme, theme }) {
-  // We remove the useEffect hook that controls the scroll behavior,
-  // since we want the background to be permanent.
-
   return (
     <header 
       id="header" 
       // These classes are now applied permanently, not just on scroll:
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-md"
     >
-      {/* === MODIFIED THIS LINE === */}
       {/* Changed px-14 to px-6 for better responsive padding */}
       <nav className="container mx-auto px-10 py-3 flex justify-between items-center">
-        
-        {/* === MODIFIED THIS LINE === */}
         {/* Removed ml-4, as padding is now handled by the nav tag */}
         <a href="#home" className="text-2xl font-bold">
           <span className="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Lourd</span>
@@ -145,7 +136,6 @@ function Typewriter() {
   }, [isDeleting, charIndex]);
   return <span className="typewriter">{words[wordIndex].substring(0, charIndex)}</span>;
 }
-// === END OF TYPEWRITER FUNCTION ===
 
 function useReveal() {
   useEffect(() => {
@@ -184,9 +174,6 @@ export default function App() {
   return (
     <main>
       <Header onToggleTheme={toggle} theme={theme} />
-      
-      {/* === THIS IS THE NEW HOME SECTION === */}
-      {/* === THIS IS THE NEW HOME SECTION === */}
       <section 
         id="home" 
         className="min-h-screen flex items-center justify-center relative"
@@ -196,11 +183,7 @@ export default function App() {
           backgroundPosition: 'center'
         }}
       >
-        {/* Overlay */}
         <div className="absolute inset-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-0"></div>
-
-        {/* Content Container */}
-        {/* === LINE MODIFIED 1 of 2: Added 'flex-col-reverse' === */}
         <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-center gap-4 lg:gap-32 relative z-10 pt-32 pb-12 md:pt-0 md:pb-0">
           
           {/* Left Column (Text Content) */}
@@ -216,14 +199,11 @@ export default function App() {
             <h2 className="text-2xl md:text-2xl text-sky-500 font-bold mb-6">
               BSIT Student & Aspiring Web Developer
             </h2>
-
-            {/* === PARAGRAPH UPDATED === */}
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto md:mx-0">
               A passionate IT student, currently exploring the world of web development 
               and creating engaging digital experiences.
               Always <Typewriter />
             </p>
-            {/* === END OF PARAGRAPH UPDATE === */}
             <div className="flex items-center justify-center md:justify-start space-x-4 mb-8">
               <a 
                 href="#projects" 
@@ -261,22 +241,15 @@ export default function App() {
             </div>
           </div>
           
-          {/* Right Column (Image) */}
-          {/* === LINE MODIFIED 2 of 2: Changed 'mt-12 md:mt-0' to 'mb-12 md:mb-0' === */}
           <div className="relative mb-12 md:mb-0 flex-shrink-0">
-            {/* This div contains the image */}
             <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl relative z-10">
               <img 
-                src="/lourd.jpg" // This should be your NEW portrait
+                src="/lourd.jpg"
                 alt="Lourd Angelou D. Bufete Portrait" 
                 className="w-full h-full object-cover" 
               />
             </div>
-            
-            {/* This is the white border */}
             <div className="absolute inset-0 rounded-full border-[12px] border-white/50 dark:border-white" style={{ transform: 'scale(1.03)' }}></div>
-            
-            {/* === ICONS POSITION ADJUSTED (NOW RESPONSIVE) === */}
             
             {/* </> Icon */}
             <div className="absolute top-3 -right-7 w-10 h-10 md:w-14 md:h-14 md:top-3 md:-right-7 bg-blue-500 rounded-full flex items-center justify-center shadow-lg z-20">
@@ -287,7 +260,6 @@ export default function App() {
             <div className="absolute bottom-3 -left-7 w-10 h-10 md:w-14 md:h-14 md:bottom-3 md:-left-7 bg-purple-600 rounded-full flex items-center justify-center shadow-lg z-20">
               <i className="fas fa-brain text-lg md:text-2xl text-white"></i>
             </div>
-            {/* === END OF ICONS === */}
           </div>
 
         </div>
@@ -297,8 +269,6 @@ export default function App() {
           </div>
         </div>
       </section>
-      {/* === END OF NEW HOME SECTION === */}
-      {/* === END OF NEW HOME SECTION === */}
 
       {/* All other sections go inside a container now */}
       <div className="container mx-auto px-6">
@@ -471,11 +441,10 @@ export default function App() {
                       ))}
                     </div>
                   )}
-                  {/* === THIS BLOCK IS NOW UPDATED === */}
                   <div className="flex space-x-4">
                     <a 
                       href={
-                        i === 1 ? '#' : // No demo link provided for Inventory System
+                        i === 1 ? '#' : // link for Inventory System
                         i === 2 ? 'https://benedictocollege-rms.onrender.com' : // Registrar System link
                         'https://modern-notepad.onrender.com' // Modern Notepad link
                       } 
@@ -487,7 +456,6 @@ export default function App() {
                     </a>
                     <a href="#" className="accent-color hover:underline font-medium">image.png</a>
                   </div>
-                  {/* === END OF UPDATED BLOCK === */}
                 </div>
               </div>
             ))}
