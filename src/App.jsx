@@ -248,7 +248,7 @@ export default function App() {
                 className="w-full h-full object-cover" 
               />
             </div>
-            <div className="absolute inset-0 rounded-full border-[12px] border-white/50 dark:border-white" style={{ transform: 'scale(1.03)' }}></div>
+            <div className="absolute inset-0 rounded-full border-[12px] border-white dark:border-white" style={{ transform: 'scale(1.03)' }}></div>
             
             {/* </> Icon */}
             <div className="absolute top-3 -right-7 w-10 h-10 md:w-14 md:h-14 md:top-3 md:-right-7 bg-blue-500 rounded-full flex items-center justify-center shadow-lg z-20">
