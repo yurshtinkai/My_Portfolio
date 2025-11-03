@@ -36,7 +36,6 @@ function Header({ onToggleTheme, theme }) {
     >
       {/* Changed px-14 to px-6 for better responsive padding */}
       <nav className="container mx-auto px-10 py-3 flex justify-between items-center">
-        {/* Removed ml-4, as padding is now handled by the nav tag */}
         <a href="#home" className="text-2xl font-bold">
           <span className="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Lourd</span>
         </a>
@@ -454,7 +453,7 @@ export default function App() {
                     >
                       Live Demo
                     </a>
-                    <a href="#" className="accent-color hover:underline font-medium">image.png</a>
+                    <a href="#" className="accent-color hover:underline font-medium">Source Code</a>
                   </div>
                 </div>
               </div>
