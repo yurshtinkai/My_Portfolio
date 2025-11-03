@@ -1,85 +1,105 @@
-Lourd Angelou D. Bufete - Personal Portfolio Website
-This is the source code for my personal portfolio website, designed to showcase my skills, projects, and journey as a BSIT student and aspiring web developer.
+# Lourd Bufete - Personal Portfolio
 
-React (non‑Vite) setup added
+![Lourd Bufete's Portfolio UI](portfolioimg.png)
 
-Run locally:
+Welcome to the source code for my personal portfolio website. This project is a fully responsive, single-page application built with **React** and **Tailwind CSS** to showcase my skills, featured projects, and professional background as an aspiring web developer.
 
-1. Install Node.js 18+.
-2. In this folder run:
+**Check out the live demo:** **[https://<YOUR_LIVE_URL_HERE.com>](https://lourd-portfolio.onrender.com)**
 
-```
-npm install
-npm start
-```
+---
 
-Your existing `style.css`, images, and content have been migrated into React components (`src/App.jsx`). Tailwind is loaded via CDN in `public/index.html` for simplicity.
+## 📖 Table of Contents
 
-🚀 Features
-Responsive Design: Fully responsive layout that looks great on desktops, tablets, and mobile devices.
+* [About This Project](#-about-this-project)
+* [✨ Key Features](#-key-features)
+* [📸 UI Showcase (Light & Dark Mode)](#-ui-showcase-light--dark-mode)
+* [🛠️ Tech Stack](#️-tech-stack)
+* [⚙️ Getting Started](#️-getting-started)
+* [📬 Connect With Me](#-connect-with-me)
 
-Smooth Scrolling: Seamless navigation between sections.
+---
 
-Dynamic UI Elements:
+## About This Project
 
-A header that becomes opaque and adds a shadow on scroll.
+This portfolio serves as my digital resume and a central hub for my work. It's designed to be clean, modern, and interactive, providing a seamless user experience for anyone interested in learning more about me and my technical abilities. The entire site is built from scratch to reflect my skills in front-end development and design.
 
-An engaging typewriter effect in the hero section.
+---
 
-Subtle scroll-reveal animations for a modern feel.
+## ✨ Key Features
 
-Interactive Sections: Includes sections for Home, About Me, Skills, Featured Projects, and a Contact Form.
+Based on the code, this portfolio includes several dynamic features:
 
-Clean Code: Well-structured and commented HTML, CSS, and JavaScript.
+* **🎨 Dark & Light Mode:** A seamless theme-switcher that respects user's system preference (`prefers-color-scheme`) and saves their choice in `localStorage`.
+* **📱 Fully Responsive:** The UI adapts beautifully to all screen sizes, from a small mobile phone to a large desktop monitor, featuring a custom mobile sidebar menu.
+* **🚀 Dynamic Animations:**
+    * **Scroll Reveal:** Sections and elements gracefully fade in and slide up as you scroll, powered by the `IntersectionObserver` API.
+    * **Typewriter Effect:** The hero section features an animated typewriter effect to introduce my passion for coding.
+    * **Project Carousel:** Each project card features an auto-sliding image carousel to showcase multiple facets of the work.
+* **🧭 Active Navigation:** The navigation bar automatically highlights the link corresponding to the section of the page you are currently viewing.
+* **💅 Modern UI/UX:**
+    * **Glassmorphism:** Project cards use a "glass" effect (`backdrop-filter`) for a modern, sleek look.
+    * **Animated Gradients:** The background features a subtle, looping animated gradient.
+    * **Custom Hovers:** Includes custom tooltips and hover effects on all interactive elements.
 
-🛠️ Technologies Used
-This project was built using a combination of modern web technologies:
+---
 
-Frontend:
+## 📸 UI Showcase (Light & Dark Mode)
 
-HTML5
+Here’s a preview of the portfolio's design. *Self-note: You will need to take these screenshots and upload them to your repository or an image-hosting service (like Imgur) and then replace the placeholder links.*
 
-CSS3 (with custom properties and animations)
 
-Tailwind CSS: For a utility-first styling workflow.
+| Light Mode ☀️                                                                                                  | Dark Mode 🌙                                                                                               |
+| :-------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
+| ![Portfolio - Light Mode](portfolioimg.png) | ![Portfolio - Dark Mode](portfoliodark.png) |
 
-JavaScript: For interactivity, animations, and DOM manipulation.
+---
 
-Libraries & Frameworks:
+## 🛠️ Tech Stack
 
-Font Awesome: For icons.
+This project was built using the following technologies:
 
-Google Fonts (Poppins): For typography.
+| Technology | Description |
+| :--- | :--- |
+| **React** | A JavaScript library for building user interfaces. |
+| **Tailwind CSS** | A utility-first CSS framework for rapid, custom UI development. |
+| **HTML5** | The standard markup language for documents designed to be displayed in a web browser. |
+| **CSS3** | Used for custom styles, animations (like the gradient), and the typewriter effect. |
+| **JavaScript (ES6+)** | Powers all the interactivity, including the custom React Hooks for theme and animations. |
+| **Font Awesome** | Used for the clean, professional icons throughout the site. |
 
-📂 Project Structure
-.
-├── index.html         # Main HTML file
-├── style.css          # Custom CSS styles
-├── script.js          # JavaScript for interactivity
-├── lourd.jpg          # Hero section portrait image
-├── lourid.jpg         # About section image
-├── about.png          # Skills section illustration
-└── README.md          # This file
+---
 
-⚙️ Getting Started
-To run this project locally, simply follow these steps:
+## ⚙️ Getting Started
 
-Clone the repository:
+To run this project on your local machine, follow these steps:
 
-git clone https://github.com/your-username/your-repository-name.git
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/yurshtinkai/your-portfolio-repo.git](https://github.com/yurshtinkai/your-portfolio-repo.git)
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd your-portfolio-repo
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+4.  **Start the development server:**
+    ```bash
+    npm start
+    ```
+    The application will open in your default browser at `http://localhost:3000`.
 
-Navigate to the project directory:
+---
 
-cd your-repository-name
+## 📬 Connect With Me
 
-Open index.html in your browser:
-You can do this by double-clicking the file or using a live server extension in your code editor (like Live Server for VS Code).
+I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to connect with me!
 
-📬 Contact
-Email: lourdangeloubufete17@gmail.com
+* **📧 Email:** [lourdangeloubufete17@gmail.com](mailto:lourdangeloubufete17@gmail.com)
+* **🐙 GitHub:** [github.com/yurshtinkai](https://github.com/yurshtinkai)
+* **💼 LinkedIn:** [linkedin.com/in/<YOUR_PROFILE>](https://linkedin.com)
+* **📞 Phone:** +63 (966) 804-4546
 
-Phone: +63 (966) 804-4546
-
-Location: Cubacub Mandaue City, Philippines
-
-This README was generated based on the project files.
+Designed & Built by Lourd Angelou D. Bufete.
