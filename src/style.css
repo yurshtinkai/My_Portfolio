@@ -168,3 +168,79 @@ body {
 }
 
 
+/* === NEW SCROLL MOUSE CSS === */
+.scroll-down-container {
+  position: absolute;
+  bottom: 2rem; /* 32px from bottom */
+  left: 50%;
+  z-index: 10;
+  display: none; /* Hide on small screens */
+  animation: bounceUpDown 1.8s infinite ease-in-out;
+}
+/* Show on medium screens and up */
+@media (min-width: 768px) {
+  .scroll-down-container {
+    display: block;
+  }
+}
+
+.scroll-down-mouse {
+  width: 28px;
+  height: 48px;
+  border: 2px solid #a0aec0; /* Tailwind gray-400 */
+  border-radius: 60px;
+  position: relative;
+}
+.dark .scroll-down-mouse {
+  border-color: #718096; /* Tailwind gray-500 */
+}
+
+.scroll-down-wheel {
+  display: block;
+  width: 4px;
+  height: 10px;
+  background-color: #a0aec0; /* Tailwind gray-400 */
+  border-radius: 4px;
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+}
+.dark .scroll-down-wheel {
+  background-color: #718096; /* Tailwind gray-500 */
+}
+
+/* REPLACED old animation with this new one */
+@keyframes bounceUpDown {
+  0%, 100% {
+    /* We include translateX here to keep it centered */
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    /* Moves down 8px and stays centered */
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+/* === END OF NEW CSS === */
+
+#mobile-menu {
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  height: 100vh !important;
+  background: #fff !important;
+  width: 70vw !important;
+  max-width: 320px !important;
+  z-index: 99999 !important;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  border-left: 1px solid #e5e7eb;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  padding: 2rem 2rem 2rem 2rem !important;
+}
+.dark #mobile-menu {
+  background: #0c111c !important;
+  border-left: 1px solid #27272a;
+}
