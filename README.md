@@ -1,6 +1,6 @@
 # Lourd Bufete - Personal Portfolio
 
-![Lourd Bufete's Portfolio UI](portfolioimg.png)
+![Lourd Bufete's Portfolio UI](public/portfolioimg.png)
 
 Welcome to the source code for my personal portfolio website. This project is a fully responsive, single-page application built with **React** and **Tailwind CSS** to showcase my skills, featured projects, and professional background as an aspiring web developer.
 
@@ -50,7 +50,7 @@ Here’s a preview of the portfolio's design. *Self-note: You will need to take 
 
 | Light Mode ☀️                                                                                                  | Dark Mode 🌙                                                                                               |
 | :-------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------: |
-| ![Portfolio - Light Mode](portfolioimg.png) | ![Portfolio - Dark Mode](portfoliodark.png) |
+| ![Portfolio - Light Mode](public/portfolioimg.png) | ![Portfolio - Dark Mode](public/portfoliodark.png) |
 
 ---
 
