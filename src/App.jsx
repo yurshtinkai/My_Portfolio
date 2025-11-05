@@ -463,46 +463,50 @@ export default function App() {
 
         {/* Contact */}
         <section id="contact" className="py-20 reveal">
-          <div className="container mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white"><span className="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Let's Connect</span></h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mt-4">Ready to bring your next project to life? I'd love to hear about your ideas and discuss how we can work together.</p>
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white"><span className="bg-gradient-to-r from-purple-600 to-sky-600 bg-clip-text text-transparent">Let's Connect</span></h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 mt-4">Ready to bring your next project to life? I'd love to hear about your ideas and discuss how we can work together.</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            
+            {/* Left Column */}
+            <div className="text-gray-700 dark:text-gray-400">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h3>
+              <p className="mb-8">I'm currently available for new opportunities and exciting projects. Whether you want to discuss a potential collaboration or just say hello, I'd be happy to hear from you.</p>
+              <div className="space-y-6 mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="contact-icon-bg dark:bg-gray-800 dark:text-sky-400"><i className="fas fa-envelope text-xl"></i></div>
+                  <div><h4 className="font-semibold text-gray-800 dark:text-gray-200">Email</h4><p>lourdangeloubufete17@gmail.com</p></div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="contact-icon-bg dark:bg-gray-800 dark:text-sky-400"><i className="fas fa-phone text-xl"></i></div>
+                  <div><h4 className="font-semibold text-gray-800 dark:text-gray-200">Phone</h4><p>+63 (966) 804-4546</p></div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="contact-icon-bg dark:bg-gray-800 dark:text-sky-400"><i className="fas fa-map-marker-alt text-xl"></i></div>
+                  <div><h4 className="font-semibold text-gray-800 dark:text-gray-200">Location</h4><p>Cubacub Mandaue City</p></div>
+                </div>
+              </div>
+              <div className="bg-sky-50 dark:bg-gray-800 p-6 rounded-lg border border-sky-100 dark:border-gray-700">
+                <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Response Time</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">I typically respond to emails within 24 hours. For urgent matters, feel free to reach out via phone.</p>
+              </div>
             </div>
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <div className="text-gray-700 dark:text-gray-400">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Get in Touch</h3>
-                <p className="mb-8">I'm currently available for new opportunities and exciting projects. Whether you want to discuss a potential collaboration or just say hello, I'd be happy to hear from you.</p>
-                <div className="space-y-6 mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="contact-icon-bg dark:bg-gray-800 dark:text-sky-400"><i className="fas fa-envelope text-xl"></i></div>
-                    <div><h4 className="font-semibold text-gray-800 dark:text-gray-200">Email</h4><p>lourdangeloubufete17@gmail.com</p></div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="contact-icon-bg dark:bg-gray-800 dark:text-sky-400"><i className="fas fa-phone text-xl"></i></div>
-                    <div><h4 className="font-semibold text-gray-800 dark:text-gray-200">Phone</h4><p>+63 (966) 804-4546</p></div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="contact-icon-bg dark:bg-gray-800 dark:text-sky-400"><i className="fas fa-map-marker-alt text-xl"></i></div>
-                    <div><h4 className="font-semibold text-gray-800 dark:text-gray-200">Location</h4><p>Cubacub Mandaue City</p></div>
-                  </div>
+            
+            {/* Right Column (Form) */}
+            <div>
+              <form onSubmit={(e) => { e.preventDefault(); alert('Thank you for your message! This is a demo form.'); e.currentTarget.reset(); }} className="space-y-6">
+                <div className="flex flex-col md:flex-row gap-6">
+                  {/* UPDATED classes to match your .form-input style from style.css */}
+                  <input type="text" placeholder="First Name" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
+                  <input type="text" placeholder="Last Name" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
                 </div>
-                <div className="bg-sky-50 dark:bg-gray-800 p-6 rounded-lg border border-sky-100 dark:border-gray-700">
-                  <h4 className="font-semibold text-gray-800 dark:text-gray-200 mb-2">Response Time</h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">I typically respond to emails within 24 hours. For urgent matters, feel free to reach out via phone.</p>
-                </div>
-              </div>
-              <div>
-                <form onSubmit={(e) => { e.preventDefault(); alert('Thank you for your message! This is a demo form.'); e.currentTarget.reset(); }} className="space-y-6">
-                  <div className="flex flex-col md:flex-row gap-6">
-                    <input type="text" placeholder="First Name" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
-                    <input type="text" placeholder="Last Name" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
-                  </div>
-                  <input type="email" placeholder="Email" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
-                  <input type="text" placeholder="Subject" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200" />
-                  <textarea placeholder="Your Message" rows="5" className="w-full p-3 dark:bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border dark:border-gray-300 text-gray-900 dark:text-gray-200"></textarea>
-                  <button type="submit" className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-sky-500 text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"><i className="fas fa-paper-plane"></i>Send Message</button>
-                </form>
-              </div>
+                <input type="email" placeholder="Email" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
+                <input type="text" placeholder="Subject" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
+                <textarea placeholder="Your Message" rows="5" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400"></textarea>
+                <button type="submit" className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-sky-500 text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"><i className="fas fa-paper-plane"></i>Send Message</button>
+              </form>
             </div>
           </div>
         </section>
