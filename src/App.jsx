@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 function AutoSlideImage({ images, alt, className, intervalMs = 3500 }) {
   const [index, setIndex] = useState(0);
@@ -163,6 +164,428 @@ function useActiveNav() {
     sections.forEach(section => sectionObserver.observe(section));
     return () => sectionObserver.disconnect();
   }, []);
+}
+
+// Email validation function
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
+
+// Check if email domain exists (simplified validation)
+async function validateEmailDomain(email) {
+  try {
+    const domain = email.split('@')[1];
+    if (!domain) return false;
+    
+    // Check common email providers (these are known valid domains)
+    const commonDomains = [
+      'gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com', 
+      'aol.com', 'mail.com', 'protonmail.com', 'zoho.com', 'yandex.com',
+      'gmx.com', 'live.com', 'msn.com', 'ymail.com', 'rocketmail.com',
+      'me.com', 'mac.com', 'inbox.com', 'fastmail.com', 'tutanota.com'
+    ];
+    
+    if (commonDomains.includes(domain.toLowerCase())) {
+      return true;
+    }
+    
+    // For other domains, validate format and check domain structure
+    // Check if domain has valid structure (contains dot, reasonable length)
+    const domainPattern = /^[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
+    
+    if (domainPattern.test(domain)) {
+      // Additional check: domain should have at least one dot and end with valid TLD
+      const parts = domain.split('.');
+      if (parts.length >= 2 && parts[parts.length - 1].length >= 2) {
+        // For custom domains, we assume they're valid if format is correct
+        // In a production environment, you could add DNS lookup here
+        return true;
+      }
+    }
+    
+    // Optional: Use Abstract API for advanced validation (requires API key)
+    // Uncomment and add your API key if you want to use this feature
+    /*
+    try {
+      const apiKey = process.env.REACT_APP_ABSTRACT_API_KEY || 'YOUR_API_KEY';
+      if (apiKey && apiKey !== 'YOUR_API_KEY') {
+        const response = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=${apiKey}&email=${encodeURIComponent(email)}`);
+        if (response.ok) {
+          const data = await response.json();
+          return data.deliverability === 'DELIVERABLE' || data.is_valid_format?.value === true;
+        }
+      }
+    } catch (apiError) {
+      console.log('Email validation API not configured, using format validation only');
+    }
+    */
+    
+    // Fallback: validate format only
+    return validateEmail(email);
+  } catch (error) {
+    console.error('Email validation error:', error);
+    return validateEmail(email); // Fallback to basic regex validation
+  }
+}
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [emailValidating, setEmailValidating] = useState(false);
+  const [emailValidationStatus, setEmailValidationStatus] = useState(null); // 'valid', 'invalid', 'checking', or null
+
+  // Initialize EmailJS (configure in EMAILJS_SETUP.md)
+  useEffect(() => {
+    // EmailJS public key - Replace with your actual public key
+    // You can also use environment variables: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
+    if (publicKey && publicKey !== "YOUR_EMAILJS_PUBLIC_KEY") {
+      emailjs.init(publicKey);
+    }
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error for this field
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+    
+    // Clear submit status when user starts typing
+    if (submitStatus) {
+      setSubmitStatus(null);
+    }
+  };
+
+  // Handler to prevent numbers in name fields and auto-capitalize first letter
+  const handleNameChange = (e) => {
+    const { name, value } = e.target;
+    // Remove any numbers from the input
+    let filteredValue = value.replace(/[0-9]/g, '');
+    
+    // Capitalize the first letter of each word
+    if (filteredValue.length > 0) {
+      filteredValue = filteredValue
+        .split(' ')
+        .map(word => {
+          if (word.length > 0) {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+          }
+          return word;
+        })
+        .join(' ');
+    }
+    
+    setFormData(prev => ({ ...prev, [name]: filteredValue }));
+    
+    // Clear error for this field
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+    
+    // Clear submit status when user starts typing
+    if (submitStatus) {
+      setSubmitStatus(null);
+    }
+  };
+
+  // Handler to prevent number keypress in name fields
+  const handleNameKeyPress = (e) => {
+    // Block numbers (0-9) from being entered
+    if (e.key >= '0' && e.key <= '9') {
+      e.preventDefault();
+    }
+  };
+
+  const handleEmailBlur = async () => {
+    if (!formData.email) {
+      setEmailValidationStatus(null);
+      return;
+    }
+
+    // Basic format validation
+    if (!validateEmail(formData.email)) {
+      setEmailValidationStatus('invalid');
+      setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }));
+      return;
+    }
+
+    // Advanced validation
+    setEmailValidating(true);
+    setEmailValidationStatus('checking');
+    setErrors(prev => ({ ...prev, email: '' }));
+
+    try {
+      const isValid = await validateEmailDomain(formData.email);
+      if (isValid) {
+        setEmailValidationStatus('valid');
+        setErrors(prev => ({ ...prev, email: '' }));
+      } else {
+        setEmailValidationStatus('invalid');
+        setErrors(prev => ({ ...prev, email: 'This email address may not be valid or active. Please check and try again.' }));
+      }
+    } catch (error) {
+      console.error('Email validation error:', error);
+      // If validation fails, allow submission but show warning
+      setEmailValidationStatus('valid');
+      setErrors(prev => ({ ...prev, email: '' }));
+    } finally {
+      setEmailValidating(false);
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.firstName.trim()) {
+      newErrors.firstName = 'First name is required';
+    }
+    
+    if (!formData.lastName.trim()) {
+      newErrors.lastName = 'Last name is required';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+    
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters long';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      setSubmitStatus('error');
+      return;
+    }
+
+    setIsLoading(true);
+    setSubmitStatus(null);
+
+    try {
+      // EmailJS service parameters
+      // Replace these with your actual EmailJS service ID, template ID, and public key
+      // You can also use environment variables (recommended for production)
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
+
+      // Check if EmailJS is configured
+      if (serviceId === "YOUR_SERVICE_ID" || templateId === "YOUR_TEMPLATE_ID" || publicKey === "YOUR_EMAILJS_PUBLIC_KEY") {
+        throw new Error("EmailJS is not configured. Please follow the setup instructions in EMAILJS_SETUP.md");
+      }
+
+      // Template parameters
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'lourdangeloubufete17@gmail.com', // Your email
+      };
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      setSubmitStatus('success');
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      setEmailValidationStatus(null);
+      
+      // Reset status message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 5000);
+    } catch (error) {
+      console.error('Email sending error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Status Messages */}
+      {submitStatus === 'success' && (
+        <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-green-800 dark:text-green-200">
+          <div className="flex items-center gap-2">
+            <i className="fas fa-check-circle"></i>
+            <span>Thank you! Your message has been sent successfully. I'll get back to you soon.</span>
+          </div>
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-200">
+          <div className="flex items-center gap-2">
+            <i className="fas fa-exclamation-circle"></i>
+            <span>Failed to send message. Please check all fields and try again.</span>
+          </div>
+        </div>
+      )}
+
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="w-full">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleNameChange}
+            onKeyDown={handleNameKeyPress}
+            pattern="[A-Za-z\s'-]+"
+            title="Only letters, spaces, hyphens, and apostrophes are allowed"
+            className={`w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border ${
+              errors.firstName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+            } text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400`}
+          />
+          {errors.firstName && (
+            <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>
+          )}
+        </div>
+        <div className="w-full">
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleNameChange}
+            onKeyDown={handleNameKeyPress}
+            pattern="[A-Za-z\s'-]+"
+            title="Only letters, spaces, hyphens, and apostrophes are allowed"
+            className={`w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border ${
+              errors.lastName ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+            } text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400`}
+          />
+          {errors.lastName && (
+            <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>
+          )}
+        </div>
+      </div>
+
+      <div>
+        <div className="relative">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            onBlur={handleEmailBlur}
+            className={`w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border ${
+              errors.email ? 'border-red-500' : 
+              emailValidationStatus === 'valid' ? 'border-green-500' :
+              'border-gray-300 dark:border-gray-600'
+            } text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400 pr-10`}
+          />
+          {emailValidating && (
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <i className="fas fa-spinner fa-spin text-sky-500"></i>
+            </div>
+          )}
+          {!emailValidating && emailValidationStatus === 'valid' && (
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <i className="fas fa-check-circle text-green-500"></i>
+            </div>
+          )}
+          {!emailValidating && emailValidationStatus === 'invalid' && (
+            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+              <i className="fas fa-times-circle text-red-500"></i>
+            </div>
+          )}
+        </div>
+        {errors.email && (
+          <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+        )}
+        {emailValidationStatus === 'valid' && !errors.email && (
+          <p className="mt-1 text-sm text-green-500">Email address is valid</p>
+        )}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          value={formData.subject}
+          onChange={handleChange}
+          className={`w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border ${
+            errors.subject ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+          } text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400`}
+        />
+        {errors.subject && (
+          <p className="mt-1 text-sm text-red-500">{errors.subject}</p>
+        )}
+      </div>
+
+      <div>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows="5"
+          value={formData.message}
+          onChange={handleChange}
+          className={`w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border ${
+            errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+          } text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400`}
+        ></textarea>
+        {errors.message && (
+          <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+        )}
+      </div>
+
+      <button
+        type="submit"
+        disabled={isLoading}
+        className={`w-full flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-sky-500 text-white font-bold rounded-full shadow-lg transform transition-transform duration-300 ${
+          isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:scale-105'
+        }`}
+      >
+        {isLoading ? (
+          <>
+            <i className="fas fa-spinner fa-spin"></i>
+            Sending...
+          </>
+        ) : (
+          <>
+            <i className="fas fa-paper-plane"></i>
+            Send Message
+          </>
+        )}
+      </button>
+    </form>
+  );
 }
 
 export default function App() {
@@ -505,17 +928,7 @@ export default function App() {
             
             {/* Right Column (Form) */}
             <div>
-              <form onSubmit={(e) => { e.preventDefault(); alert('Thank you for your message! This is a demo form.'); e.currentTarget.reset(); }} className="space-y-6">
-                <div className="flex flex-col md:flex-row gap-6">
-                  {/* UPDATED classes to match your .form-input style from style.css */}
-                  <input type="text" placeholder="First Name" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
-                  <input type="text" placeholder="Last Name" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
-                </div>
-                <input type="email" placeholder="Email" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
-                <input type="text" placeholder="Subject" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400" />
-                <textarea placeholder="Your Message" rows="5" className="w-full p-3 bg-white/80 dark:bg-gray-800/80 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-400 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-200 placeholder-gray-500 dark:placeholder-gray-400"></textarea>
-                <button type="submit" className="w-full flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-purple-600 to-sky-500 text-white font-bold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"><i className="fas fa-paper-plane"></i>Send Message</button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>
