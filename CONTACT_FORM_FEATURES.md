@@ -106,3 +106,4 @@ If email validation isn't working:
 - No data is stored locally
 - Environment variables keep sensitive data out of source code (when used)
 
+

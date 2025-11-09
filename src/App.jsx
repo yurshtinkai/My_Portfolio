@@ -250,6 +250,9 @@ function ContactForm() {
     const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
     if (publicKey && publicKey !== "YOUR_EMAILJS_PUBLIC_KEY") {
       emailjs.init(publicKey);
+      console.log('EmailJS initialized with public key:', publicKey.slice(0, 4) + '***');
+    } else {
+      console.warn('EmailJS public key not configured. Check your .env file.');
     }
   }, []);
 
@@ -395,12 +398,19 @@ function ContactForm() {
       const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
       const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
 
+      // Debug: Log configuration (without exposing full keys)
+      console.log('EmailJS Configuration:', {
+        serviceId: serviceId !== "YOUR_SERVICE_ID" ? serviceId : "NOT SET",
+        templateId: templateId !== "YOUR_TEMPLATE_ID" ? templateId : "NOT SET",
+        publicKey: publicKey !== "YOUR_EMAILJS_PUBLIC_KEY" ? publicKey.slice(0, 4) + "***" : "NOT SET"
+      });
+
       // Check if EmailJS is configured
       if (serviceId === "YOUR_SERVICE_ID" || templateId === "YOUR_TEMPLATE_ID" || publicKey === "YOUR_EMAILJS_PUBLIC_KEY") {
-        throw new Error("EmailJS is not configured. Please follow the setup instructions in EMAILJS_SETUP.md");
+        throw new Error("EmailJS is not configured. Please check your .env file and restart the development server.");
       }
 
-      // Template parameters
+      // Template parameters - must match your EmailJS template variables
       const templateParams = {
         from_name: `${formData.firstName} ${formData.lastName}`,
         from_email: formData.email,
@@ -409,8 +419,13 @@ function ContactForm() {
         to_email: 'lourdangeloubufete17@gmail.com', // Your email
       };
 
+      console.log('Sending email with params:', { ...templateParams, message: templateParams.message.substring(0, 50) + '...' });
+
       // Send email using EmailJS
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // Pass publicKey to ensure it works (even though we initialized in useEffect)
+      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      console.log('Email sent successfully:', response);
 
       setSubmitStatus('success');
       setFormData({
@@ -428,7 +443,28 @@ function ContactForm() {
       }, 5000);
     } catch (error) {
       console.error('Email sending error:', error);
+      console.error('Error details:', {
+        serviceId,
+        templateId,
+        publicKey: publicKey ? '***' + publicKey.slice(-4) : 'NOT SET',
+        errorMessage: error.text || error.message || 'Unknown error',
+        status: error.status,
+        response: error.response
+      });
+      
+      // Show more specific error message
+      let errorMessage = 'Failed to send message. Please check all fields and try again.';
+      if (error.text) {
+        errorMessage = `EmailJS Error: ${error.text}`;
+      } else if (error.message) {
+        errorMessage = `Error: ${error.message}`;
+      } else if (serviceId === "YOUR_SERVICE_ID" || templateId === "YOUR_TEMPLATE_ID" || publicKey === "YOUR_EMAILJS_PUBLIC_KEY") {
+        errorMessage = 'EmailJS is not configured. Please check your .env file and restart the server.';
+      }
+      
       setSubmitStatus('error');
+      // Store error message for display (we'll update the UI to show it)
+      setErrors(prev => ({ ...prev, _submit: errorMessage }));
     } finally {
       setIsLoading(false);
     }
@@ -450,8 +486,9 @@ function ContactForm() {
         <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-800 dark:text-red-200">
           <div className="flex items-center gap-2">
             <i className="fas fa-exclamation-circle"></i>
-            <span>Failed to send message. Please check all fields and try again.</span>
+            <span>{errors._submit || 'Failed to send message. Please check all fields and try again.'}</span>
           </div>
+          <p className="text-sm mt-2 opacity-75">Check the browser console (F12) for more details.</p>
         </div>
       )}
 
