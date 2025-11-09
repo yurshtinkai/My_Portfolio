@@ -224,7 +224,7 @@ export default function App() {
               {[
                 { href: 'https://github.com/yurshtinkai', label: 'GitHub', icon: 'fab fa-github' },
                 { href: 'https://linkedin.com', label: 'LinkedIn', icon: 'fab fa-linkedin-in' },
-                { href: 'https://facebook.com', label: 'Facebook', icon: 'fab fa-facebook-f' },
+                { href: 'https://facebook.com/angelou.bufete.5', label: 'Facebook', icon: 'fab fa-facebook-f' },
               ].map(s => (
                 <a 
                   key={s.label} 
@@ -441,7 +441,7 @@ export default function App() {
                     </div>
                   )}
                   <div className="flex space-x-4">
-                    <a 
+                    <a
                       href={
                         i === 1 ? '#' : // link for Inventory System
                         i === 2 ? 'https://benedictocollege-rms.onrender.com' : // Registrar System link
@@ -453,7 +453,16 @@ export default function App() {
                     >
                       Live Demo
                     </a>
-                    <a href="#" className="accent-color hover:underline font-medium">Source Code</a>
+                    <a 
+                      href={i === 1 ? 'https://github.com/yurshtinkai/Laravel-Inventory_system' : //Inventory System GitHub link
+                      i === 2 ? 'https://github.com/yurshtinkai/REGISTRAR-RMS-FRONTEND' : // Registrar System
+                      'https://github.com/yurshtinkai/MODERN-NOTEPAD-FRONTEND' // Modern Notepad GitHub link
+                      } 
+                      target="_blank"
+                      rel="noopener noreferrer" 
+                      className="accent-color hover:underline font-medium"
+                    >Source Code
+                  </a>
                   </div>
                 </div>
               </div>
