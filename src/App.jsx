@@ -245,14 +245,14 @@ function ContactForm() {
 
   // Initialize EmailJS (configure in EMAILJS_SETUP.md)
   useEffect(() => {
-    // EmailJS public key - Replace with your actual public key
-    // You can also use environment variables: process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
-    if (publicKey && publicKey !== "YOUR_EMAILJS_PUBLIC_KEY") {
+    // EmailJS public key - Uses environment variable or fallback to hardcoded value
+    // For production on Render.com, you can set REACT_APP_EMAILJS_PUBLIC_KEY as environment variable
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "c14ARHFlyXwVD6HgC";
+    if (publicKey) {
       emailjs.init(publicKey);
       console.log('EmailJS initialized with public key:', publicKey.slice(0, 4) + '***');
     } else {
-      console.warn('EmailJS public key not configured. Check your .env file.');
+      console.warn('EmailJS public key not configured.');
     }
   }, []);
 
@@ -392,11 +392,11 @@ function ContactForm() {
 
     try {
       // EmailJS service parameters
-      // Replace these with your actual EmailJS service ID, template ID, and public key
-      // You can also use environment variables (recommended for production)
-      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
-      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
-      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
+      // Uses environment variables in production, falls back to hardcoded values if not set
+      // For Render.com: Add these as environment variables in Render dashboard
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_5lsodiq";
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_410geeh";
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "c14ARHFlyXwVD6HgC";
 
       // Debug: Log configuration (without exposing full keys)
       console.log('EmailJS Configuration:', {
@@ -405,9 +405,9 @@ function ContactForm() {
         publicKey: publicKey !== "YOUR_EMAILJS_PUBLIC_KEY" ? publicKey.slice(0, 4) + "***" : "NOT SET"
       });
 
-      // Check if EmailJS is configured
-      if (serviceId === "YOUR_SERVICE_ID" || templateId === "YOUR_TEMPLATE_ID" || publicKey === "YOUR_EMAILJS_PUBLIC_KEY") {
-        throw new Error("EmailJS is not configured. Please check your .env file and restart the development server.");
+      // Check if EmailJS is configured (values are now hardcoded as fallback, so this check is mainly for debugging)
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS configuration is missing. Please check your environment variables.");
       }
 
       // Template parameters - must match your EmailJS template variables
