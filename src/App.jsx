@@ -245,16 +245,34 @@ function ContactForm() {
 
   // Initialize EmailJS (configure in EMAILJS_SETUP.md)
   useEffect(() => {
-    // EmailJS public key - Uses environment variable or fallback to hardcoded value
-    // For production on Render.com, you can set REACT_APP_EMAILJS_PUBLIC_KEY as environment variable
-    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "c14ARHFlyXwVD6HgC";
-    if (publicKey) {
+    // EmailJS public key - must come from environment variables in production
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
+    if (publicKey && publicKey !== "YOUR_EMAILJS_PUBLIC_KEY") {
       emailjs.init(publicKey);
       console.log('EmailJS initialized with public key:', publicKey.slice(0, 4) + '***');
     } else {
-      console.warn('EmailJS public key not configured.');
+      console.warn('EmailJS public key not configured. Check your environment variables.');
     }
   }, []);
+
+  // Auto-hide field-level validation errors after 3 seconds
+  useEffect(() => {
+    if (!errors || Object.keys(errors).length === 0) return;
+    const timer = setTimeout(() => {
+      setErrors(prev => {
+        if (!prev || Object.keys(prev).length === 0) return prev;
+        const clone = { ...prev };
+        delete clone.firstName;
+        delete clone.lastName;
+        delete clone.email;
+        delete clone.subject;
+        delete clone.message;
+        delete clone._submit;
+        return clone;
+      });
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [errors]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -384,6 +402,10 @@ function ContactForm() {
     
     if (!validateForm()) {
       setSubmitStatus('error');
+      // Auto-dismiss error banner after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+      }, 4000);
       return;
     }
 
@@ -391,12 +413,10 @@ function ContactForm() {
     setSubmitStatus(null);
 
     try {
-      // EmailJS service parameters
-      // Uses environment variables in production, falls back to hardcoded values if not set
-      // For Render.com: Add these as environment variables in Render dashboard
-      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_5lsodiq";
-      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_410geeh";
-      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "c14ARHFlyXwVD6HgC";
+      // EmailJS service parameters - read strictly from environment variables
+      const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
+      const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "YOUR_TEMPLATE_ID";
+      const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "YOUR_EMAILJS_PUBLIC_KEY";
 
       // Debug: Log configuration (without exposing full keys)
       console.log('EmailJS Configuration:', {
@@ -405,9 +425,9 @@ function ContactForm() {
         publicKey: publicKey !== "YOUR_EMAILJS_PUBLIC_KEY" ? publicKey.slice(0, 4) + "***" : "NOT SET"
       });
 
-      // Check if EmailJS is configured (values are now hardcoded as fallback, so this check is mainly for debugging)
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS configuration is missing. Please check your environment variables.");
+      // Check if EmailJS is configured via environment variables
+      if (serviceId === "YOUR_SERVICE_ID" || templateId === "YOUR_TEMPLATE_ID" || publicKey === "YOUR_EMAILJS_PUBLIC_KEY") {
+        throw new Error("EmailJS is not configured. Set SERVICE_ID, TEMPLATE_ID, and PUBLIC_KEY in Render environment and redeploy.");
       }
 
       // Template parameters - must match your EmailJS template variables
@@ -416,13 +436,12 @@ function ContactForm() {
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_email: 'lourdangeloubufete17@gmail.com', // Your email
+        to_email: 'lourdangeloubufete17@gmail.com',
       };
 
       console.log('Sending email with params:', { ...templateParams, message: templateParams.message.substring(0, 50) + '...' });
 
-      // Send email using EmailJS
-      // Pass publicKey to ensure it works (even though we initialized in useEffect)
+      // Send email using EmailJS (explicitly pass publicKey)
       const response = await emailjs.send(serviceId, templateId, templateParams, publicKey);
       
       console.log('Email sent successfully:', response);
@@ -465,6 +484,11 @@ function ContactForm() {
       setSubmitStatus('error');
       // Store error message for display (we'll update the UI to show it)
       setErrors(prev => ({ ...prev, _submit: errorMessage }));
+      // Auto-dismiss error banner after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus(null);
+        setErrors(prev => ({ ...prev, _submit: '' }));
+      }, 3000);
     } finally {
       setIsLoading(false);
     }
@@ -488,7 +512,6 @@ function ContactForm() {
             <i className="fas fa-exclamation-circle"></i>
             <span>{errors._submit || 'Failed to send message. Please check all fields and try again.'}</span>
           </div>
-          <p className="text-sm mt-2 opacity-75">Check the browser console (F12) for more details.</p>
         </div>
       )}
 
