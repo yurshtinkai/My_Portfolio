@@ -670,8 +670,8 @@ export default function App() {
           
           {/* Left Column (Text Content) */}
           <div className="text-center md:text-left max-w-2xl">
-            <span className="inline-block bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-              👋 Welcome to my portfolio
+            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4 invisible">
+    👋        Welcome to my portfolio
             </span>
 
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 dark:text-white">
@@ -694,12 +694,14 @@ export default function App() {
                 <i className="fas fa-briefcase mr-2"></i>
                 View My Work
               </a>
-              <a 
-                href="#contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
-              >
-                <i className="fas fa-paper-plane mr-2"></i>
-                Get In Touch
+                <a 
+                  href="/BUFETE-RESUME.pdf"  
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-bold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300"
+                >
+                <i className="fas fa-file-alt mr-2"></i>
+                View Resume
               </a>
             </div>
 
