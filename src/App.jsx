@@ -669,9 +669,9 @@ export default function App() {
         <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center justify-center gap-4 lg:gap-32 relative z-10 pt-32 pb-12 md:pt-0 md:pb-0">
           
           {/* Left Column (Text Content) */}
-          <div className="text-center md:text-left max-w-2xl">
-            <span className="inline-block px-4 py-1 rounded-full text-sm font-semibold mb-4 invisible">
-    👋        Welcome to my portfolio
+          <div className="text-center md:text-left max-w-2xl -translate-y-5 md:translate-y-0">
+            <span className="hidden md:inline-block md:invisible px-4 py-1 rounded-full text-sm font-semibold mb-4">
+              👋 Welcome to my portfolio
             </span>
 
             <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 dark:text-white">
@@ -725,7 +725,7 @@ export default function App() {
             </div>
           </div>
           
-          <div className="relative mb-12 md:mb-0 flex-shrink-0">
+          <div className="relative mb-12 md:mb-0 flex-shrink-0 md:-translate-x-8 md:translate-y-3">
             <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl relative z-10">
               <img 
                 src="/lourd.jpg"
