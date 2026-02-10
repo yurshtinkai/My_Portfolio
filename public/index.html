@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lourd Bufete - Portfolio</title>
-    <link rel="icon" href="%PUBLIC_URL%/reactLogo.jpg" />
-    <script>
-      if (
-        localStorage.getItem('theme') === 'dark' ||
-        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-      ) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lourd Bufete - Portfolio</title>
+
+  <meta name="description" content="Portfolio website of Lourd Angelou D. Bufete, a BSIT Student and aspiring web developer specializing in React, Tailwind CSS, Node.js, Express, Laravel, and MySQL." />
+  <meta name="keywords" content="Lourd Bufete, Lourd Angelou Bufete, portfolio, BSIT student, web developer, React developer, Tailwind CSS, Node.js, Laravel, MySQL, Philippines developer" />
+  <meta name="author" content="Lourd Angelou D. Bufete" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://lourd-portfolio.onrender.com/" />
+
+  <!-- Open Graph SEO -->
+  <meta property="og:title" content="Lourd Bufete - Portfolio" />
+  <meta property="og:description" content="Official portfolio of Lourd Angelou D. Bufete. BSIT Student & Aspiring Web Developer." />
+  <meta property="og:image" content="https://lourd-portfolio.onrender.com/lourd.jpg" />
+  <meta property="og:url" content="https://lourd-portfolio.onrender.com" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter SEO -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lourd Bufete - Portfolio" />
+  <meta name="twitter:description" content="Portfolio of Lourd Angelou D. Bufete, aspiring web developer." />
+  <meta name="twitter:image" content="https://lourd-portfolio.onrender.com/lourd.jpg" />
+
+  <link rel="icon" href="%PUBLIC_URL%/reactLogo.jpg" />
+
+  <script>
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
   <body class="antialiased dark:bg-gray-900 dark:text-gray-300 transition-colors duration-300">
     <div id="root"></div>
     <script>
