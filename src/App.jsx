@@ -163,7 +163,7 @@ const ProjectCard = ({ proj }) => {
 
       <div className="p-5 flex-grow flex flex-col">
         <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-sky-500 transition-colors">{proj.title}</h3>
-        <p className="text-sm text-slate-500 dark:text-slate-400 flex-grow">{proj.desc}</p>
+        <p className="text-sm text-black dark:text-slate-100 flex-grow">{proj.desc}</p>
 
         <div className="flex items-center gap-4 text-sm font-semibold text-slate-700 dark:text-slate-300 mt-6 pt-4 border-t border-slate-100 dark:border-slate-700/50">
           <a href={proj.demo} target="_blank" rel="noreferrer" className="hover:text-sky-500 flex items-center gap-1"><i className="fas fa-external-link-alt text-xs"></i> Demo</a>
@@ -253,14 +253,6 @@ const GallerySection = () => {
 // --- MAIN APP ---
 export default function App() {
   const { theme, toggle } = useDarkMode();
-  const [showLoader, setShowLoader] = useState(true);
-  const [fadeLoader, setFadeLoader] = useState(false);
-
-  useEffect(() => {
-    const fadeTimer = setTimeout(() => setFadeLoader(true), 2000);
-    const hideTimer = setTimeout(() => setShowLoader(false), 2500);
-    return () => { clearTimeout(fadeTimer); clearTimeout(hideTimer); };
-  }, []);
 
   const projects = [
     {
@@ -354,9 +346,8 @@ export default function App() {
   const tools = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'Laravel', '.NET', 'C#', 'C++', 'MySQL', 'Firebase', 'Git', 'GitHub', 'Postman', 'Azure DevOps'];
 
   const certificates = [
-    { title: "Web Development Bootcamp", desc: "Certificate of Completion" },
-    { title: "React Frontend Developer", desc: "Advanced UI Patterns" },
-    { title: "Backend Architecture", desc: "Node.js & Database Optimization" }
+    { title: "Internship – Management Information Systems Office", desc: "Certificate of Completion • MIS Office, Mandaue City" },
+    { title: "Best Poster Presenter – Online Records Management System", desc: "Certificate of Recognition • Benedicto College Research Congress (2025)" }
   ];
 
   const experiences = [
@@ -369,30 +360,14 @@ export default function App() {
   ];
 
   return (
-    <main className={`min-h-screen bg-white dark:bg-[#0f1115] text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300 ${showLoader ? "h-screen overflow-hidden" : ""}`}>
+    <main className="min-h-screen bg-white dark:bg-[#0f1115] text-slate-800 dark:text-slate-200 font-sans transition-colors duration-300">
 
       {/* Floating Theme Toggle is removed as it is now integrated into the header */}
 
-      {/* Initial Loading Screen */}
-      {showLoader && (
-        <div className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0f1115] transition-opacity duration-500 ease-in-out ${fadeLoader ? 'opacity-0' : 'opacity-100'}`}>
-          <div className="flex flex-col items-center justify-center">
-            <div className="w-24 h-24 mb-6 rounded-3xl bg-slate-800 flex items-center justify-center shadow-lg border border-slate-700 animate-pulse">
-              <i className="fas fa-code text-4xl text-slate-300"></i>
-            </div>
-            <h1 className="text-3xl font-bold text-white tracking-wide mb-2">Portfolio</h1>
-            <p className="text-slate-400 text-sm font-medium tracking-wide mb-8">Lourd Angelou D. Bufete</p>
-            <div className="flex gap-2 mb-6">
-              <div className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-              <div className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-              <div className="w-1.5 h-1.5 bg-slate-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
-            </div>
-          </div>
-        </div>
-      )}
+
 
       {/* Max Width Container */}
-      <div className="max-w-[1024px] mx-auto px-6 pt-6 pb-16 md:pt-7 md:pb-24">
+      <div className="max-w-[1024px] mx-auto px-6 pt-6 pb-16 md:pt-7 md:pb-24 animate-fade-in-up">
 
         {/* Profile Header (Horizontal layout matching screenshot) */}
         <header className="mb-4 md:mb-6 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
@@ -644,7 +619,7 @@ export default function App() {
             </h2>
             <div className="space-y-4">
               {certificates.map((cert, i) => (
-                <div key={i} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex flex-col justify-between gap-2">
+                <div key={i} className="p-4 bg-white dark:bg-slate-black border border-slate-100 dark:border-slate-800 flex flex-col justify-between gap-2">
                   <div>
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white">{cert.title}</h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{cert.desc}</p>
@@ -686,7 +661,7 @@ export default function App() {
           {/* Direct Message */}
           <section className="bg-white dark:bg-[#0f1115] p-6 md:p-8 rounded-none border border-slate-200 dark:border-slate-800 dark:shadow-none h-full">
             <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-slate-800 capitalize flex items-center gap-3">
-              <i className="far fa-paper-plane text-[19px] text-black dark:text-white"></i> Message
+              <i className="far fa-paper-plane text-[19px] text-black dark:text-white"></i> Direct Message
             </h2>
             <ContactForm />
           </section>
