@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef, } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import emailjs from '@emailjs/browser';
 
 // --- MINIMALIST HOOKS ---
@@ -197,6 +198,8 @@ const GallerySection = () => {
 
   ];
 
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
   const scroll = (direction) => {
     if (scrollRef.current) {
       const { current } = scrollRef;
@@ -205,6 +208,26 @@ const GallerySection = () => {
       current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    const handleKeyDown = (e) => {
+      if (lightboxIndex === null) return;
+      if (e.key === 'Escape') setLightboxIndex(null);
+      if (e.key === 'ArrowLeft') setLightboxIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1));
+      if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0));
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [lightboxIndex, galleryImages.length]);
 
   return (
     <section className="bg-white dark:bg-[#0f1115] p-6 md:p-8 rounded-none border border-slate-200 dark:border-slate-800 dark:shadow-none mt-6">
@@ -233,7 +256,8 @@ const GallerySection = () => {
               key={i}
               src={src}
               alt={`Gallery image ${i + 1}`}
-              className="h-48 md:h-56 w-auto object-cover snap-start border border-slate-200 dark:border-slate-800 flex-shrink-0"
+              onClick={() => setLightboxIndex(i)}
+              className="h-48 md:h-56 w-auto object-cover snap-start border border-slate-200 dark:border-slate-800 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity"
             />
           ))}
         </div>
@@ -247,6 +271,60 @@ const GallerySection = () => {
           <i className="fas fa-chevron-right"></i>
         </button>
       </div>
+
+      {/* Lightbox Overlay */}
+      {lightboxIndex !== null && createPortal(
+        <div className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
+          {/* Top Left: Counter */}
+          <div className="absolute top-4 left-4 text-white bg-[#222222] px-4 py-2 text-sm font-bold rounded-none">
+            {lightboxIndex + 1} / {galleryImages.length}
+          </div>
+
+          {/* Top Right: Close */}
+          <button
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-4 right-4 w-10 h-10 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
+          >
+            <i className="fas fa-times"></i>
+          </button>
+
+          {/* Left: Prev */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1));
+            }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
+
+          {/* Main Image */}
+          <img
+            src={galleryImages[lightboxIndex]}
+            alt={`Gallery enlarged ${lightboxIndex + 1}`}
+            className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl animate-fade-in-up"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Right: Next */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightboxIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0));
+            }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
+          >
+            <i className="fas fa-chevron-right"></i>
+          </button>
+
+          {/* Bottom: Instructions */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-[#222222] px-5 py-2.5 rounded-none font-medium tracking-wide">
+            Use arrow keys to navigate • ESC to close
+          </div>
+        </div>,
+        document.body
+      )}
     </section>
   );
 };
