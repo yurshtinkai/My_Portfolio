@@ -183,7 +183,12 @@ const GallerySection = () => {
   const galleryImages = [
     '/gallery1.jpg',
     '/gallery2.jpg',
+    '/gallery3.4.jpg',
     '/gallery3.jpg',
+    '/gallery3.1.jpg',
+    '/gallery3.2.jpg',
+    '/gallery3.3.jpg',
+    '/gallery3.5.jpg',
     '/gallery4.jpg',
     '/gallery5.jpg',
     '/gallery6.jpg',
@@ -257,7 +262,7 @@ const GallerySection = () => {
               src={src}
               alt={`Gallery image ${i + 1}`}
               onClick={() => setLightboxIndex(i)}
-              className="h-48 md:h-56 w-auto object-cover snap-start border border-slate-200 dark:border-slate-800 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity"
+              className="h-48 md:h-56 w-auto object-cover snap-start border border-slate-200 dark:border-slate-800 flex-shrink-0 cursor-pointer transition-all duration-300 hover:scale-[1.01] hover:-translate-y-1 relative hover:z-10"
             />
           ))}
         </div>
@@ -331,10 +336,19 @@ const GallerySection = () => {
 // --- MAIN APP ---
 export default function App() {
   const { theme, toggle } = useDarkMode();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Add this function inside your App component
+  const handleScrollToProjects = (e) => {
+    e.preventDefault(); // This stops the URL from changing
+    const element = document.getElementById('projects');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const projects = [
     {
-      title: 'Registrar System [Capstone 2]',
+      title: 'Registrar System [Capstone]',
       desc: 'A Record Management System designed to digitize and streamline school operations.',
       demo: 'https://benedictocollege-rms.onrender.com',
       source: 'https://github.com/yurshtinkai/REGISTRAR-RMS-FRONTEND',
@@ -445,24 +459,24 @@ export default function App() {
 
 
       {/* Max Width Container */}
-      <div className="max-w-[1024px] mx-auto px-6 pt-6 pb-16 md:pt-7 md:pb-24 animate-fade-in-up">
+      <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-16 md:pt-7 md:pb-24 animate-fade-in-up">
 
         {/* Profile Header (Horizontal layout matching screenshot) */}
-        <header className="mb-4 md:mb-6 flex flex-col md:flex-row gap-6 md:gap-8 items-start">
+        <header className="mb-4 md:mb-6 flex flex-row gap-4 md:gap-8 items-start">
           {/* Avatar (Square, no rounded corners) */}
           <img
             src="/lourd.jpg"
             alt="Lourd Angelou D. Bufete"
-            className="w-[180px] h-[180px] md:w-[200px] md:h-[195px] rounded-none object-cover shrink-0"
+            className="w-[157px] h-[157px] sm:w-[130px] sm:h-[130px] md:w-[200px] md:h-[195px] rounded-none object-cover shrink-0"
           />
 
           {/* Info Block */}
-          <div className="flex-1 w-full pt-1">
+          <div className="flex-1 w-full pt-0 md:pt-1 min-w-0">
             {/* Name & Theme Toggle Row */}
-            <div className="flex items-center justify-between mb-1.5">
-              <h1 className="text-[28px] md:text-[32px] font-extrabold text-black dark:text-white tracking-tight flex items-center gap-2">
+            <div className="flex items-start md:items-center justify-between mb-1.5 gap-2">
+              <h1 className="text-[18px] sm:text-[24px] md:text-[32px] leading-tight font-extrabold text-black dark:text-white tracking-tight flex items-center flex-wrap gap-1 md:gap-2">
                 Lourd Angelou D. Bufete
-                <svg className="w-[20px] h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.5 12.5c0-1.58-.875-2.93-2.14-3.66.24-1.5-.18-3.08-1.23-4.14-1.06-1.05-2.65-1.47-4.15-1.22-.73-1.26-2.09-2.14-3.67-2.14s-2.94.88-3.67 2.14c-1.5-.25-3.09.17-4.15 1.22-1.05 1.06-1.47 2.65-1.23 4.15-1.26.73-2.14 2.08-2.14 3.66s.88 2.94 2.14 3.67c-.24 1.5.18 3.08 1.23 4.14 1.06 1.05 2.65 1.47 4.15 1.23.73 1.26 2.08 2.14 3.67 2.14s2.94-.88 3.67-2.14c1.5.24 3.09-.18 4.15-1.23 1.05-1.06 1.47-2.65 1.23-4.14 1.26-.73 2.14-2.09 2.14-3.67zm-12.75 3.9l-3.5-3.5 1.41-1.41 2.09 2.08 6.09-6.08 1.41 1.42-7.5 7.5z" />
                 </svg>
               </h1>
@@ -488,37 +502,37 @@ export default function App() {
             </div>
 
             {/* Location & Contact Info */}
-            <div className="flex items-center flex-wrap text-black dark:text-white gap-2 mb-4 text-[14px] font-medium">
-              <span className="flex items-center gap-1.5">
-                <svg className="w-[16px] h-[16px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="flex items-center flex-wrap text-black dark:text-white gap-x-2 gap-y-1 mb-2 md:mb-4 text-[11px] sm:text-[13px] md:text-[14px] font-medium">
+              <span className="flex items-center gap-1 md:gap-1.5">
+                <svg className="w-[12px] h-[12px] md:w-[16px] md:h-[16px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 Cubacub Mandaue City
               </span>
-              <span className="text-slate-400 dark:text-slate-600 font-normal">|</span>
-              <span className="flex items-center gap-1.5">
-                <i className="fas fa-mobile-alt text-[14px]"></i>
+              <span className="text-slate-400 dark:text-slate-600 font-normal hidden sm:inline">|</span>
+              <span className="flex items-center gap-1 md:gap-1.5">
+                <i className="fas fa-mobile-alt text-[11px] md:text-[14px]"></i>
                 +63 966 - 804 - 4546
               </span>
             </div>
 
             {/* Roles */}
-            <div className="text-black dark:text-white mb-6 text-[15px] font-medium tracking-wide">
-              Full Stack Web Developer \ Problem Solver \ Innovator
+            <div className="text-black dark:text-white mb-4 md:mb-6 text-[12px] sm:text-[13px] md:text-[15px] font-medium tracking-wide leading-snug">
+              Full Stack Web Developer <span className="hidden sm:inline"><span className="text-slate-400">\</span> Problem Solver <span className="text-slate-400">\</span> Innovator</span>
             </div>
 
             {/* Actions (Sharp Corners) */}
-            <div className="flex flex-wrap gap-2.5">
-              <a href="#projects" className="flex items-center gap-2 px-4 py-2 bg-black dark:bg-white text-white dark:text-black text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors">
-                <i className="far fa-calendar-alt"></i> View My Work
+            <div className="flex flex-wrap gap-2">
+              <a href="#projects" onClick={handleScrollToProjects} className="flex-1 sm:flex-none justify-center items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[11px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex">
+                <i className="far fa-calendar-alt"></i> View Projects
               </a>
-              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex">
                 <i className="far fa-envelope"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-6 px-4 py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex items-center justify-between gap-6 px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                 <span className="flex items-center gap-2"><i className="far fa-file-alt"></i> Resume</span>
-                <i className="fas fa-chevron-right text-[10px] text-slate-400"></i>
+                <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-slate-400"></i>
               </a>
             </div>
           </div>
@@ -549,7 +563,7 @@ export default function App() {
                   <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-cog text-[19px] text-black dark:text-white"></i> Tech Stack
                   </h2>
-                  <a href="#" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-400 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</a>
+                  <a href="#" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</a>
                 </div>
 
                 {/* Frontend */}
