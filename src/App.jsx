@@ -472,21 +472,21 @@ export default function App() {
 
           {/* Info Block */}
           <div className="flex-1 w-full pt-0 md:pt-1 min-w-0">
-            {/* Name & Theme Toggle Row */}
-            <div className="flex items-start md:items-center justify-between mb-1.5 gap-2">
-              <h1 className="text-[18px] sm:text-[24px] md:text-[32px] leading-tight font-extrabold text-black dark:text-white tracking-tight flex items-center flex-wrap gap-1 md:gap-2">
-                Lourd Angelou D. Bufete
-                <svg className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+            {/* Name Row */}
+            <div className="mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-2">
+              <h1 className="text-[16.6px] sm:text-[24px] md:text-[32px] leading-tight font-extrabold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
+                <span className="truncate">Lourd Angelou D. Bufete</span>
+                <svg className="w-[13px] h-[13px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.5 12.5c0-1.58-.875-2.93-2.14-3.66.24-1.5-.18-3.08-1.23-4.14-1.06-1.05-2.65-1.47-4.15-1.22-.73-1.26-2.09-2.14-3.67-2.14s-2.94.88-3.67 2.14c-1.5-.25-3.09.17-4.15 1.22-1.05 1.06-1.47 2.65-1.23 4.15-1.26.73-2.14 2.08-2.14 3.66s.88 2.94 2.14 3.67c-.24 1.5.18 3.08 1.23 4.14 1.06 1.05 2.65 1.47 4.15 1.23.73 1.26 2.08 2.14 3.67 2.14s2.94-.88 3.67-2.14c1.5.24 3.09-.18 4.15-1.23 1.05-1.06 1.47-2.65 1.23-4.14 1.26-.73 2.14-2.09 2.14-3.67zm-12.75 3.9l-3.5-3.5 1.41-1.41 2.09 2.08 6.09-6.08 1.41 1.42-7.5 7.5z" />
                 </svg>
               </h1>
 
-              {/* Rectangular Theme Toggle */}
-              <button onClick={toggle} className={`flex rounded-none h-[26px] w-[46px] cursor-pointer overflow-hidden ${theme === 'light' ? 'border border-gray' : 'border border-slate-600 shadow-sm'}`}>
+              {/* Desktop Theme Toggle (hidden on mobile) */}
+              <button onClick={toggle} className={`hidden sm:flex shrink-0 rounded-none h-[22px] w-[40px] md:h-[26px] md:w-[46px] cursor-pointer overflow-hidden ${theme === 'light' ? 'border border-gray' : 'border border-slate-600 shadow-sm'}`}>
                 {theme === 'light' ? (
                   <>
                     <div className="w-1/2 h-full bg-white flex items-center justify-center text-slate-400">
-                      <i className="fas fa-sun text-[10px]"></i>
+                      <i className="fas fa-sun text-[9px]"></i>
                     </div>
                     <div className="w-1/2 h-full bg-[#e2e8f0]"></div>
                   </>
@@ -494,45 +494,66 @@ export default function App() {
                   <>
                     <div className="w-1/2 h-full bg-slate-600"></div>
                     <div className="w-1/2 h-full bg-[#0f1115] flex items-center justify-center text-slate-400">
-                      <i className="fas fa-moon text-[10px]"></i>
+                      <i className="fas fa-moon text-[9px]"></i>
                     </div>
                   </>
                 )}
               </button>
             </div>
 
-            {/* Location & Contact Info */}
-            <div className="flex items-center flex-wrap text-black dark:text-white gap-x-2 gap-y-1 mb-2 md:mb-4 text-[11px] sm:text-[13px] md:text-[14px] font-medium">
-              <span className="flex items-center gap-1 md:gap-1.5">
-                <svg className="w-[12px] h-[12px] md:w-[16px] md:h-[16px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                Cubacub Mandaue City
-              </span>
-              <span className="text-slate-400 dark:text-slate-600 font-normal hidden sm:inline">|</span>
-              <span className="flex items-center gap-1 md:gap-1.5">
-                <i className="fas fa-mobile-alt text-[11px] md:text-[14px]"></i>
-                +63 966 - 804 - 4546
-              </span>
+            {/* Location & Contact Info & Mobile Theme Toggle Row */}
+            <div className="flex items-start md:items-center justify-between gap-2 mb-1.5 md:mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center text-black dark:text-white gap-x-2 gap-y-0.5 text-[12px] sm:text-[13px] md:text-[14px] font-medium leading-tight">
+                <span className="flex items-center gap-1 md:gap-1.5 whitespace-nowrap">
+                  <svg className="w-[11px] h-[11px] md:w-[16px] md:h-[16px] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                  Cubacub Mandaue City
+                </span>
+                <span className="text-slate-400 dark:text-slate-600 font-normal hidden sm:inline">|</span>
+                <span className="flex items-center gap-1 md:gap-1.5 whitespace-nowrap">
+                  <i className="fas fa-mobile-alt text-[12px] md:text-[14px] shrink-0"></i>
+                  +63 966 - 804 - 4546
+                </span>
+              </div>
+
+              {/* Mobile Theme Toggle (hidden on desktop) */}
+              <button onClick={toggle} className={`flex sm:hidden shrink-0 rounded-none h-[22px] w-[40px] md:h-[26px] md:w-[46px] cursor-pointer overflow-hidden ${theme === 'light' ? 'border border-gray' : 'border border-slate-600 shadow-sm'}`}>
+                {theme === 'light' ? (
+                  <>
+                    <div className="w-1/2 h-full bg-white flex items-center justify-center text-slate-400">
+                      <i className="fas fa-sun text-[9px]"></i>
+                    </div>
+                    <div className="w-1/2 h-full bg-[#e2e8f0]"></div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-1/2 h-full bg-slate-600"></div>
+                    <div className="w-1/2 h-full bg-[#0f1115] flex items-center justify-center text-slate-400">
+                      <i className="fas fa-moon text-[9px]"></i>
+                    </div>
+                  </>
+                )}
+              </button>
             </div>
 
             {/* Roles */}
-            <div className="text-black dark:text-white mb-4 md:mb-6 text-[12px] sm:text-[13px] md:text-[15px] font-medium tracking-wide leading-snug">
+            <div className="text-black dark:text-white mb-2 md:mb-6 text-[13px] sm:text-[13px] md:text-[15px] font-medium tracking-wide leading-tight">
               Full Stack Web Developer <span className="hidden sm:inline"><span className="text-slate-400">\</span> Problem Solver <span className="text-slate-400">\</span> Innovator</span>
             </div>
 
             {/* Actions (Sharp Corners) */}
-            <div className="flex flex-wrap gap-2">
-              <a href="#projects" onClick={handleScrollToProjects} className="flex-1 sm:flex-none justify-center items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[11px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex">
-                <i className="far fa-calendar-alt"></i> View Projects
+            <div className="flex flex-wrap gap-1.5 md:gap-2">
+              <a href="#projects" onClick={handleScrollToProjects} className="flex-1 sm:flex-none justify-center items-center gap-1.5 md:gap-2 px-2 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[10px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex">
+                <i className="far fa-calendar-alt text-[11px] md:text-[13px]"></i> View Projects
               </a>
-              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex">
-                <i className="far fa-envelope"></i> Send Email
+              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1.5 md:gap-2 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex">
+                <i className="far fa-envelope text-[10px] md:text-[13px]"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex items-center justify-between gap-6 px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                <span className="flex items-center gap-2"><i className="far fa-file-alt"></i> Resume</span>
-                <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-slate-400"></i>
+              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex items-center justify-between gap-4 md:gap-6 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[11px] md:text-[13px]"></i> Resume</span>
+                <i className="fas fa-chevron-right text-[7px] md:text-[10px] text-slate-400"></i>
               </a>
             </div>
           </div>
