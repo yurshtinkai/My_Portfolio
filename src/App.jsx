@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import emailjs from '@emailjs/browser';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import TechStackPage from './TechStackPage';
+import Chatbot from './components/Chatbot';
 
 // --- MINIMALIST HOOKS ---
-function useDarkMode() {
+export function useDarkMode() {
   const [theme, setTheme] = useState(() =>
     localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
   );
@@ -334,7 +337,7 @@ const GallerySection = () => {
   );
 };
 // --- MAIN APP ---
-export default function App() {
+function Home() {
   const { theme, toggle } = useDarkMode();
   const [isModalOpen, setIsModalOpen] = useState(false);
   // Add this function inside your App component
@@ -435,7 +438,7 @@ export default function App() {
     }
   ];
 
-  const tools = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'Laravel', '.NET', 'C#', 'C++', 'MySQL', 'Firebase', 'Git', 'GitHub', 'Postman', 'Azure DevOps'];
+  const tools = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'Laravel', '.NET', 'C#', 'MySQL', 'Firebase', 'Git', 'GitHub', 'Postman', 'Azure DevOps'];
 
   const certificates = [
     { title: "Internship – Management Information Systems Office", desc: "Certificate of Completion • MIS Office, Mandaue City" },
@@ -471,7 +474,7 @@ export default function App() {
           />
 
           {/* Info Block */}
-          <div className="flex-1 w-full pt-0 md:pt-1 min-w-0">
+          <div className="flex-1 w-full pt-0 md:pt-3 min-w-0">
             {/* Name Row */}
             <div className="mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-2">
               <h1 className="text-[16.6px] sm:text-[24px] md:text-[32px] leading-tight font-extrabold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
@@ -584,32 +587,32 @@ export default function App() {
                   <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-cog text-[19px] text-black dark:text-white"></i> Tech Stack
                   </h2>
-                  <a href="#" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</a>
+                  <Link to="/tech-stack" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
 
                 {/* Frontend */}
                 <div className="mb-6">
-                  <h3 className="text-[11px] font-bold text-slate-900 dark:text-slate-500 tracking-wider uppercase mb-3">Frontend</h3>
+                  <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Frontend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-html5 text-orange-500 text-sm"></i> HTML5
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-css3-alt text-blue-500 text-sm"></i> CSS3
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-js text-yellow-400 text-sm"></i> JavaScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <span className="text-blue-500 font-bold bg-blue-100 dark:bg-blue-900/50 px-1 rounded-sm text-[9px]">TS</span> TypeScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-react text-sky-400 text-sm"></i> React
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-neos text-black dark:text-white text-sm"></i> Next.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-wind text-cyan-400 text-sm"></i> Tailwind CSS
                     </span>
                   </div>
@@ -617,30 +620,27 @@ export default function App() {
 
                 {/* Backend */}
                 <div className="mb-6">
-                  <h3 className="text-[11px] font-bold text-slate-900 dark:text-slate-500 tracking-wider uppercase mb-3">Backend</h3>
+                  <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Backend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-node-js text-green-500 text-sm"></i> Node.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-server text-slate-500 text-sm"></i> Express.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-laravel text-red-500 text-sm"></i> Laravel
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-code text-indigo-500 text-sm"></i> .NET
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-hashtag text-purple-500 text-sm"></i> C#
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
-                      <i className="fas fa-c text-blue-600 text-sm"></i> C++
-                    </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-database text-blue-400 text-sm"></i> MySQL
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-fire text-yellow-500 text-sm"></i> Firebase
                     </span>
                   </div>
@@ -648,18 +648,18 @@ export default function App() {
 
                 {/* Tools & DevOps */}
                 <div>
-                  <h3 className="text-[11px] font-bold text-slate-900 dark:text-slate-500 tracking-wider uppercase mb-3">Tools & DevOps</h3>
+                  <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Tools & DevOps</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-git-alt text-orange-600 text-sm"></i> Git
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-github text-black dark:text-white text-sm"></i> GitHub
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-space-shuttle text-orange-500 text-sm"></i> Postman
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-slate-50 dark:bg-slate-800/50 text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-microsoft text-blue-500 text-sm"></i> Azure DevOps
                     </span>
                   </div>
@@ -732,7 +732,7 @@ export default function App() {
             </h2>
             <div className="space-y-4">
               {certificates.map((cert, i) => (
-                <div key={i} className="p-4 bg-white dark:bg-slate-black border border-slate-100 dark:border-slate-800 flex flex-col justify-between gap-2">
+                <div key={i} className="p-4 bg-white dark:bg-[#0f1115] border border-slate-100 dark:border-slate-800 flex flex-col justify-between gap-2">
                   <div>
                     <h3 className="text-sm font-bold text-slate-900 dark:text-white">{cert.title}</h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">{cert.desc}</p>
@@ -747,28 +747,26 @@ export default function App() {
             <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-slate-800 capitalize flex items-center gap-3">
               <i className="fas fa-link text-[19px] text-black dark:text-white"></i> Social Links
             </h2>
-            <ul className="space-y-5">
-              <li>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-                  <i className="fab fa-linkedin text-lg w-5 text-center"></i> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-                  <i className="fab fa-github text-lg w-5 text-center"></i> GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://facebook.com/angelou.bufete.5" target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-                  <i className="fab fa-facebook text-lg w-5 text-center"></i> Facebook
-                </a>
-              </li>
-              <li>
-                <a href="mailto:lourdangeloubufete17@gmail.com" className="flex items-center gap-3 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors">
-                  <i className="fas fa-envelope text-lg w-5 text-center"></i> Email Me
-                </a>
-              </li>
-            </ul>
+
+            <p className="text-[13px] font-medium text-slate-500 mb-3">Follow me on</p>
+
+            <div className="space-y-3">
+              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                <i className="fab fa-linkedin text-xl w-6 text-center text-[#0A66C2]"></i> LinkedIn
+              </a>
+
+              <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                <i className="fab fa-github text-xl w-6 text-center text-black dark:text-white"></i> GitHub
+              </a>
+
+              <a href="https://facebook.com/angelou.bufete.5" target="_blank" rel="noreferrer" className="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                <i className="fab fa-facebook text-xl w-6 text-center text-[#1877F2]"></i> Facebook
+              </a>
+
+              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex items-center gap-4 p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                <i className="fas fa-envelope text-xl w-6 text-center text-red-500"></i> Email Me
+              </a>
+            </div>
           </section>
 
           {/* Direct Message */}
@@ -788,5 +786,17 @@ export default function App() {
         </footer>
       </div>
     </main>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tech-stack" element={<TechStackPage />} />
+      </Routes>
+      <Chatbot />
+    </Router>
   );
 }

@@ -1,0 +1,182 @@
+import React, { useState, useEffect, useRef } from 'react';
+
+export default function Chatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
+
+  const [messages, setMessages] = useState([
+    {
+      role: 'model',
+      text: "Hi there! 👋 I'm Lourd. Thanks for checking out my portfolio! Feel free to ask about my projects, the tools I use, or my experience. How can I help you today?"
+    }
+  ]);
+
+  // Auto-scroll to bottom of messages
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, isTyping, isOpen]);
+
+  const handleSend = async (e) => {
+    e?.preventDefault();
+    if (!input.trim()) return;
+
+    const userText = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', text: userText }]);
+    setIsTyping(true);
+
+    const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
+
+    if (!apiKey) {
+      setTimeout(() => {
+        setMessages(prev => [...prev, {
+          role: 'model',
+          text: 'API Key is missing! Please set REACT_APP_GEMINI_API_KEY in your .env file.'
+        }]);
+        setIsTyping(false);
+      }, 1000);
+      return;
+    }
+
+    try {
+      // Format history for Gemini API
+      const contents = messages.map(msg => ({
+        role: msg.role === 'user' ? 'user' : 'model',
+        parts: [{ text: msg.text }]
+      }));
+      // Add the new user message
+      contents.push({ role: 'user', parts: [{ text: userText }] });
+
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: {
+            parts: [{
+              text: "You are Lourd Angelou D. Bufete, a Full Stack Web Developer. You are chatting with a visitor on your portfolio website. Be friendly, professional, and concise. Your tech stack includes React, Node.js, Laravel, C#, Express.js, TypeScript, Next.js, and Tailwind CSS. Your projects include Bagkuning E-commerce, Registrar System, Inventory System, Modern Notepad, and Asset Management System. If asked about your contact info, direct them to lourdangeloubufete17@gmail.com or mention your LinkedIn/GitHub."
+            }]
+          },
+          contents: contents
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error.message || 'API Error');
+      }
+
+      const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't understand that.";
+      setMessages(prev => [...prev, { role: 'model', text: botReply }]);
+    } catch (error) {
+      console.error("Gemini API Error:", error);
+      setMessages(prev => [...prev, { role: 'model', text: "Oops! Something went wrong connecting to the AI. Please try again later." }]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  if (!isOpen) {
+    return (
+      <button
+        onClick={() => setIsOpen(true)}
+        className="fixed bottom-6 right-6 bg-[#111] dark:bg-white text-white dark:text-black px-5 py-3 font-bold text-[14px] flex items-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-full md:rounded-none"
+      >
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+        </svg>
+        Chat with Lourd
+      </button>
+    );
+  }
+
+  return (
+    <div className="fixed bottom-6 right-6 w-[350px] max-w-[calc(100vw-3rem)] bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1a1c23]">
+        <div className="flex items-center gap-2">
+          <div className="relative">
+            {/* Using a placeholder for the profile pic, ideally it should match the main profile picture */}
+            <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+              <img src="/lourd.jpg" alt="Lourd" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+            </div>
+            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-[#1a1c23] rounded-full"></div>
+          </div>
+          <div className="flex flex-col leading-tight -space-y-0.5">
+            <h3 className="font-bold text-[15px] text-black dark:text-white">Chat with Lourd</h3>
+            <span className="text-[14px] font-bold text-slate-600">Online</span>
+          </div>
+        </div>
+        <button
+          onClick={() => setIsOpen(false)}
+          className="w-8 h-8 flex items-center justify-center text-slate-900 hover:text-black dark:hover:text-white transition-colors bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      {/* Messages Area */}
+      <div className="flex-1 p-5 overflow-y-auto max-h-[400px] min-h-[300px] bg-white dark:bg-[#0f1115] space-y-5">
+        {messages.map((msg, idx) => (
+          <div key={idx} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+            {msg.role === 'model' && (
+              <div className="flex items-center gap-2 mb-2">
+                <img src="/lourd.jpg" alt="Lourd" className="w-7 h-7 rounded-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+                <span className="text-[13px] font-bold text-slate-800 dark:text-slate-200">Lourd Angelou</span>
+              </div>
+            )}
+            <div
+              className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed ${msg.role === 'user'
+                ? 'bg-[#111] dark:bg-white text-white dark:text-black rounded-none'
+                : 'bg-[#f4f4f5] dark:bg-[#1a1c23] text-black dark:text-white rounded-none border border-slate-100 dark:border-slate-800/50'
+                }`}
+            >
+              {msg.text}
+            </div>
+          </div>
+        ))}
+
+        {isTyping && (
+          <div className="flex flex-col items-start">
+            <div className="flex items-center gap-2 mb-2">
+              <img src="/lourd.jpg" alt="Lourd" className="w-6 h-6 rounded-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+              <span className="text-[13px] font-bold text-slate-800 dark:text-slate-200">Lourd Angelou</span>
+            </div>
+            <div className="bg-[#f4f4f5] dark:bg-[#1a1c23] border border-slate-100 dark:border-slate-800/50 px-4 py-4 rounded-none flex items-center gap-1.5">
+              <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
+              <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
+              <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+            </div>
+          </div>
+        )}
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input Area */}
+      <div className="p-3 bg-white dark:bg-[#1a1c23] border-t border-slate-100 dark:border-slate-800">
+        <form onSubmit={handleSend} className="relative flex items-center">
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Type a message..."
+            className="w-full bg-slate-50 dark:bg-[#0f1115] text-black dark:text-white text-[14px] px-4 py-3 pr-12 rounded-full border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-sky-500 dark:focus:border-sky-500 transition-colors"
+          />
+          <button
+            type="submit"
+            disabled={!input.trim() || isTyping}
+            className="absolute right-2 w-8 h-8 flex items-center justify-center text-black dark:text-white hover:text-sky-500 disabled:opacity-50 disabled:hover:text-black dark:disabled:hover:text-white transition-colors"
+          >
+            <svg className="w-4 h-4 transform rotate-45 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  );
+}
