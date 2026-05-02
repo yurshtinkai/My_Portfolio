@@ -302,7 +302,7 @@ const GallerySection = () => {
               e.stopPropagation();
               setLightboxIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1));
             }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
+            className="absolute z-10 left-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
           >
             <i className="fas fa-chevron-left"></i>
           </button>
@@ -321,13 +321,13 @@ const GallerySection = () => {
               e.stopPropagation();
               setLightboxIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0));
             }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
+            className="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
           >
             <i className="fas fa-chevron-right"></i>
           </button>
 
           {/* Bottom: Instructions */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-[#222222] px-5 py-2.5 rounded-none font-medium tracking-wide">
+          <div className="hidden md:block absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-[#222222] px-5 py-2.5 rounded-none font-medium tracking-wide z-10">
             Use arrow keys to navigate • ESC to close
           </div>
         </div>,
@@ -554,7 +554,7 @@ function Home() {
               <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1.5 md:gap-2 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex">
                 <i className="far fa-envelope text-[10px] md:text-[13px]"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex items-center justify-between gap-4 md:gap-6 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-1 sm:mt-0 flex items-center justify-between gap-4 md:gap-6 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
                 <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[11px] md:text-[13px]"></i> Resume</span>
                 <i className="fas fa-chevron-right text-[7px] md:text-[10px] text-slate-400"></i>
               </a>

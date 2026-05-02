@@ -9,7 +9,8 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([
     {
       role: 'model',
-      text: "Hi there! 👋 I'm Lourd. Thanks for checking out my portfolio! Feel free to ask about my projects, the tools I use, or my experience. How can I help you today?"
+      text: "Hi there! 🙋🏻‍♂️ I'm Lourd. Thanks for checking out my portfolio! Feel free to ask about my projects, the tools I use, or my experience. How can I help you today?",
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
 
@@ -25,8 +26,9 @@ export default function Chatbot() {
     if (!input.trim()) return;
 
     const userText = input.trim();
+    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', text: userText }]);
+    setMessages(prev => [...prev, { role: 'user', text: userText, time: currentTime }]);
     setIsTyping(true);
 
     const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
@@ -35,7 +37,8 @@ export default function Chatbot() {
       setTimeout(() => {
         setMessages(prev => [...prev, {
           role: 'model',
-          text: 'API Key is missing! Please set REACT_APP_GEMINI_API_KEY in your .env file.'
+          text: 'API Key is missing! Please set REACT_APP_GEMINI_API_KEY in your .env file.',
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }]);
         setIsTyping(false);
       }, 1000);
@@ -71,10 +74,12 @@ export default function Chatbot() {
       }
 
       const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't understand that.";
-      setMessages(prev => [...prev, { role: 'model', text: botReply }]);
+      const botTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      setMessages(prev => [...prev, { role: 'model', text: botReply, time: botTime }]);
     } catch (error) {
       console.error("Gemini API Error:", error);
-      setMessages(prev => [...prev, { role: 'model', text: "Oops! Something went wrong connecting to the AI. Please try again later." }]);
+      const errTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      setMessages(prev => [...prev, { role: 'model', text: "Oops! Something went wrong connecting to the AI. Please try again later.", time: errTime }]);
     } finally {
       setIsTyping(false);
     }
@@ -95,10 +100,25 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-[350px] max-w-[calc(100vw-3rem)] bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+    <div className="fixed bottom-6 right-6 w-[350px] h-[448px] sm:h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: #cbd5e1;
+          border-radius: 10px;
+        }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: #334155;
+        }
+      `}</style>
 
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1a1c23]">
+      <div className="flex items-center justify-between px-3 py-3 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1a1c23]">
         <div className="flex items-center gap-2">
           <div className="relative">
             {/* Using a placeholder for the profile pic, ideally it should match the main profile picture */}
@@ -114,43 +134,46 @@ export default function Chatbot() {
         </div>
         <button
           onClick={() => setIsOpen(false)}
-          className="w-8 h-8 flex items-center justify-center text-slate-900 hover:text-black dark:hover:text-white transition-colors bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full"
+          className="w-8 h-8 flex items-center justify-center text-slate-900 dark:text-white hover:text-black dark:hover:text-white transition-colors bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 p-5 overflow-y-auto max-h-[400px] min-h-[300px] bg-white dark:bg-[#0f1115] space-y-5">
+      <div className="flex-1 px-3 py-5 overflow-y-auto custom-scrollbar bg-white dark:bg-[#0f1115] space-y-5">
         {messages.map((msg, idx) => (
-          <div key={idx} className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+          <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start gap-3'}`}>
             {msg.role === 'model' && (
-              <div className="flex items-center gap-2 mb-2">
-                <img src="/lourd.jpg" alt="Lourd" className="w-7 h-7 rounded-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
-                <span className="text-[13px] font-bold text-slate-800 dark:text-slate-200">Lourd Angelou</span>
-              </div>
+              <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
             )}
-            <div
-              className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed ${msg.role === 'user'
-                ? 'bg-[#111] dark:bg-white text-white dark:text-black rounded-none'
-                : 'bg-[#f4f4f5] dark:bg-[#1a1c23] text-black dark:text-white rounded-none border border-slate-100 dark:border-slate-800/50'
-                }`}
-            >
-              {msg.text}
+            <div className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+              {msg.role === 'model' && (
+                <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
+              )}
+              <div
+                className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed ${msg.role === 'user'
+                  ? 'bg-[#111] dark:bg-white text-white dark:text-black rounded-2xl rounded-br-none shadow-sm'
+                  : 'bg-white dark:bg-[#1a1c23] text-black dark:text-white rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-800/50 shadow-sm'
+                  }`}
+              >
+                {msg.text}
+              </div>
+              <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1">{msg.time}</span>
             </div>
           </div>
         ))}
 
         {isTyping && (
-          <div className="flex flex-col items-start">
-            <div className="flex items-center gap-2 mb-2">
-              <img src="/lourd.jpg" alt="Lourd" className="w-6 h-6 rounded-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
-              <span className="text-[13px] font-bold text-slate-800 dark:text-slate-200">Lourd Angelou</span>
-            </div>
-            <div className="bg-[#f4f4f5] dark:bg-[#1a1c23] border border-slate-100 dark:border-slate-800/50 px-4 py-4 rounded-none flex items-center gap-1.5">
-              <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
-              <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
-              <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+          <div className="flex justify-start gap-3">
+            <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
+            <div className="flex flex-col items-start">
+              <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
+              <div className="bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800/50 px-4 py-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce"></div>
+                <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
+                <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
+              </div>
             </div>
           </div>
         )}
@@ -158,21 +181,24 @@ export default function Chatbot() {
       </div>
 
       {/* Input Area */}
-      <div className="p-3 bg-white dark:bg-[#1a1c23] border-t border-slate-100 dark:border-slate-800">
-        <form onSubmit={handleSend} className="relative flex items-center">
+      <div className="px-3 py-2 bg-white dark:bg-[#1a1c23] border-t border-slate-200 dark:border-slate-800">
+        <form onSubmit={handleSend} className="relative flex items-center gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type a message..."
-            className="w-full bg-slate-50 dark:bg-[#0f1115] text-black dark:text-white text-[14px] px-4 py-3 pr-12 rounded-full border border-slate-200 dark:border-slate-700 focus:outline-none focus:border-sky-500 dark:focus:border-sky-500 transition-colors"
+            placeholder="Type your message..."
+            className="flex-1 bg-white dark:bg-[#0f1115] text-black dark:text-white text-[14px] px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-[#111] dark:focus:border-[#111] transition-colors"
           />
           <button
             type="submit"
             disabled={!input.trim() || isTyping}
-            className="absolute right-2 w-8 h-8 flex items-center justify-center text-black dark:text-white hover:text-sky-500 disabled:opacity-50 disabled:hover:text-black dark:disabled:hover:text-white transition-colors"
+            className="w-10 h-9 flex items-center justify-center bg-[#1a1c23] dark:bg-white text-white dark:text-black hover:bg-black dark:hover:bg-slate-200 disabled:opacity-50 transition-colors rounded-[10px] shrink-0"
           >
-            <svg className="w-4 h-4 transform rotate-45 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+            <svg className="w-[16px] h-[16px] ml-[-2px] mt-[2px]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
           </button>
         </form>
       </div>
