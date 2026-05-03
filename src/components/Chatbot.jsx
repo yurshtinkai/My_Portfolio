@@ -87,20 +87,32 @@ export default function Chatbot() {
 
   if (!isOpen) {
     return (
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 bg-[#111] dark:bg-white text-white dark:text-black px-5 py-3 font-bold text-[14px] flex items-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-full md:rounded-none"
-      >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-        </svg>
-        Chat with Lourd
-      </button>
+      <>
+        {/* 1. Add this style block for the custom floating animation */}
+        <style>{`
+          @keyframes float-icon {
+            0%, 100% { transform: translateY(1px); }
+            50% { transform: translateY(-2px); }
+          }
+          .animate-float-icon {
+            animation: float-icon 2.5s ease-in-out infinite;
+          }
+        `}</style>
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 bg-[#111] dark:bg-white text-white dark:text-black p-3.5 md:px-5 md:py-3 font-bold text-[14px] flex items-center justify-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-none md:rounded-none"
+        >
+          <svg className="w-5 h-5 md:w-4 md:h-4 animate-float-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+          </svg>
+          <span className="hidden md:inline">Chat with Lourd</span>
+        </button>
+      </>
     );
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-[350px] h-[448px] sm:h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+    <div className="fixed bottom-6 right-6 w-[360px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
@@ -152,7 +164,7 @@ export default function Chatbot() {
                 <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
               )}
               <div
-                className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed ${msg.role === 'user'
+                className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed break-words ${msg.role === 'user'
                   ? 'bg-[#111] dark:bg-white text-white dark:text-black rounded-2xl rounded-br-none shadow-sm'
                   : 'bg-white dark:bg-[#1a1c23] text-black dark:text-white rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-800/50 shadow-sm'
                   }`}
