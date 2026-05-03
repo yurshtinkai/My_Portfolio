@@ -567,7 +567,6 @@ function Home() {
 
           {/* Left Column (Main Content) */}
           <div className="md:col-span-8 space-y-16">
-
             <div className="space-y-3">
               {/* About */}
               <section className="bg-white dark:bg-[#0f1115] p-6 md:p-8 rounded-none border border-slate-200 dark:border-slate-800  dark:shadow-none">
@@ -594,25 +593,25 @@ function Home() {
                 <div className="mb-6">
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Frontend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-html5 text-orange-500 text-sm"></i> HTML5
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-css3-alt text-blue-500 text-sm"></i> CSS3
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-js text-yellow-400 text-sm"></i> JavaScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <span className="text-blue-500 font-bold bg-blue-100 dark:bg-blue-900/50 px-1 rounded-sm text-[9px]">TS</span> TypeScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-react text-sky-400 text-sm"></i> React
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-neos text-black dark:text-white text-sm"></i> Next.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-wind text-cyan-400 text-sm"></i> Tailwind CSS
                     </span>
                   </div>
@@ -622,25 +621,25 @@ function Home() {
                 <div className="mb-6">
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Backend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-node-js text-green-500 text-sm"></i> Node.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-server text-slate-500 text-sm"></i> Express.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-laravel text-red-500 text-sm"></i> Laravel
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-code text-indigo-500 text-sm"></i> .NET
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-hashtag text-purple-500 text-sm"></i> C#
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-database text-blue-400 text-sm"></i> MySQL
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-fire text-yellow-500 text-sm"></i> Firebase
                     </span>
                   </div>
@@ -650,16 +649,16 @@ function Home() {
                 <div>
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Tools & DevOps</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-git-alt text-orange-600 text-sm"></i> Git
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-github text-black dark:text-white text-sm"></i> GitHub
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fas fa-space-shuttle text-orange-500 text-sm"></i> Postman
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-700 dark:text-slate-300 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
                       <i className="fab fa-microsoft text-blue-500 text-sm"></i> Azure DevOps
                     </span>
                   </div>
