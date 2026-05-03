@@ -380,8 +380,8 @@ function Home() {
     {
       title: 'Modern Notepad',
       desc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease.',
-      demo: 'https://modern-notepad.onrender.com',
-      source: 'https://github.com/yurshtinkai/MODERN-NOTEPAD-FRONTEND',
+      demo: 'https://modernotepad.vercel.app',
+      source: 'https://github.com/yurshtinkai/notepad',
       images: [
         '/notepad1.png',
         '/notepad2.png',
