@@ -49,7 +49,7 @@ export default function TechStackPage() {
               <h2 className="text-[17px] md:text-lg font-bold mb-4">{cat.name}</h2>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {cat.items.map((tech, i) => (
-                  <span key={i} className="px-3 md:px-4 py-1.5 md:py-2 bg-white dark:bg-[#0f1115] text-[12px] md:text-[13px] font-medium text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-none shadow-sm hover:shadow-md transition-shadow whitespace-nowrap">
+                  <span key={i} className="px-3 md:px-4 py-1.5 md:py-2 bg-white dark:bg-[#0f1115] text-[12px] md:text-[13px] font-medium text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-none shadow-sm hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default whitespace-nowrap">
                     {tech}
                   </span>
                 ))}

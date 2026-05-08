@@ -3,7 +3,10 @@ import { createPortal } from 'react-dom';
 import emailjs from '@emailjs/browser';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import TechStackPage from './TechStackPage';
+import CertificationPage from './CertificationPage';
+import ProjectsPage from './ProjectsPage';
 import Chatbot from './components/Chatbot';
+import { projects } from './data/projects';
 
 // --- MINIMALIST HOOKS ---
 export function useDarkMode() {
@@ -124,7 +127,7 @@ function ContactForm() {
 }
 
 // --- PROJECT CARD WITH SLIDER ---
-const ProjectCard = ({ proj }) => {
+export const ProjectCard = ({ proj }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -140,13 +143,13 @@ const ProjectCard = ({ proj }) => {
 
       {/* Image Slider */}
       {proj.images && proj.images.length > 0 && (
-        <div className="w-full h-48 overflow-hidden relative bg-slate-100 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+        <div className="w-full h-40 md:h-36 overflow-hidden relative bg-slate-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
           {proj.images.map((img, idx) => (
             <img
               key={idx}
               src={img}
               alt={`${proj.title} screenshot ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                 }`}
             />
           ))}
@@ -166,12 +169,29 @@ const ProjectCard = ({ proj }) => {
       )}
 
       <div className="p-5 flex-grow flex flex-col">
-        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-sky-500 transition-colors">{proj.title}</h3>
+        <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 transition-colors">{proj.title}</h3>
         <p className="text-sm text-black dark:text-slate-100 flex-grow">{proj.desc}</p>
 
         <div className="flex items-center gap-4 text-sm font-semibold text-slate-700 dark:text-slate-300 mt-6 pt-4 border-t border-slate-100 dark:border-slate-700/50">
-          <a href={proj.demo} target="_blank" rel="noreferrer" className="hover:text-sky-500 flex items-center gap-1"><i className="fas fa-external-link-alt text-xs"></i> Demo</a>
-          <a href={proj.source} target="_blank" rel="noreferrer" className="hover:text-sky-500 flex items-center gap-1"><i className="fab fa-github text-xs"></i> Code</a>
+          {proj.demo === '#' ? (
+            <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 cursor-default">
+              <i className="fas fa-external-link-alt text-xs"></i> Visit Live Site
+            </span>
+          ) : (
+            <a href={proj.demo} target="_blank" rel="noreferrer" className="flex items-center gap-1 transition-colors">
+              <i className="fas fa-external-link-alt text-xs"></i> Visit Live Site
+            </a>
+          )}
+          
+          {proj.source === '#' ? (
+            <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 cursor-default">
+              <i className="fab fa-github text-xs"></i> Code
+            </span>
+          ) : (
+            <a href={proj.source} target="_blank" rel="noreferrer" className="flex items-center gap-1 transition-colors">
+              <i className="fab fa-github text-xs"></i> Code
+            </a>
+          )}
         </div>
       </div>
     </div>
@@ -346,95 +366,6 @@ function Home() {
     }
   };
 
-  const projects = [
-    {
-      title: 'Registrar System [Capstone]',
-      desc: 'A Online Record Management System designed to digitize and streamline school operations.',
-      demo: 'https://benedictocollege-rms.onrender.com',
-      source: 'https://github.com/yurshtinkai/REGISTRAR-RMS-FRONTEND',
-      images: [
-        '/registrarPic1.png',
-        '/registrarPic2.png',
-        '/registrarPic3.png',
-        '/registrarPic4.png',
-        '/registrarPic5.png',
-        '/registrarPic6.png'
-      ]
-    },
-    {
-      title: 'Inventory System',
-      desc: 'A web-based inventory and monitoring system tailored for computer laboratories.',
-      demo: '#',
-      source: 'https://github.com/yurshtinkai/Laravel-Inventory_system',
-      images: [
-        '/inventoryPic1.png',
-        '/inventoryPic2.png',
-        '/inventoryPic3.png',
-        '/inventoryPic4.png',
-        '/inventoryPic5.png'
-      ]
-    },
-    {
-      title: 'Modern Notepad',
-      desc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease.',
-      demo: 'https://modernotepad.vercel.app',
-      source: 'https://github.com/yurshtinkai/notepad',
-      images: [
-        '/notepad1.png',
-        '/notepad2.png',
-        '/notepad3.png'
-      ]
-    },
-    {
-      title: 'Job Request Ticketing System',
-      desc: 'A robust ticketing platform designed to manage, track, and resolve job requests efficiently.',
-      demo: '#',
-      source: '#',
-      images: [
-        '/jobrequestPic1.png',
-        '/jobrequestPic2.png',
-        '/jobrequestPic3.png',
-        '/jobrequestPic4.png',
-        '/jobrequestPic5.png',
-        '/jobrequestPic6.png'
-      ]
-    },
-    {
-      title: 'Asset Management System',
-      desc: 'A comprehensive management tool for tracking organizational assets and resources.',
-      demo: '#',
-      source: '#',
-      images: [
-        '/AMSpic0.png',
-        '/AMSpic1.png',
-        '/AMSpic2.png',
-        '/AMSpic3.png',
-        '/AMSpic4.png',
-        '/AMSpic5.png',
-        '/AMSpic6.png',
-        '/AMSpic7.png',
-        '/AMSpic8.png'
-      ]
-    },
-    {
-      title: 'Bagkuning E commerce',
-      desc: 'A modern e-commerce storefront offering a seamless online shopping experience.',
-      demo: 'https://bagkuning.com',
-      source: 'https://github.com/bagkuning88/Bag-Kuning',
-      images: [
-        '/bagkuning1.png',
-        '/bagkuning2.png',
-        '/bagkuning3.png',
-        '/bagkuning4.png',
-        '/bagkuning5.png',
-        '/bagkuning6.png',
-        '/bagkuning7.png',
-        '/bagkuning8.png',
-        '/bagkuning9.png'
-      ]
-    }
-  ];
-
   const tools = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'Laravel', '.NET', 'C#', 'MySQL', 'Firebase', 'Git', 'GitHub', 'Postman', 'Azure DevOps'];
 
   const certificates = [
@@ -590,25 +521,25 @@ function Home() {
                 <div className="mb-6">
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Frontend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-html5 text-orange-500 text-sm"></i> HTML5
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-css3-alt text-blue-500 text-sm"></i> CSS3
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-js text-yellow-400 text-sm"></i> JavaScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <span className="text-blue-500 font-bold bg-blue-100 dark:bg-blue-900/50 px-1 rounded-sm text-[9px]">TS</span> TypeScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-react text-sky-400 text-sm"></i> React
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-neos text-black dark:text-white text-sm"></i> Next.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-wind text-cyan-400 text-sm"></i> Tailwind CSS
                     </span>
                   </div>
@@ -618,25 +549,25 @@ function Home() {
                 <div className="mb-6">
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Backend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-node-js text-green-500 text-sm"></i> Node.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-server text-slate-500 text-sm"></i> Express.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-laravel text-red-500 text-sm"></i> Laravel
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-code text-indigo-500 text-sm"></i> .NET
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-hashtag text-purple-500 text-sm"></i> C#
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-database text-blue-400 text-sm"></i> MySQL
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-fire text-yellow-500 text-sm"></i> Firebase
                     </span>
                   </div>
@@ -646,16 +577,16 @@ function Home() {
                 <div>
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Tools & DevOps</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-git-alt text-orange-600 text-sm"></i> Git
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-github text-black dark:text-white text-sm"></i> GitHub
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fas fa-space-shuttle text-orange-500 text-sm"></i> Postman
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-[#0f1115] text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-slate-800 hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
                       <i className="fab fa-microsoft text-blue-500 text-sm"></i> Azure DevOps
                     </span>
                   </div>
@@ -707,10 +638,10 @@ function Home() {
               <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
                 <i className="fas fa-folder-open text-[19px] text-black dark:text-white"></i> Featured Projects
               </h2>
-              <a href="#" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</a>
+              <Link to="/projects" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
             </div>
             <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {projects.map((proj, i) => (
+              {projects.slice(0, 6).map((proj, i) => (
                 <ProjectCard key={i} proj={proj} />
               ))}
             </div>
@@ -723,9 +654,12 @@ function Home() {
 
           {/* Certificates */}
           <section className="bg-white dark:bg-[#0f1115] p-6 md:p-8 rounded-none border border-slate-200 dark:border-slate-800 dark:shadow-none h-full">
-            <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-slate-800 capitalize flex items-center gap-3">
-              <i className="fas fa-certificate text-[19px] text-black dark:text-white"></i> Certifications
-            </h2>
+            <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-slate-800">
+              <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
+                <i className="fas fa-certificate text-[19px] text-black dark:text-white"></i> Certifications
+              </h2>
+              <Link to="/certification" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
+            </div>
             <div className="space-y-4">
               {certificates.map((cert, i) => (
                 <div key={i} className="p-4 bg-white dark:bg-[#0f1115] border border-slate-100 dark:border-slate-800 flex flex-col justify-between gap-2">
@@ -791,6 +725,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tech-stack" element={<TechStackPage />} />
+        <Route path="/certification" element={<CertificationPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
       </Routes>
       <Chatbot />
     </Router>
