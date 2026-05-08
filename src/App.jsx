@@ -184,14 +184,14 @@ const GallerySection = () => {
 
   // Replace these with your actual image paths
   const galleryImages = [
-    '/gallery1.jpg',
-    '/gallery2.jpg',
     '/gallery3.4.jpg',
     '/gallery3.jpg',
     '/gallery3.1.jpg',
     '/gallery3.2.jpg',
     '/gallery3.3.jpg',
     '/gallery3.5.jpg',
+    '/gallery15.jpg',
+    '/gallery1.jpg',
     '/gallery4.jpg',
     '/gallery5.jpg',
     '/gallery6.jpg',
@@ -201,9 +201,6 @@ const GallerySection = () => {
     '/gallery11.jpg',
     '/gallery12.jpg',
     '/gallery13.jpg',
-    '/gallery14.jpg',
-    '/gallery15.jpg'
-
   ];
 
   const [lightboxIndex, setLightboxIndex] = useState(null);
@@ -352,7 +349,7 @@ function Home() {
   const projects = [
     {
       title: 'Registrar System [Capstone]',
-      desc: 'A Record Management System designed to digitize and streamline school operations.',
+      desc: 'A Online Record Management System designed to digitize and streamline school operations.',
       demo: 'https://benedictocollege-rms.onrender.com',
       source: 'https://github.com/yurshtinkai/REGISTRAR-RMS-FRONTEND',
       images: [
@@ -442,7 +439,7 @@ function Home() {
 
   const certificates = [
     { title: "Internship – Management Information Systems Office", desc: "Certificate of Completion • MIS Office, Mandaue City" },
-    { title: "Best Poster Presenter – Online Records Management System", desc: "Certificate of Recognition • Benedicto College Research Congress (2025)" }
+    { title: "Best Poster Presenter – Online Record Management System", desc: "Certificate of Recognition • Benedicto College Research Congress (2025)" }
   ];
 
   const experiences = [
