@@ -182,7 +182,7 @@ export const ProjectCard = ({ proj }) => {
               <i className="fas fa-external-link-alt text-xs"></i> Visit Live Site
             </a>
           )}
-          
+
           {proj.source === '#' ? (
             <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 cursor-default">
               <i className="fab fa-github text-xs"></i> Code
@@ -398,16 +398,16 @@ function Home() {
           <img
             src="/lourd.jpg"
             alt="Lourd Angelou D. Bufete"
-            className="w-[157px] h-[157px] sm:w-[130px] sm:h-[130px] md:w-[200px] md:h-[195px] rounded-none object-cover shrink-0"
+            className="w-[150px] h-[150px] min-[400px]:w-[153px] min-[400px]:h-[153px] md:w-[200px] md:h-[195px] rounded-none object-cover shrink-0"
           />
 
           {/* Info Block */}
-          <div className="flex-1 w-full pt-0 md:pt-3 min-w-0">
+          <div className="flex-1 w-full pt-0 md:pt-3 min-w-0 overflow-hidden">
             {/* Name Row */}
-            <div className="mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-2">
-              <h1 className="text-[16.6px] sm:text-[24px] md:text-[32px] leading-tight font-extrabold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
+            <div className="mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-1 md:gap-2">
+              <h1 className="text-[11.5px] min-[400px]:text-[15.5px] sm:text-[24px] md:text-[32px] leading-tight font-extrabold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
                 <span className="truncate">Lourd Angelou D. Bufete</span>
-                <svg className="w-[13px] h-[13px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.5 12.5c0-1.58-.875-2.93-2.14-3.66.24-1.5-.18-3.08-1.23-4.14-1.06-1.05-2.65-1.47-4.15-1.22-.73-1.26-2.09-2.14-3.67-2.14s-2.94.88-3.67 2.14c-1.5-.25-3.09.17-4.15 1.22-1.05 1.06-1.47 2.65-1.23 4.15-1.26.73-2.14 2.08-2.14 3.66s.88 2.94 2.14 3.67c-.24 1.5.18 3.08 1.23 4.14 1.06 1.05 2.65 1.47 4.15 1.23.73 1.26 2.08 2.14 3.67 2.14s2.94-.88 3.67-2.14c1.5.24 3.09-.18 4.15-1.23 1.05-1.06 1.47-2.65 1.23-4.14 1.26-.73 2.14-2.09 2.14-3.67zm-12.75 3.9l-3.5-3.5 1.41-1.41 2.09 2.08 6.09-6.08 1.41 1.42-7.5 7.5z" />
                 </svg>
               </h1>
@@ -475,16 +475,16 @@ function Home() {
             </div>
 
             {/* Actions (Sharp Corners) */}
-            <div className="flex flex-wrap gap-1.5 md:gap-2">
-              <a href="#projects" onClick={handleScrollToProjects} className="flex-1 sm:flex-none justify-center items-center gap-1.5 md:gap-2 px-2 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[10px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex">
-                <i className="far fa-calendar-alt text-[11px] md:text-[13px]"></i> View Projects
+            <div className="flex flex-wrap gap-1 md:gap-2 mt-2">
+              <a href="#projects" onClick={handleScrollToProjects} className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex whitespace-nowrap">
+                <i className="far fa-calendar-alt text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> View Projects
               </a>
-              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1.5 md:gap-2 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex">
-                <i className="far fa-envelope text-[10px] md:text-[13px]"></i> Send Email
+              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex whitespace-nowrap">
+                <i className="far fa-envelope text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-1 sm:mt-0 flex items-center justify-between gap-4 md:gap-6 px-2 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[11px] md:text-[13px]"></i> Resume</span>
-                <i className="fas fa-chevron-right text-[7px] md:text-[10px] text-slate-400"></i>
+              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-slate-900 text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-slate-800 rounded-none hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors whitespace-nowrap">
+                <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[10px] min-[400px]:text-[11px] md:text-[13px]"></i> Resume</span>
+                <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-slate-400"></i>
               </a>
             </div>
           </div>
