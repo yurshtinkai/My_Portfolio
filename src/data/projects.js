@@ -21,7 +21,7 @@ export const projects = [
     desc: 'A web-based inventory and monitoring system tailored for computer laboratories.',
     detailedDesc: 'A web-based inventory and monitoring system for computer laboratories at Benedicto College. Designed to efficiently track PCs, peripherals, and laboratory equipment, the system helps monitor stock availability, identify damaged items, and generate reports for maintenance and auditing purposes. It also features role-based access control for secure and organized management.',
     techStack: ['Laravel', 'MySQL'],
-    demo: '#',
+    demo: 'https://benedictocollege-inventory.onrender.com/',
     source: 'https://github.com/yurshtinkai/Laravel-Inventory_system',
     aspect: '1520/681',
     images: [
