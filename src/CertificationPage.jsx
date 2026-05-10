@@ -53,9 +53,9 @@ export default function CertificationPage() {
   }, [lightboxIndex, certificates.length]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0f1115] text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
       <div className="max-w-5xl mx-auto pt-2 md:pt-1">
-        <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-slate-800">
+        <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
 
           <Link to="/" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -68,10 +68,10 @@ export default function CertificationPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {certificates.map((cert, idx) => (
-            <div key={idx} className="bg-white dark:bg-[#0f1115] border border-slate-200 dark:border-slate-800 rounded-none overflow-hidden group hover:border-slate-300 dark:hover:border-slate-600 transition-colors flex flex-col">
+            <div key={idx} className="bg-white dark:bg-black border border-slate-200 dark:border-[#333] rounded-none overflow-hidden group hover:border-slate-300 dark:hover:border-slate-600 transition-colors flex flex-col">
 
               {/* Image Container */}
-              <div className="w-full h-64 md:h-72 bg-slate-100 dark:bg-[#1a1d24] border-b border-slate-200 dark:border-slate-800 flex items-center justify-center relative overflow-hidden group-hover:bg-slate-200 dark:group-hover:bg-[#232730] transition-colors">
+              <div className="w-full h-64 md:h-72 bg-slate-100 dark:bg-[#1a1d24] border-b border-slate-200 dark:border-[#333] flex items-center justify-center relative overflow-hidden group-hover:bg-slate-200 dark:group-hover:bg-[#232730] transition-colors">
 
                 {/* Fallback icon when no image exists */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 dark:text-slate-600 text-sm">

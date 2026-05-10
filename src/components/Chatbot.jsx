@@ -112,7 +112,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-[360px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+    <div className="fixed bottom-6 right-6 w-[360px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-black border border-slate-200 dark:border-[#333] shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
@@ -130,7 +130,7 @@ export default function Chatbot() {
       `}</style>
 
       {/* Header */}
-      <div className="flex items-center justify-between px-3 py-3 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1a1c23]">
+      <div className="flex items-center justify-between px-3 py-3 border-b border-slate-100 dark:border-[#333] bg-white dark:bg-black">
         <div className="flex items-center gap-2">
           <div className="relative">
             {/* Using a placeholder for the profile pic, ideally it should match the main profile picture */}
@@ -153,11 +153,11 @@ export default function Chatbot() {
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 px-3 py-5 overflow-y-auto custom-scrollbar bg-white dark:bg-[#0f1115] space-y-5">
+      <div className="flex-1 px-3 py-5 overflow-y-auto custom-scrollbar bg-white dark:bg-black space-y-5">
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start gap-3'}`}>
             {msg.role === 'model' && (
-              <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
+              <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
             )}
             <div className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
               {msg.role === 'model' && (
@@ -166,7 +166,7 @@ export default function Chatbot() {
               <div
                 className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed break-words ${msg.role === 'user'
                   ? 'bg-[#111] dark:bg-white text-white dark:text-black rounded-2xl rounded-br-none shadow-sm'
-                  : 'bg-white dark:bg-[#1a1c23] text-black dark:text-white rounded-2xl rounded-tl-none border border-slate-200 dark:border-slate-800/50 shadow-sm'
+                  : 'bg-white dark:bg-black text-black dark:text-white rounded-2xl rounded-tl-none border border-slate-200 dark:border-[#333]/50 shadow-sm'
                   }`}
               >
                 {msg.text}
@@ -178,10 +178,10 @@ export default function Chatbot() {
 
         {isTyping && (
           <div className="flex justify-start gap-3">
-            <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-slate-800 object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
+            <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
             <div className="flex flex-col items-start">
               <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
-              <div className="bg-white dark:bg-[#1a1c23] border border-slate-200 dark:border-slate-800/50 px-4 py-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
+              <div className="bg-white dark:bg-black border border-slate-200 dark:border-[#333]/50 px-4 py-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce"></div>
                 <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
                 <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></div>
@@ -193,14 +193,14 @@ export default function Chatbot() {
       </div>
 
       {/* Input Area */}
-      <div className="px-3 py-2 bg-white dark:bg-[#1a1c23] border-t border-slate-200 dark:border-slate-800">
+      <div className="px-3 py-2 bg-white dark:bg-black border-t border-slate-200 dark:border-[#333]">
         <form onSubmit={handleSend} className="relative flex items-center gap-2">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 bg-white dark:bg-[#0f1115] text-black dark:text-white text-[14px] px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-[#111] dark:focus:border-[#111] transition-colors"
+            className="flex-1 bg-white dark:bg-black text-black dark:text-white text-[14px] px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-[#111] dark:focus:border-[#111] transition-colors"
           />
           <button
             type="submit"

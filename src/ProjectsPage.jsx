@@ -15,11 +15,11 @@ const LocalProjectCard = ({ proj }) => {
   }, [proj.images]);
 
   return (
-    <div className="group rounded-none bg-white dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-colors flex flex-col h-full overflow-hidden">
+    <div className="group rounded-none bg-white dark:bg-black border border-slate-100 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors flex flex-col h-full overflow-hidden">
       {/* Image Slider */}
       {proj.images && proj.images.length > 0 && (
         <div
-          className="w-full overflow-hidden relative bg-slate-100 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800"
+          className="w-full overflow-hidden relative bg-slate-100 dark:bg-black border-b border-slate-100 dark:border-[#333]"
           style={{ aspectRatio: proj.aspect || '16/9' }}
         >
           {proj.images.map((img, idx) => (
@@ -54,7 +54,7 @@ const LocalProjectCard = ({ proj }) => {
         {proj.techStack && (
           <div className="mt-auto mb-4 flex flex-wrap gap-1.5">
             {proj.techStack.map((tech, idx) => (
-              <span key={idx} className="px-2 py-0.5 bg-slate-50 dark:bg-[#1a1d24] text-slate-600 dark:text-slate-300 text-[11px] font-semibold border border-slate-200 dark:border-slate-800">
+              <span key={idx} className="px-2 py-0.5 bg-slate-50 dark:bg-[#111] text-slate-600 dark:text-slate-300 text-[11px] font-semibold border border-slate-200 dark:border-[#333]">
                 {tech}
               </span>
             ))}
@@ -71,7 +71,7 @@ const LocalProjectCard = ({ proj }) => {
               <i className="fas fa-external-link-alt text-[13px]"></i> Visit Live Site
             </span>
           ) : (
-            <a href={proj.demo} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 transition-colors">
+            <a href={proj.demo} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors">
               <i className="fas fa-external-link-alt text-[13px]"></i> Visit Live Site
             </a>
           )}
@@ -81,7 +81,7 @@ const LocalProjectCard = ({ proj }) => {
               <i className="fab fa-github text-[14px]"></i> Code
             </span>
           ) : (
-            <a href={proj.source} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 transition-colors">
+            <a href={proj.source} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white transition-colors">
               <i className="fab fa-github text-[14px]"></i> Code
             </a>
           )}
@@ -96,11 +96,11 @@ export default function ProjectsPage() {
   useDarkMode();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0f1115] text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
       <div className="max-w-5xl mx-auto pt-2 md:pt-1">
 
         {/* Header Section */}
-        <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-slate-800">
+        <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
           <Link to="/" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Home

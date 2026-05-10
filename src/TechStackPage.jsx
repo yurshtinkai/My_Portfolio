@@ -30,9 +30,9 @@ export default function TechStackPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0f1115] text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
       <div className="max-w-5xl mx-auto pt-4 md:pt-8">
-        <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-slate-800">
+        <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
 
           <Link to="/" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -49,7 +49,7 @@ export default function TechStackPage() {
               <h2 className="text-[17px] md:text-lg font-bold mb-4">{cat.name}</h2>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {cat.items.map((tech, i) => (
-                  <span key={i} className="px-3 md:px-4 py-1.5 md:py-2 bg-white dark:bg-[#0f1115] text-[12px] md:text-[13px] font-medium text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800 rounded-none shadow-sm hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default whitespace-nowrap">
+                  <span key={i} className="px-3 md:px-4 py-1.5 md:py-2 bg-white dark:bg-black text-[12px] md:text-[13px] font-medium text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-[#333] rounded-none shadow-sm hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default whitespace-nowrap">
                     {tech}
                   </span>
                 ))}
