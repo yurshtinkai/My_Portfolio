@@ -100,7 +100,7 @@ export default function Chatbot() {
         `}</style>
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-[#111] dark:bg-white text-white dark:text-black p-3.5 md:px-5 md:py-3 font-bold text-[14px] flex items-center justify-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-none md:rounded-none"
+          className="fixed bottom-6 right-6 bg-black dark:bg-white text-white dark:text-black p-3.5 md:px-5 md:py-3 font-bold text-[14px] flex items-center justify-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-none md:rounded-none"
         >
           <svg className="w-5 h-5 md:w-4 md:h-4 animate-float-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>

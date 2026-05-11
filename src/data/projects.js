@@ -64,7 +64,7 @@ export const projects = [
   {
     title: 'Asset Management System',
     desc: 'A comprehensive management tool for tracking organizational assets and resources.',
-    techStack: ['React.js', 'Tailwind CSS', 'C#', '.NET', 'MS SQL'],
+    techStack: ['React.js', 'TypeScript', 'Tailwind CSS', 'C#', '.NET', 'MS SQL'],
     demo: '#',
     source: '#',
     aspect: '1365/635',

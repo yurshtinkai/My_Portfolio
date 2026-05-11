@@ -420,7 +420,7 @@ function Home() {
           <div className="flex-1 w-full pt-0 md:pt-3 min-w-0 overflow-hidden">
             {/* Name Row */}
             <div className="mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-1 md:gap-2">
-              <h1 className="text-[14.3px] min-[400px]:text-[17px] sm:text-[24px] md:text-[32px] leading-tight font-bold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
+              <h1 className="text-[14.6px] min-[400px]:text-[17px] sm:text-[24px] md:text-[32px] leading-tight font-bold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
                 <span className="truncate">Lourd Angelou D. Bufete</span>
                 <svg className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.5 12.5c0-1.58-.875-2.93-2.14-3.66.24-1.5-.18-3.08-1.23-4.14-1.06-1.05-2.65-1.47-4.15-1.22-.73-1.26-2.09-2.14-3.67-2.14s-2.94.88-3.67 2.14c-1.5-.25-3.09.17-4.15 1.22-1.05 1.06-1.47 2.65-1.23 4.15-1.26.73-2.14 2.08-2.14 3.66s.88 2.94 2.14 3.67c-.24 1.5.18 3.08 1.23 4.14 1.06 1.05 2.65 1.47 4.15 1.23.73 1.26 2.08 2.14 3.67 2.14s2.94-.88 3.67-2.14c1.5.24 3.09-.18 4.15-1.23 1.05-1.06 1.47-2.65 1.23-4.14 1.26-.73 2.14-2.09 2.14-3.67zm-12.75 3.9l-3.5-3.5 1.41-1.41 2.09 2.08 6.09-6.08 1.41 1.42-7.5 7.5z" />
@@ -506,7 +506,7 @@ function Home() {
         </header>
 
         {/* Grid Layout (Adjust 1.8fr and 1fr below to easily fine-tune widths!) */}
-        <div className="flex flex-col gap-6 md:grid md:grid-cols-[1.6fr_1fr] md:gap-6">
+        <div className="flex flex-col gap-4 md:grid md:grid-cols-[1.6fr_1fr] md:gap-6">
 
           {/* Left Column (Main Content) */}
           <div className="contents md:block min-w-0 md:space-y-16">
@@ -626,7 +626,7 @@ function Home() {
 
           {/* Right Column (Sidebar) */}
           <div className="contents md:block min-w-0 md:space-y-16">
-            <div className="contents md:block min-w-0 md:space-y-2">
+            <div className="contents md:block min-w-0 md:space-y-3.5">
               {/* Experience */}
               <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
                 <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
@@ -699,7 +699,7 @@ function Home() {
                   <i className="fas fa-link text-[19px] text-black dark:text-white"></i> Social Links
                 </h2>
 
-                <p className="text-[13px] font-medium text-slate-500 mb-3">Follow me on</p>
+                <p className="text-[13px] font-medium text-black dark:text-slate-100 mb-3">Follow me on</p>
 
                 <div className="space-y-3">
                   <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-[#111] hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
@@ -730,10 +730,8 @@ function Home() {
           </div>
         </div>
 
-
-
         {/* Bottom Section: Connect & Contact */}
-        <div className="mt-12 md:mt-2">
+        <div className="mt-4">
           {/* Direct Message */}
           <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none h-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
@@ -772,7 +770,7 @@ function Home() {
         </div>
 
         {/* Bottom Section 2: Beyond the Screen & Gallery */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-2 mt-6 md:mt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-4 mt-4 md:mt-4">
           {/* Left: Beyond the Screen */}
           <div className="min-w-0 h-full flex flex-col">
             <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none flex-1 flex flex-col">
@@ -822,7 +820,7 @@ function Home() {
           </div>
         </div>
         {/* Footer */}
-        <footer className="mt-24 pt-8 border-t border-slate-200 dark:border-[#333] text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-slate-500">
+        <footer className="mt-24 pt-8 border-t border-slate-200 dark:border-[#333] text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-black dark:text-slate-100">
           <p>&copy; {new Date().getFullYear()} Lourd Angelou D. Bufete.</p>
           <p>Built with React & Tailwind.</p>
         </footer>
@@ -832,7 +830,7 @@ function Home() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-[88px] right-6 w-11 h-11 md:w-12 md:h-12 bg-black dark:bg-[#111] text-white dark:text-white flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_14px_rgba(255,255,255,0.1)] hover:-translate-y-1 transition-all duration-300 z-[9999] cursor-pointer"
+          className="fixed bottom-[88px] right-6 w-[47px] h-[45px] bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_14px_rgba(255,255,255,0.1)] hover:-translate-y-1 transition-all duration-300 z-40 cursor-pointer"
           aria-label="Scroll to top"
         >
           <i className="fas fa-chevron-up text-lg"></i>

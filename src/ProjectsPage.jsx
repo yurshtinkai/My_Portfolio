@@ -49,12 +49,12 @@ const LocalProjectCard = ({ proj }) => {
         {proj.subtitle && (
           <p className="text-xs font-bold text-sky-500 dark:text-sky-400 mb-2 tracking-wide uppercase">{proj.subtitle}</p>
         )}
-        <p className={`text-sm text-slate-500 dark:text-slate-400 ${proj.techStack ? 'mb-4' : 'mb-4'}`}>{proj.detailedDesc || proj.desc}</p>
+        <p className={`text-sm text-black dark:text-slate-200 ${proj.techStack ? 'mb-4' : 'mb-4'}`}>{proj.detailedDesc || proj.desc}</p>
 
         {proj.techStack && (
           <div className="mt-auto mb-4 flex flex-wrap gap-1.5">
             {proj.techStack.map((tech, idx) => (
-              <span key={idx} className="px-2 py-0.5 bg-slate-50 dark:bg-[#111] text-slate-600 dark:text-slate-300 text-[11px] font-semibold border border-slate-200 dark:border-[#333]">
+              <span key={idx} className="px-2 py-0.5 bg-slate-white dark:bg-black text-black dark:text-slate-100 text-[11px] font-semibold border border-slate-200 dark:border-[#333]">
                 {tech}
               </span>
             ))}
