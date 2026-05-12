@@ -88,21 +88,23 @@ export default function Chatbot() {
   if (!isOpen) {
     return (
       <>
-        {/* 1. Add this style block for the custom floating animation */}
+        {/* Updated style block for the left-to-right tilting animation */}
         <style>{`
-          @keyframes float-icon {
-            0%, 100% { transform: translateY(1px); }
-            50% { transform: translateY(-2px); }
+          @keyframes tilt-icon {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
           }
-          .animate-float-icon {
-            animation: float-icon 2.5s ease-in-out infinite;
+          .animate-tilt-icon {
+            animation: tilt-icon 2s ease-in-out infinite;
+            transform-origin: center;
           }
         `}</style>
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 bg-black dark:bg-white text-white dark:text-black p-3.5 md:px-5 md:py-3 font-bold text-[14px] flex items-center justify-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-none md:rounded-none"
+          className="fixed bottom-6 right-6 bg-black dark:bg-white text-white dark:text-black p-3.5 md:px-5 md:py-3 font-semibold text-[14px] flex items-center justify-center gap-2 shadow-xl hover:bg-black dark:hover:bg-slate-200 transition-colors z-50 rounded-none md:rounded-none"
         >
-          <svg className="w-5 h-5 md:w-4 md:h-4 animate-float-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          {/* Updated the className here from animate-float-icon to animate-tilt-icon */}
+          <svg className="w-5 h-5 md:w-5 md:h-5 animate-tilt-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
           </svg>
           <span className="hidden md:inline">Chat with Lourd</span>
