@@ -413,7 +413,7 @@ function Home() {
           <img
             src="/lourd.jpg"
             alt="Lourd Angelou D. Bufete"
-            className="w-[150px] h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[200px] md:h-[195px] rounded-none object-cover shrink-0"
+            className="w-[150px] h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[198px] md:h-[195px] rounded-none object-cover shrink-0"
           />
 
           {/* Info Block */}
@@ -485,7 +485,7 @@ function Home() {
             </div>
 
             {/* Roles */}
-            <div className="text-black dark:text-white mb-2 md:mb-6 text-[13px] sm:text-[13px] md:text-[15px] font-medium tracking-wide leading-tight">
+            <div className="text-black dark:text-white mb-2 md:mb-6 text-[13px] sm:text-[13px] md:text-[16px] font-medium tracking-wide leading-tight">
               Full Stack Web Developer <span className="hidden sm:inline"> | Freelancer | Innovator</span>
             </div>
 
@@ -702,25 +702,25 @@ function Home() {
                 <p className="text-[13px] font-medium text-black dark:text-slate-100 mb-3">Follow me on</p>
 
                 <div className="space-y-3">
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-[#111] hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
                     <div className="flex items-center gap-4">
                       <i className="fab fa-linkedin text-xl w-6 text-center text-black dark:text-white"></i> LinkedIn
                     </div>
-                    <span className="text-slate-400 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">&gt;</span>
+                    <span className="text-lg text-slate-500 dark:text-slate-300 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">&gt;</span>
                   </a>
 
-                  <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-[#111] hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                  <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
                     <div className="flex items-center gap-4">
                       <i className="fab fa-github text-xl w-6 text-center text-black dark:text-white"></i> GitHub
                     </div>
-                    <span className="text-slate-400 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">&gt;</span>
+                    <span className="text-lg text-slate-500 dark:text-slate-300 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">&gt;</span>
                   </a>
 
-                  <a href="https://facebook.com/angelou.bufete.5" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:bg-slate-50 dark:hover:bg-[#111] hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
+                  <a href="https://facebook.com/angelou.bufete.5" target="_blank" rel="noreferrer" className="group flex items-center justify-between p-3 bg-white dark:bg-black border border-slate-200 dark:border-[#333] text-sm font-bold text-slate-800 dark:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 rounded-none w-full">
                     <div className="flex items-center gap-4">
                       <i className="fab fa-facebook text-xl w-6 text-center text-black dark:text-white"></i> Facebook
                     </div>
-                    <span className="text-slate-400 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">&gt;</span>
+                    <span className="text-lg text-slate-500 dark:text-slate-300 group-hover:text-black dark:group-hover:text-white transition-colors font-medium">&gt;</span>
                   </a>
                 </div>
               </section>
