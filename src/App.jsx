@@ -210,7 +210,7 @@ const GallerySection = () => {
     '/gallery3.2.jpg',
     '/gallery3.3.jpg',
     '/gallery3.5.jpg',
-    '/gallery15.jpg',
+    '/lourd.jpg',
     '/gallery1.jpg',
     '/gallery4.jpg',
     '/gallery5.jpg',
@@ -411,9 +411,9 @@ function Home() {
         <header className="mb-4 md:mb-6 flex flex-row gap-2.5 min-[400px]:gap-4 md:gap-8 items-start">
           {/* Avatar (Square, no rounded corners) */}
           <img
-            src="/lourd.jpg"
+            src="/gallery15.jpg"
             alt="Lourd Angelou D. Bufete"
-            className="w-[150px] h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[198px] md:h-[195px] rounded-none object-cover shrink-0"
+            className="w-[150px] h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[198px] md:h-[195px] rounded-none object-cover object-[center_22%] shrink-0"
           />
 
           {/* Info Block */}
