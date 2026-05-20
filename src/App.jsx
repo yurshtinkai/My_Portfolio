@@ -145,11 +145,11 @@ export const ProjectCard = ({ proj }) => {
       {proj.images && proj.images.length > 0 && (
         <div className="w-full h-32 md:h-28 overflow-hidden relative bg-slate-white dark:bg-black border-b border-slate-100 dark:border-[#333]">
           {proj.images.map((img, idx) => (
-            <img
+              <img
               key={idx}
               src={img}
               alt={`${proj.title} screenshot ${idx + 1}`}
-              className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+              className={`absolute inset-0 w-full h-full object-cover md:object-contain transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
                 }`}
             />
           ))}
@@ -403,7 +403,6 @@ function Home() {
       {/* Floating Theme Toggle is removed as it is now integrated into the header */}
 
 
-
       {/* Max Width Container */}
       <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-16 md:pt-7 md:pb-24 animate-fade-in-up">
 
@@ -413,7 +412,7 @@ function Home() {
           <img
             src="/ProfilePic.jpg"
             alt="Lourd Angelou D. Bufete"
-            className="w-[150px] h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[195px] md:h-[195px] rounded-none object-cover shrink-0"
+            className="w-[140px] h-[140px] min-[375px]:w-[150px] min-[375px]:h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[195px] md:h-[195px] rounded-none object-cover shrink-0"
           />
 
           {/* Info Block */}
@@ -449,9 +448,9 @@ function Home() {
 
             {/* Location & Contact Info & Mobile Theme Toggle Row */}
             <div className="flex items-start md:items-center justify-between gap-2 mb-1.5 md:mb-4">
-              <div className="flex flex-col sm:flex-row sm:items-center text-black dark:text-white gap-x-2 gap-y-0.5 text-[12px] sm:text-[13px] md:text-[14px] font-medium leading-tight">
+              <div className="flex flex-col sm:flex-row sm:items-center text-black dark:text-white gap-x-2 gap-y-0.5 text-[10.5px] min-[375px]:text-[12px] sm:text-[13px] md:text-[14px] font-medium leading-tight">
                 <span className="flex items-center gap-1 md:gap-1.5 whitespace-nowrap">
-                  <svg className="w-[11px] h-[11px] md:w-[16px] md:h-[16px] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-[9px] h-[9px] min-[375px]:w-[11px] min-[375px]:h-[11px] md:w-[16px] md:h-[16px] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
@@ -459,7 +458,7 @@ function Home() {
                 </span>
                 <span className="font-normal hidden sm:inline px-1">|</span>
                 <span className="flex items-center gap-1 md:gap-1.5 whitespace-nowrap">
-                  <i className="fas fa-mobile-alt text-[12px] md:text-[14px] shrink-0"></i>
+                  <i className="fas fa-mobile-alt text-[10px] min-[375px]:text-[12px] md:text-[14px] shrink-0"></i>
                   +63 966 - 804 - 4546
                 </span>
               </div>
@@ -485,21 +484,21 @@ function Home() {
             </div>
 
             {/* Roles */}
-            <div className="text-black dark:text-white mb-2 md:mb-6 text-[13px] sm:text-[13px] md:text-[16px] font-medium tracking-wide leading-tight">
+            <div className="text-black dark:text-white mb-2 md:mb-6 text-[11.5px] min-[375px]:text-[13px] sm:text-[13px] md:text-[16px] font-medium tracking-wide leading-tight">
               Full Stack Web Developer <span className="hidden sm:inline"> | Freelancer | Innovator</span>
             </div>
 
             {/* Actions (Sharp Corners) */}
             <div className="flex flex-wrap gap-1 md:gap-2 mt-2">
-              <a href="#projects" onClick={handleScrollToProjects} className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex whitespace-nowrap">
+              <Link to="/projects" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex whitespace-nowrap">
                 <i className="far fa-calendar-alt text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> View Projects
-              </a>
+              </Link>
               <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none hover:bg-slate-50 dark:hover:bg-[#111] transition-colors flex whitespace-nowrap">
                 <i className="far fa-envelope text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> Send Email
               </a>
               <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none hover:bg-slate-50 dark:hover:bg-[#111] transition-colors whitespace-nowrap">
                 <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[10px] min-[400px]:text-[11px] md:text-[13px]"></i> Resume</span>
-                <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-slate-400"></i>
+                <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-black dark:text-white"></i>
               </a>
             </div>
           </div>
@@ -821,8 +820,8 @@ function Home() {
         </div>
         {/* Footer */}
         <footer className="mt-24 pt-8 border-t border-slate-200 dark:border-[#333] text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-black dark:text-slate-100">
-          <p>&copy; {new Date().getFullYear()} Lourd Angelou D. Bufete.</p>
-          <p>Built with React & Tailwind.</p>
+          <p>&copy; {new Date().getFullYear()} Lourd Angelou D. Bufete. All Rights Reserved.</p>
+          <p>Built with React & Tailwind CSS.</p>
         </footer>
       </div>
 
