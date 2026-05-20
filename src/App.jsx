@@ -416,7 +416,7 @@ function Home() {
           />
 
           {/* Info Block */}
-          <div className="flex-1 w-full pt-0 md:pt-3 min-w-0 overflow-hidden">
+          <div className="flex-1 w-full pt-0 md:pt-3 min-w-0">
             {/* Name Row */}
             <div className="relative mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-1 md:gap-2">
               <h1 className="text-[14.6px] min-[400px]:text-[17px] sm:text-[24px] md:text-[32px] leading-tight font-bold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
@@ -509,15 +509,55 @@ function Home() {
                   .animate-turbo-dash-no-vanish { animation: turboDashNoVanish 2s cubic-bezier(0.1, 0.8, 0.2, 1) infinite; }
                   .animate-speed-1 { animation: speedLine 0.4s linear infinite; }
                   .animate-speed-2 { animation: speedLine 0.5s linear infinite; animation-delay: 0.2s; }
+                  @keyframes birdWingLeft {
+                    0%, 100% { transform: rotate(15deg); }
+                    50% { transform: rotate(-25deg); }
+                  }
+                  @keyframes birdWingRight {
+                    0%, 100% { transform: rotate(-15deg); }
+                    50% { transform: rotate(25deg); }
+                  }
+                  @keyframes birdFloat {
+                    0%, 100% { transform: translateY(0px) translateX(0px); }
+                    50% { transform: translateY(-6px) translateX(2px); }
+                  }
+                  .animate-bird-wing-l { animation: birdWingLeft 0.4s ease-in-out infinite; transform-origin: 160px 10px; }
+                  .animate-bird-wing-r { animation: birdWingRight 0.4s ease-in-out infinite; transform-origin: 160px 10px; }
+                  .animate-bird-float { animation: birdFloat 3s ease-in-out infinite; }
                 `}</style>
                 <div className="animate-pixel-bounce w-full h-full">
-                  <svg viewBox="-30 -20 160 140" fill="none" stroke="currentColor" strokeLinecap="square" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm">
+                  <svg viewBox="-30 -20 160 140" fill="none" stroke="currentColor" strokeLinecap="square" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm overflow-visible">
 
                     {/* Air/Wind Speed Lines behind Robot */}
                     <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                       <line x1="100" y1="20" x2="140" y2="20" className="animate-speed-1" />
                       <line x1="120" y1="50" x2="160" y2="50" className="animate-speed-2" />
                       <line x1="90" y1="80" x2="130" y2="80" className="animate-speed-1" />
+                    </g>
+
+                    {/* Animated Bird 1 (Behind Robot) */}
+                    <g className="animate-bird-float" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                      <path className="animate-bird-wing-l" d="M 145 5 Q 152 0 160 10" />
+                      <path className="animate-bird-wing-r" d="M 160 10 Q 168 0 175 5" />
+                    </g>
+
+                    {/* Animated Bird 2 (Below Toggle) */}
+                    <g className="animate-bird-float" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" style={{ animationDelay: '1s' }}>
+                      <path className="animate-bird-wing-l" style={{ animationDelay: '0.2s', transformOrigin: '240px 50px' }} d="M 225 45 Q 232 40 240 50" />
+                      <path className="animate-bird-wing-r" style={{ animationDelay: '0.2s', transformOrigin: '240px 50px' }} d="M 240 50 Q 248 40 255 45" />
+                    </g>
+
+                    {/* Big Floating Cloud & Bird (Left side near hand) */}
+                    <g className="animate-bird-float" style={{ animationDelay: '1.2s' }}>
+                      {/* Big Geometric Cloud */}
+                      <g transform="translate(-65, 35)" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M -30 40 C -50 40 -50 20 -30 20 C -20 -10 10 -10 20 20 C 40 20 40 40 20 40 Z" />
+                      </g>
+                      {/* Bird on top of cloud */}
+                      <g fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                        <path className="animate-bird-wing-l" style={{ animationDelay: '0.1s', transformOrigin: '-70px 30px' }} d="M -85 25 Q -78 20 -70 30" />
+                        <path className="animate-bird-wing-r" style={{ animationDelay: '0.1s', transformOrigin: '-70px 30px' }} d="M -70 30 Q -62 20 -55 25" />
+                      </g>
                     </g>
 
                     {/* Antenna (Detailed) */}
@@ -605,13 +645,15 @@ function Home() {
                     100% { opacity: 0; }
                   }
                   @keyframes wheelSpinLaunch {
-                    0%, 50% { transform: rotate(0deg); }
-                    55%, 100% { transform: rotate(1440deg); }
+                    0% { transform: rotate(0deg); }
+                    45% { transform: rotate(360deg); }
+                    50% { transform: rotate(360deg); }
+                    55%, 100% { transform: rotate(1800deg); }
                   }
                   @keyframes massiveSmoke {
                     0%, 52% { opacity: 0; transform: scale(0.1) translateX(0); }
-                    55% { opacity: 1; transform: scale(2) translateX(-20px); }
-                    80% { opacity: 0; transform: scale(5) translateX(-80px); }
+                    55% { opacity: 1; transform: scale(1) translateX(-10px); }
+                    80% { opacity: 0; transform: scale(1.5) translateX(-40px); }
                     100% { opacity: 0; }
                   }
                   @keyframes massiveSparks {
@@ -621,11 +663,16 @@ function Home() {
                     100% { opacity: 0; }
                   }
                   @keyframes turboDashLaunch {
-                    0%, 50% { transform: translateX(0); opacity: 1; }
+                    0% { transform: translateX(-80px); opacity: 1; }
+                    45% { transform: translateX(0); opacity: 1; }
+                    50% { transform: translateX(0); opacity: 1; }
                     52% { transform: translateX(-10px); opacity: 1; }
-                    55% { transform: translateX(200px); opacity: 0; }
-                    56%, 90% { transform: translateX(200px); opacity: 0; }
-                    95%, 100% { transform: translateX(0); opacity: 1; }
+                    55% { transform: translateX(1200px); opacity: 1; }
+                    56%, 85% { transform: translateX(1200px); opacity: 0; }
+                    90% { transform: translateX(-80px); opacity: 0; }
+                    92% { transform: translateX(-80px); opacity: 1; }
+                    93% { transform: translateX(-80px); opacity: 0; }
+                    94%, 100% { transform: translateX(-80px); opacity: 1; }
                   }
                   .animate-car-rumble { animation: carRumble 0.08s ease-in-out infinite; }
                   .animate-wheel-spin { animation: wheelSpinLaunch 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
@@ -636,9 +683,18 @@ function Home() {
                   .animate-massive-sparks { animation: massiveSparks 4s ease-out infinite; transform-origin: 45px 28px; }
                   .animate-turbo-dash { animation: turboDashLaunch 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
                 `}</style>
-                <svg viewBox="-20 0 180 40" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm">
+                <svg viewBox="-20 0 180 40" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm overflow-visible">
+                  {/* Road Fence (Background) */}
+                  <g stroke="currentColor" strokeLinecap="butt" opacity="0.35">
+                    {/* Horizontal Rails */}
+                    <line x1="-60" y1="26" x2="250" y2="26" strokeWidth="1.5" />
+                    <line x1="-60" y1="32" x2="250" y2="32" strokeWidth="1.5" />
+                    {/* Vertical Posts (drawn horizontally with thick dashed stroke) */}
+                    <line x1="-60" y1="29" x2="250" y2="29" strokeWidth="9" strokeDasharray="2.5 37.5" />
+                  </g>
+
                   {/* Road */}
-                  <line x1="-20" y1="38" x2="180" y2="38" strokeWidth="4" strokeDasharray="25 15" />
+                  <line x1="-60" y1="38" x2="250" y2="38" strokeWidth="4" strokeDasharray="25 15" />
                   
                   {/* Highly Realistic Black and White Smoke Burst */}
                   <g className="animate-massive-smoke">
