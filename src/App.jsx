@@ -256,8 +256,8 @@ const GallerySection = () => {
 
   return (
     <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none h-full flex flex-col">
-      <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-        <i className="fas fa-images text-[19px] text-black dark:text-white"></i> Gallery
+      <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+        <i className="fas fa-images text-[17px] text-black dark:text-white"></i> Gallery
       </h2>
 
       <div className="relative group">
@@ -512,8 +512,8 @@ function Home() {
             <div className="contents md:block min-w-0 md:space-y-3">
               {/* About */}
               <section className="order-1 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333]  dark:shadow-none">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="far fa-user text-[19px] text-black dark:text-white"></i> About
+                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="far fa-user text-[17px] text-black dark:text-white"></i> About
                 </h2>
                 <div className="space-y-4 text-black dark:text-slate-100 leading-relaxed text-[15px]">
                   <p>I am a Full Stack Web Developer with a strong interest in leveraging technology to solve real-world problems. I specialize in transforming complex ideas into intuitive, efficient, and user-friendly digital solutions.</p>
@@ -525,8 +525,8 @@ function Home() {
               {/* Tech Stack */}
               <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
-                    <i className="fas fa-cog text-[19px] text-black dark:text-white"></i> Tech Stack
+                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fas fa-cog text-[17px] text-black dark:text-white"></i> Tech Stack
                   </h2>
                   <Link to="/tech-stack" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
@@ -609,8 +609,8 @@ function Home() {
               {/* Featured Projects */}
               <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
-                    <i className="fas fa-folder-open text-[19px] text-black dark:text-white"></i> Featured Projects
+                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fas fa-folder-open text-[17px] text-black dark:text-white"></i> Featured Projects
                   </h2>
                   <Link to="/projects" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
@@ -628,8 +628,8 @@ function Home() {
             <div className="contents md:block min-w-0 md:space-y-3.5">
               {/* Experience */}
               <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="fas fa-briefcase text-[19px] text-black dark:text-white"></i> Experience
+                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="fas fa-briefcase text-[17px] text-black dark:text-white"></i> Experience
                 </h2>
 
                 {/* --- TIMELINE STRUCTURE STARTS HERE --- */}
@@ -659,8 +659,8 @@ function Home() {
 
               {/* Education */}
               <section className="order-2 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="fas fa-graduation-cap text-[19px] text-black dark:text-white"></i> Education
+                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="fas fa-graduation-cap text-[17px] text-black dark:text-white"></i> Education
                 </h2>
                 <div className="space-y-0.1">
                   <div className="flex justify-between items-start">
@@ -675,8 +675,8 @@ function Home() {
               {/* Certificates */}
               <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white capitalize flex items-center gap-3">
-                    <i className="fas fa-certificate text-[19px] text-black dark:text-white"></i> Certifications
+                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fas fa-certificate text-[17px] text-black dark:text-white"></i> Certifications
                   </h2>
                   <Link to="/certification" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
@@ -694,8 +694,8 @@ function Home() {
 
               {/* Social Links */}
               <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="fas fa-link text-[19px] text-black dark:text-white"></i> Social Links
+                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="fas fa-link text-[17px] text-black dark:text-white"></i> Social Links
                 </h2>
 
                 <p className="text-[13px] font-medium text-black dark:text-slate-100 mb-3">Follow me on</p>
@@ -737,7 +737,7 @@ function Home() {
 
               {/* Left Side: Let's work together */}
               <div className="space-y-6">
-                <h2 className="-mt-2 md:-mt-3 text-[32px] md:text-[25px] font-extrabold text-black dark:text-white tracking-tight">
+                <h2 className="-mt-2 md:-mt-3 text-[32px] md:text-[25px] font-bold text-black dark:text-white tracking-tight">
                   Let's work <span className="text-slate-400 dark:text-slate-500">together.</span>
                 </h2>
                 <p className="text-[14px] text-black dark:text-slate-100 leading-relaxed">
@@ -758,8 +758,8 @@ function Home() {
 
               {/* Right Side: Direct Message */}
               <div>
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="far fa-paper-plane text-[19px] text-black dark:text-white"></i> Direct Message
+                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="far fa-paper-plane text-[17px] text-black dark:text-white"></i> Direct Message
                 </h2>
                 <ContactForm />
               </div>
@@ -773,7 +773,7 @@ function Home() {
           {/* Left: Beyond the Screen */}
           <div className="min-w-0 h-full flex flex-col">
             <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none flex-1 flex flex-col">
-              <h2 className="-mt-4 md:-mt-5 text-[21px] font-extrabold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+              <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                 Beyond the Screen
               </h2>
               <div className="flex flex-col flex-1 justify-between">

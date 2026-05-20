@@ -114,7 +114,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-[360px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-black border border-slate-200 dark:border-[#333] shadow-2xl flex flex-col z-50 rounded-lg overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+    <div className="fixed bottom-6 right-6 w-[360px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-black border border-slate-200 dark:border-[#333] shadow-2xl flex flex-col z-50 rounded-none overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
@@ -129,6 +129,10 @@ export default function Chatbot() {
         .dark .custom-scrollbar::-webkit-scrollbar-thumb {
           background-color: #334155;
         }
+        .sharp-avatar {
+          image-rendering: -webkit-optimize-contrast;
+          transform: translateZ(0);
+        }
       `}</style>
 
       {/* Header */}
@@ -137,7 +141,7 @@ export default function Chatbot() {
           <div className="relative">
             {/* Using a placeholder for the profile pic, ideally it should match the main profile picture */}
             <div className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
-              <img src="/lourd.jpg" alt="Lourd" className="w-full h-full object-cover" onError={(e) => { e.target.style.display = 'none' }} />
+              <img src="/chatbotPic.jpg" alt="Lourd" className="w-full h-full object-cover sharp-avatar" onError={(e) => { e.target.style.display = 'none' }} />
             </div>
             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-[#1a1c23] rounded-full"></div>
           </div>
@@ -159,7 +163,7 @@ export default function Chatbot() {
         {messages.map((msg, idx) => (
           <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start gap-3'}`}>
             {msg.role === 'model' && (
-              <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
+              <img src="/chatbotPic.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0 sharp-avatar" onError={(e) => { e.target.style.display = 'none' }} />
             )}
             <div className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
               {msg.role === 'model' && (
@@ -180,7 +184,7 @@ export default function Chatbot() {
 
         {isTyping && (
           <div className="flex justify-start gap-3">
-            <img src="/lourd.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0" onError={(e) => { e.target.style.display = 'none' }} />
+            <img src="/chatbotPic.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0 sharp-avatar" onError={(e) => { e.target.style.display = 'none' }} />
             <div className="flex flex-col items-start">
               <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
               <div className="bg-white dark:bg-black border border-slate-200 dark:border-[#333]/50 px-4 py-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
@@ -202,12 +206,12 @@ export default function Chatbot() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 bg-white dark:bg-black text-black dark:text-white text-[14px] px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-[#111] dark:focus:border-[#111] transition-colors"
+            className="flex-1 w-10 h-10 bg-white dark:bg-black text-black dark:text-white text-[14px] px-4 py-2.5 border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-[#111] dark:focus:border-[#111] transition-colors"
           />
           <button
             type="submit"
             disabled={!input.trim() || isTyping}
-            className="w-10 h-9 flex items-center justify-center bg-[#1a1c23] dark:bg-white text-white dark:text-black hover:bg-black dark:hover:bg-slate-200 disabled:opacity-50 transition-colors rounded-[10px] shrink-0"
+            className="w-10 h-9 flex items-center justify-center bg-black dark:bg-white text-white dark:text-black hover:bg-[#111] dark:hover:bg-slate-200 transition-colors shrink-0"
           >
             <svg className="w-[16px] h-[16px] ml-[-2px] mt-[2px]" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
               <line x1="22" y1="2" x2="11" y2="13"></line>
