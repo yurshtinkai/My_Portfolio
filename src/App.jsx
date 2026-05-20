@@ -418,7 +418,7 @@ function Home() {
           {/* Info Block */}
           <div className="flex-1 w-full pt-0 md:pt-3 min-w-0 overflow-hidden">
             {/* Name Row */}
-            <div className="mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-1 md:gap-2">
+            <div className="relative mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-1 md:gap-2">
               <h1 className="text-[14.6px] min-[400px]:text-[17px] sm:text-[24px] md:text-[32px] leading-tight font-bold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
                 <span className="truncate">Lourd Angelou D. Bufete</span>
                 <svg className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -426,24 +426,332 @@ function Home() {
                 </svg>
               </h1>
 
-              {/* Desktop Theme Toggle (hidden on mobile) */}
+              {/* Absolutely Positioned Long-Arm Retro Robot (Zero layout impact) */}
+              <div className="absolute hidden lg:block right-[60px] md:right-[140px] top-[4px] md:top-[12px] w-20 h-20 md:w-[85px] md:h-[85px] shrink-0 text-slate-800 dark:text-white pointer-events-none">
+                <style>{`
+                  @keyframes pixel-bounce {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-8px); }
+                  }
+                  @keyframes pixel-antenna {
+                    0%, 100% { transform: rotate(0deg); }
+                    25% { transform: rotate(15deg); }
+                    75% { transform: rotate(-15deg); }
+                  }
+                  @keyframes pixel-eye-blink {
+                    0%, 92%, 100% { transform: scaleY(1); }
+                    96% { transform: scaleY(0.1); }
+                  }
+                  @keyframes shoulder-left {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(15deg); }
+                  }
+                  @keyframes elbow-left {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(-30deg); }
+                  }
+                  @keyframes shoulder-right {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(-10deg); }
+                  }
+                  @keyframes elbow-right {
+                    0%, 100% { transform: rotate(0deg); }
+                    25% { transform: rotate(30deg); }
+                    75% { transform: rotate(-30deg); }
+                  }
+                  @keyframes shoulder-left {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(15deg); }
+                  }
+                  @keyframes elbow-left {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(-30deg); }
+                  }
+                  @keyframes shoulder-right {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(-10deg); }
+                  }
+                  @keyframes elbow-right {
+                    0%, 100% { transform: rotate(0deg); }
+                    25% { transform: rotate(30deg); }
+                    75% { transform: rotate(-30deg); }
+                  }
+                  @keyframes leg-left {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(10deg); }
+                  }
+                  @keyframes leg-right {
+                    0%, 100% { transform: rotate(0deg); }
+                    50% { transform: rotate(-10deg); }
+                  }
+                  .animate-pixel-bounce { animation: pixel-bounce 3s ease-in-out infinite; }
+                  .animate-pixel-antenna { animation: pixel-antenna 4s ease-in-out infinite; transform-origin: 70px 25px; }
+                  .animate-pixel-eye-blink { animation: pixel-eye-blink 5s ease-in-out infinite; transform-origin: 50px 50px; }
+                  .animate-shoulder-left { animation: shoulder-left 3s ease-in-out infinite; transform-origin: 20px 45px; }
+                  .animate-elbow-left { animation: elbow-left 3s ease-in-out infinite; transform-origin: -10px 45px; }
+                  .animate-shoulder-right { animation: shoulder-right 2.5s ease-in-out infinite; transform-origin: 80px 30px; }
+                  .animate-elbow-right { animation: elbow-right 2.5s ease-in-out infinite; transform-origin: 105px 10px; }
+                  .animate-leg-left { animation: leg-left 3s ease-in-out infinite; transform-origin: 35px 70px; }
+                  .animate-leg-right { animation: leg-right 3s ease-in-out infinite; transform-origin: 65px 70px; }
+                  @keyframes turboDashNoVanish {
+                    0%, 60%, 100% { transform: translateX(0); }
+                    65% { transform: translateX(-5px); }
+                    68% { transform: translateX(120px); }
+                    70%, 85% { transform: translateX(150px); }
+                    90% { transform: translateX(-40px); }
+                    95% { transform: translateX(0); }
+                  }
+                  @keyframes speedLine {
+                    0% { opacity: 0; transform: translateX(40px); }
+                    20% { opacity: 1; }
+                    100% { opacity: 0; transform: translateX(-60px); }
+                  }
+                  .animate-turbo-dash-no-vanish { animation: turboDashNoVanish 2s cubic-bezier(0.1, 0.8, 0.2, 1) infinite; }
+                  .animate-speed-1 { animation: speedLine 0.4s linear infinite; }
+                  .animate-speed-2 { animation: speedLine 0.5s linear infinite; animation-delay: 0.2s; }
+                `}</style>
+                <div className="animate-pixel-bounce w-full h-full">
+                  <svg viewBox="-30 -20 160 140" fill="none" stroke="currentColor" strokeLinecap="square" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm">
+
+                    {/* Air/Wind Speed Lines behind Robot */}
+                    <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                      <line x1="100" y1="20" x2="140" y2="20" className="animate-speed-1" />
+                      <line x1="120" y1="50" x2="160" y2="50" className="animate-speed-2" />
+                      <line x1="90" y1="80" x2="130" y2="80" className="animate-speed-1" />
+                    </g>
+
+                    {/* Antenna (Detailed) */}
+                    <g className="animate-pixel-antenna">
+                      <path d="M 70 25 L 70 5 L 85 5" strokeWidth="4" />
+                      <circle cx="85" cy="5" r="3" strokeWidth="2" />
+                    </g>
+                    
+                    {/* Left Arm Assembly (Mechanical) */}
+                    <g className="animate-shoulder-left">
+                      <circle cx="20" cy="45" r="3" strokeWidth="2" />
+                      <line x1="20" y1="43" x2="-10" y2="43" strokeWidth="2" />
+                      <line x1="20" y1="47" x2="-10" y2="47" strokeWidth="2" />
+                      <g className="animate-elbow-left">
+                        <circle cx="-10" cy="45" r="3" strokeWidth="2" />
+                        <line x1="-12" y1="45" x2="-12" y2="75" strokeWidth="2" />
+                        <line x1="-8" y1="45" x2="-8" y2="75" strokeWidth="2" />
+                        <path d="M -16 75 L -4 75" strokeWidth="4" />
+                      </g>
+                    </g>
+
+                    {/* Right Arm Assembly (Mechanical) */}
+                    <g className="animate-shoulder-right">
+                      <circle cx="80" cy="30" r="3" strokeWidth="2" />
+                      <line x1="78" y1="28" x2="103" y2="8" strokeWidth="2" />
+                      <line x1="82" y1="32" x2="107" y2="12" strokeWidth="2" />
+                      <g className="animate-elbow-right">
+                        <circle cx="105" cy="10" r="3" strokeWidth="2" />
+                        <line x1="103" y1="10" x2="103" y2="-15" strokeWidth="2" />
+                        <line x1="107" y1="10" x2="107" y2="-15" strokeWidth="2" />
+                        <path d="M 97 -15 L 113 -15" strokeWidth="4" />
+                      </g>
+                    </g>
+
+                    {/* TV Body (Chassis with details) */}
+                    <rect x="20" y="25" width="60" height="45" rx="3" strokeWidth="8" />
+                    <rect x="26" y="31" width="48" height="33" rx="1" strokeWidth="2" />
+
+                    {/* Buttons on top */}
+                    <path d="M 27 15 L 32 15 M 40 15 L 45 15 M 53 15 L 58 15" strokeWidth="6" />
+                    <line x1="29.5" y1="15" x2="29.5" y2="21" strokeWidth="2" />
+                    <line x1="42.5" y1="15" x2="42.5" y2="21" strokeWidth="2" />
+                    <line x1="55.5" y1="15" x2="55.5" y2="21" strokeWidth="2" />
+
+                    {/* Happy Eyes (Mechanical Shutter Style) */}
+                    <g className="animate-pixel-eye-blink">
+                      <path d="M 32 52 L 40 40 L 48 52" strokeWidth="3" />
+                      <path d="M 35 52 L 40 45 L 45 52" strokeWidth="1" />
+                      <path d="M 52 52 L 60 40 L 68 52" strokeWidth="3" />
+                      <path d="M 55 52 L 60 45 L 65 52" strokeWidth="1" />
+                    </g>
+
+                    {/* Legs (Mechanical) */}
+                    <g className="animate-leg-left">
+                      <circle cx="35" cy="70" r="2" strokeWidth="2" />
+                      <line x1="33" y1="70" x2="33" y2="90" strokeWidth="2" />
+                      <line x1="37" y1="70" x2="37" y2="90" strokeWidth="2" />
+                      <path d="M 39 90 L 22 90" strokeWidth="4" />
+                    </g>
+                    <g className="animate-leg-right">
+                      <circle cx="65" cy="70" r="2" strokeWidth="2" />
+                      <line x1="63" y1="70" x2="63" y2="90" strokeWidth="2" />
+                      <line x1="67" y1="70" x2="67" y2="90" strokeWidth="2" />
+                      <path d="M 61 90 L 78 90" strokeWidth="4" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              {/* Absolutely Positioned Car Animation (Zero layout impact) */}
+              <div className="absolute hidden lg:block right-[40px] md:right-[100px] top-[95px] md:top-[105px] w-[140px] md:w-[160px] h-[40px] pointer-events-none text-slate-800 dark:text-white">
+                <style>{`
+                  @keyframes moveRoad {
+                    0% { stroke-dashoffset: 40; }
+                    100% { stroke-dashoffset: 0; }
+                  }
+                  @keyframes carRumble {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-2.5px); }
+                  }
+                  @keyframes exhaustIdle {
+                    0%, 48% { transform: translateX(0) scale(1); opacity: 0; }
+                    50% { transform: translateX(0) scale(1); opacity: 0.8; }
+                    65% { transform: translateX(-40px) scale(3); opacity: 0; }
+                    100% { opacity: 0; }
+                  }
+                  @keyframes wheelSpinLaunch {
+                    0%, 50% { transform: rotate(0deg); }
+                    55%, 100% { transform: rotate(1440deg); }
+                  }
+                  @keyframes massiveSmoke {
+                    0%, 52% { opacity: 0; transform: scale(0.1) translateX(0); }
+                    55% { opacity: 1; transform: scale(2) translateX(-20px); }
+                    80% { opacity: 0; transform: scale(5) translateX(-80px); }
+                    100% { opacity: 0; }
+                  }
+                  @keyframes massiveSparks {
+                    0%, 52% { opacity: 0; transform: scale(0.1) translateX(0); }
+                    55% { opacity: 1; transform: scale(2) translateX(20px); }
+                    65% { opacity: 0; transform: scale(0) translateX(-100px); }
+                    100% { opacity: 0; }
+                  }
+                  @keyframes turboDashLaunch {
+                    0%, 50% { transform: translateX(0); opacity: 1; }
+                    52% { transform: translateX(-10px); opacity: 1; }
+                    55% { transform: translateX(200px); opacity: 0; }
+                    56%, 90% { transform: translateX(200px); opacity: 0; }
+                    95%, 100% { transform: translateX(0); opacity: 1; }
+                  }
+                  .animate-car-rumble { animation: carRumble 0.08s ease-in-out infinite; }
+                  .animate-wheel-spin { animation: wheelSpinLaunch 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+                  .animate-exhaust-1 { animation: exhaustIdle 4s linear infinite; }
+                  .animate-exhaust-2 { animation: exhaustIdle 4s linear infinite; animation-delay: 0.1s; }
+                  .animate-exhaust-3 { animation: exhaustIdle 4s linear infinite; animation-delay: 0.2s; }
+                  .animate-massive-smoke { animation: massiveSmoke 4s cubic-bezier(0.1, 0.8, 0.2, 1) infinite; transform-origin: 30px 25px; }
+                  .animate-massive-sparks { animation: massiveSparks 4s ease-out infinite; transform-origin: 45px 28px; }
+                  .animate-turbo-dash { animation: turboDashLaunch 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+                `}</style>
+                <svg viewBox="-20 0 180 40" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm">
+                  {/* Road */}
+                  <line x1="-20" y1="38" x2="180" y2="38" strokeWidth="4" strokeDasharray="25 15" />
+                  
+                  {/* Highly Realistic Black and White Smoke Burst */}
+                  <g className="animate-massive-smoke">
+                    {/* Inner dense core */}
+                    <g fill="currentColor" opacity="0.6">
+                      <circle cx="40" cy="28" r="10" />
+                      <circle cx="20" cy="20" r="15" />
+                      <circle cx="25" cy="35" r="12" />
+                      <circle cx="5" cy="25" r="18" />
+                      <circle cx="-10" cy="15" r="14" />
+                      <circle cx="-15" cy="35" r="16" />
+                    </g>
+                    {/* Translucent detailed smoke layer */}
+                    <g fill="currentColor" opacity="0.2">
+                      <circle cx="35" cy="18" r="12" />
+                      <circle cx="10" cy="10" r="20" />
+                      <circle cx="-5" cy="40" r="15" />
+                      <circle cx="-25" cy="25" r="22" />
+                    </g>
+                    {/* Realistic swirling cloud outlines */}
+                    <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M 40 18 C 30 5, 10 5, 0 15 C -15 10, -35 20, -30 35 C -35 50, -5 50, 5 45 C 15 55, 35 55, 45 40 C 55 35, 50 20, 40 18 Z" />
+                      <path d="M 30 20 C 20 10, 5 15, 0 25 C -10 20, -15 30, -10 40 C -5 50, 10 45, 15 35 C 25 45, 40 40, 40 30 C 45 20, 35 15, 30 20 Z" />
+                      {/* Inner swirls */}
+                      <path d="M 10 20 Q 20 15 25 25" />
+                      <path d="M -5 30 Q -10 20 0 15" />
+                      <path d="M -15 35 Q -5 45 10 40" />
+                    </g>
+                  </g>
+                  
+                  {/* Realistic Black and White Turbo Flame/Thrust */}
+                  <g className="animate-massive-sparks">
+                    {/* Thrust core (starts at exhaust x=45, y=28) */}
+                    <path d="M 45 28 L 25 20 L 32 28 L 15 30 L 35 34 L 20 40 L 45 30 Z" fill="currentColor" opacity="0.8" />
+                    {/* Thrust outer lines / jagged flame */}
+                    <path d="M 45 28 L 15 16 L 25 24 L 0 28 L 20 32 L 5 45 L 45 30 Z" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+                    <path d="M 40 28 L 30 26 L 35 28 L 25 30 L 35 31 Z" fill="none" stroke="currentColor" strokeWidth="1" />
+                  </g>
+
+                  {/* Turbo Dash Wrapper (Only the car vanishes here) */}
+                  <g className="animate-turbo-dash">
+                    {/* Car Rumble Wrapper */}
+                    <g className="animate-car-rumble">
+
+                      {/* Idling Exhaust Smoke */}
+                      <g fill="currentColor" stroke="none">
+                        <circle cx="45" cy="30" r="3" className="animate-exhaust-1" />
+                        <circle cx="40" cy="28" r="4" className="animate-exhaust-2" />
+                        <circle cx="35" cy="32" r="5" className="animate-exhaust-3" />
+                      </g>
+
+                      {/* Realistic BMW Body (Muscular stance, distinct trunk and hood) */}
+                      <path d="M 45 28 L 45 18 L 58 18 C 65 12, 75 10, 85 10 L 95 10 C 105 10, 115 16, 120 18 L 135 20 L 138 22 L 138 28 L 125 30 M 105 30 L 75 30 M 60 30 L 45 30 L 45 28" strokeWidth="2" strokeLinejoin="round" />
+                      
+                      {/* BMW Signature Kidney Grille */}
+                      <rect x="134" y="22" width="1.5" height="4" rx="0.5" strokeWidth="1" />
+                      <rect x="136.5" y="22" width="1.5" height="4" rx="0.5" strokeWidth="1" />
+                      
+                      {/* BMW Window with Hofmeister Kink */}
+                      <path d="M 82 12 L 95 12 L 110 18 L 85 18 L 68 18 L 76 14 Z" strokeWidth="1.5" strokeLinejoin="round" />
+                      
+                      {/* Pillar separating front and rear windows */}
+                      <line x1="90" y1="12" x2="85" y2="18" strokeWidth="1.5" />
+
+                      {/* BMW Angel Eye Headlights */}
+                      <circle cx="127" cy="23.5" r="1.5" strokeWidth="1" />
+                      <circle cx="131" cy="23.5" r="1.5" strokeWidth="1" />
+                      
+                      {/* Iconic BMW side character line */}
+                      <line x1="50" y1="20" x2="120" y2="20" strokeWidth="1" />
+                      
+                      {/* Dual Exhaust pipes */}
+                      <line x1="45" y1="26.5" x2="40" y2="26.5" strokeWidth="1.5" />
+                      <line x1="45" y1="29" x2="40" y2="29" strokeWidth="1.5" />
+
+                      {/* Back Racing Wheel */}
+                      <g style={{ transformOrigin: '70px 30px' }} className="animate-wheel-spin">
+                        <circle cx="70" cy="30" r="7" strokeWidth="2.5" />
+                        <circle cx="70" cy="30" r="3" strokeWidth="1" />
+                        <line x1="70" y1="23" x2="70" y2="37" strokeWidth="1" />
+                        <line x1="63" y1="30" x2="77" y2="30" strokeWidth="1" />
+                        <line x1="65" y1="25" x2="75" y2="35" strokeWidth="1" />
+                        <line x1="65" y1="35" x2="75" y2="25" strokeWidth="1" />
+                      </g>
+                      
+                      {/* Front Racing Wheel */}
+                      <g style={{ transformOrigin: '115px 30px' }} className="animate-wheel-spin">
+                        <circle cx="115" cy="30" r="7" strokeWidth="2.5" />
+                        <circle cx="115" cy="30" r="3" strokeWidth="1" />
+                        <line x1="115" y1="23" x2="115" y2="37" strokeWidth="1" />
+                        <line x1="108" y1="30" x2="122" y2="30" strokeWidth="1" />
+                        <line x1="110" y1="25" x2="120" y2="35" strokeWidth="1" />
+                        <line x1="110" y1="35" x2="120" y2="25" strokeWidth="1" />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+
+              {/* Desktop Theme Toggle */}
               <button onClick={toggle} className={`hidden sm:flex shrink-0 rounded-none h-[22px] w-[40px] md:h-[26px] md:w-[46px] cursor-pointer overflow-hidden ${theme === 'light' ? 'border border-gray' : 'border border-[#333] shadow-sm'}`}>
-                {theme === 'light' ? (
-                  <>
-                    <div className="w-1/2 h-full bg-white flex items-center justify-center text-slate-500">
-                      <i className="fas fa-sun text-[11px]"></i>
-                    </div>
-                    <div className="w-1/2 h-full bg-[#e2e8f0]"></div>
-                  </>
-                ) : (
-                  <>
-                    <div className="w-1/2 h-full bg-[#333]"></div>
-                    <div className="w-1/2 h-full bg-black flex items-center justify-center text-white">
-                      <i className="fas fa-moon text-[11px]"></i>
-                    </div>
-                  </>
-                )}
-              </button>
+                  {theme === 'light' ? (
+                    <>
+                      <div className="w-1/2 h-full bg-white flex items-center justify-center text-slate-500"><i className="fas fa-sun text-[11px]"></i></div>
+                      <div className="w-1/2 h-full bg-[#e2e8f0]"></div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-1/2 h-full bg-[#333]"></div>
+                      <div className="w-1/2 h-full bg-black flex items-center justify-center text-white"><i className="fas fa-moon text-[11px]"></i></div>
+                    </>
+                  )}
+                </button>
             </div>
 
             {/* Location & Contact Info & Mobile Theme Toggle Row */}
@@ -484,19 +792,19 @@ function Home() {
             </div>
 
             {/* Roles */}
-            <div className="text-black dark:text-white mb-2 md:mb-6 text-[11.5px] min-[375px]:text-[13px] sm:text-[13px] md:text-[16px] font-medium tracking-wide leading-tight">
+            <div className="relative text-black dark:text-white mb-2 md:mb-6 text-[11.5px] min-[375px]:text-[13px] sm:text-[13px] md:text-[16px] font-medium tracking-wide leading-tight">
               Full Stack Web Developer <span className="hidden sm:inline"> | Freelancer | Innovator</span>
             </div>
 
             {/* Actions (Sharp Corners) */}
             <div className="flex flex-wrap gap-1 md:gap-2 mt-2">
-              <Link to="/projects" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors cursor-pointer flex whitespace-nowrap">
+              <Link to="/projects" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer flex whitespace-nowrap">
                 <i className="far fa-calendar-alt text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> View Projects
               </Link>
-              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none hover:bg-slate-50 dark:hover:bg-[#111] transition-colors flex whitespace-nowrap">
+              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg flex whitespace-nowrap">
                 <i className="far fa-envelope text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none hover:bg-slate-50 dark:hover:bg-[#111] transition-colors whitespace-nowrap">
+              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg whitespace-nowrap">
                 <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[10px] min-[400px]:text-[11px] md:text-[13px]"></i> Resume</span>
                 <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-black dark:text-white"></i>
               </a>
@@ -515,7 +823,7 @@ function Home() {
                 <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="far fa-user text-[17px] text-black dark:text-white"></i> About
                 </h2>
-                <div className="space-y-4 text-black dark:text-slate-100 leading-relaxed text-[15px]">
+                <div className="space-y-4 text-black dark:text-slate-100 leading-relaxed text-[14.5px]">
                   <p>I am a Full Stack Web Developer with a strong interest in leveraging technology to solve real-world problems. I specialize in transforming complex ideas into intuitive, efficient, and user-friendly digital solutions.</p>
                   <p>I continuously develop my expertise in both front-end and back-end technologies, with a focus on building scalable, high-performance applications. My goal is to create systems that are not only functional but also seamless and engaging for users.</p>
                   <p>I am committed to continuous improvement and staying current with emerging technologies. I approach every project as an opportunity to innovate, refine my skills, and deliver meaningful results.</p>
