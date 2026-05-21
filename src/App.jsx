@@ -255,7 +255,7 @@ const GallerySection = () => {
   }, [lightboxIndex, galleryImages.length]);
 
   return (
-    <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none h-full flex flex-col">
+    <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none h-full flex flex-col">
       <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
         <i className="fas fa-images text-[17px] text-black dark:text-white"></i> Gallery
       </h2>
@@ -684,6 +684,14 @@ function Home() {
                   .animate-turbo-dash { animation: turboDashLaunch 4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
                 `}</style>
                 <svg viewBox="-20 0 180 40" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="miter" className="w-full h-full drop-shadow-sm overflow-visible">
+                  {/* Mountains (Far Background) */}
+                  <g stroke="currentColor" strokeLinejoin="round" opacity="0.20" fill="none" strokeWidth="1.2">
+                    <path d="M -60 26 L -40 12 L -20 26 L 15 5 L 50 26 L 80 14 L 110 26 L 150 2 L 190 26 L 220 10 L 250 26" />
+                    <path d="M -25 26 L -5 18 L 20 26" opacity="0.5" />
+                    <path d="M 65 26 L 95 10 L 125 26" opacity="0.5" />
+                    <path d="M 175 26 L 205 12 L 235 26" opacity="0.5" />
+                  </g>
+
                   {/* Road Fence (Background) */}
                   <g stroke="currentColor" strokeLinecap="butt" opacity="0.35">
                     {/* Horizontal Rails */}
@@ -746,22 +754,25 @@ function Home() {
                         <circle cx="35" cy="32" r="5" className="animate-exhaust-3" />
                       </g>
 
+                      {/* Solid Silhouette Background to make the car opaque */}
+                      <path d="M 45 28 L 45 18 L 58 18 C 65 12, 75 10, 85 10 L 95 10 C 105 10, 115 16, 120 18 L 135 20 L 138 22 L 138 28 L 125 30 L 45 30 Z" className="fill-white dark:fill-black" stroke="none" />
+
                       {/* Realistic BMW Body (Muscular stance, distinct trunk and hood) */}
-                      <path d="M 45 28 L 45 18 L 58 18 C 65 12, 75 10, 85 10 L 95 10 C 105 10, 115 16, 120 18 L 135 20 L 138 22 L 138 28 L 125 30 M 105 30 L 75 30 M 60 30 L 45 30 L 45 28" strokeWidth="2" strokeLinejoin="round" />
+                      <path d="M 45 28 L 45 18 L 58 18 C 65 12, 75 10, 85 10 L 95 10 C 105 10, 115 16, 120 18 L 135 20 L 138 22 L 138 28 L 125 30 M 105 30 L 75 30 M 60 30 L 45 30 L 45 28" strokeWidth="2" strokeLinejoin="round" fill="none" />
                       
                       {/* BMW Signature Kidney Grille */}
-                      <rect x="134" y="22" width="1.5" height="4" rx="0.5" strokeWidth="1" />
-                      <rect x="136.5" y="22" width="1.5" height="4" rx="0.5" strokeWidth="1" />
+                      <rect x="134" y="22" width="1.5" height="4" rx="0.5" strokeWidth="1" fill="none" />
+                      <rect x="136.5" y="22" width="1.5" height="4" rx="0.5" strokeWidth="1" fill="none" />
                       
                       {/* BMW Window with Hofmeister Kink */}
-                      <path d="M 82 12 L 95 12 L 110 18 L 85 18 L 68 18 L 76 14 Z" strokeWidth="1.5" strokeLinejoin="round" />
+                      <path d="M 82 12 L 95 12 L 110 18 L 85 18 L 68 18 L 76 14 Z" strokeWidth="1.5" strokeLinejoin="round" fill="none" />
                       
                       {/* Pillar separating front and rear windows */}
                       <line x1="90" y1="12" x2="85" y2="18" strokeWidth="1.5" />
 
                       {/* BMW Angel Eye Headlights */}
-                      <circle cx="127" cy="23.5" r="1.5" strokeWidth="1" />
-                      <circle cx="131" cy="23.5" r="1.5" strokeWidth="1" />
+                      <circle cx="127" cy="23.5" r="1.5" strokeWidth="1" fill="none" />
+                      <circle cx="131" cy="23.5" r="1.5" strokeWidth="1" fill="none" />
                       
                       {/* Iconic BMW side character line */}
                       <line x1="50" y1="20" x2="120" y2="20" strokeWidth="1" />
@@ -772,8 +783,8 @@ function Home() {
 
                       {/* Back Racing Wheel */}
                       <g style={{ transformOrigin: '70px 30px' }} className="animate-wheel-spin">
-                        <circle cx="70" cy="30" r="7" strokeWidth="2.5" />
-                        <circle cx="70" cy="30" r="3" strokeWidth="1" />
+                        <circle cx="70" cy="30" r="7" strokeWidth="2.5" className="fill-white dark:fill-black" />
+                        <circle cx="70" cy="30" r="3" strokeWidth="1" fill="none" />
                         <line x1="70" y1="23" x2="70" y2="37" strokeWidth="1" />
                         <line x1="63" y1="30" x2="77" y2="30" strokeWidth="1" />
                         <line x1="65" y1="25" x2="75" y2="35" strokeWidth="1" />
@@ -782,8 +793,8 @@ function Home() {
                       
                       {/* Front Racing Wheel */}
                       <g style={{ transformOrigin: '115px 30px' }} className="animate-wheel-spin">
-                        <circle cx="115" cy="30" r="7" strokeWidth="2.5" />
-                        <circle cx="115" cy="30" r="3" strokeWidth="1" />
+                        <circle cx="115" cy="30" r="7" strokeWidth="2.5" className="fill-white dark:fill-black" />
+                        <circle cx="115" cy="30" r="3" strokeWidth="1" fill="none" />
                         <line x1="115" y1="23" x2="115" y2="37" strokeWidth="1" />
                         <line x1="108" y1="30" x2="122" y2="30" strokeWidth="1" />
                         <line x1="110" y1="25" x2="120" y2="35" strokeWidth="1" />
@@ -854,13 +865,13 @@ function Home() {
 
             {/* Actions (Sharp Corners) */}
             <div className="flex flex-wrap gap-1 md:gap-2 mt-2">
-              <Link to="/projects" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg cursor-pointer flex whitespace-nowrap">
+              <Link to="/projects" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex whitespace-nowrap">
                 <i className="far fa-calendar-alt text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> View Projects
               </Link>
-              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg flex whitespace-nowrap">
+              <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md flex whitespace-nowrap">
                 <i className="far fa-envelope text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg whitespace-nowrap">
+              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md whitespace-nowrap">
                 <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[10px] min-[400px]:text-[11px] md:text-[13px]"></i> Resume</span>
                 <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-black dark:text-white"></i>
               </a>
@@ -875,7 +886,7 @@ function Home() {
           <div className="contents md:block min-w-0 md:space-y-16">
             <div className="contents md:block min-w-0 md:space-y-3">
               {/* About */}
-              <section className="order-1 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333]  dark:shadow-none">
+              <section className="order-1 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors  dark:shadow-none">
                 <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="far fa-user text-[17px] text-black dark:text-white"></i> About
                 </h2>
@@ -887,7 +898,7 @@ function Home() {
               </section>
 
               {/* Tech Stack */}
-              <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none">
+              <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-cog text-[17px] text-black dark:text-white"></i> Tech Stack
@@ -899,25 +910,25 @@ function Home() {
                 <div className="mb-6">
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Frontend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-html5 text-orange-500 text-sm"></i> HTML5
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-css3-alt text-blue-500 text-sm"></i> CSS3
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-js text-yellow-400 text-sm"></i> JavaScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <span className="text-blue-500 font-bold bg-blue-100 dark:bg-blue-900/50 px-1 rounded-sm text-[9px]">TS</span> TypeScript
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-react text-sky-400 text-sm"></i> React
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-neos text-black dark:text-white text-sm"></i> Next.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-wind text-cyan-400 text-sm"></i> Tailwind CSS
                     </span>
                   </div>
@@ -927,25 +938,25 @@ function Home() {
                 <div className="mb-6">
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Backend</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-node-js text-green-500 text-sm"></i> Node.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-server text-slate-500 text-sm"></i> Express.js
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-laravel text-red-500 text-sm"></i> Laravel
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-code text-indigo-500 text-sm"></i> .NET
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-hashtag text-purple-500 text-sm"></i> C#
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-database text-blue-400 text-sm"></i> MySQL
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-fire text-yellow-500 text-sm"></i> Firebase
                     </span>
                   </div>
@@ -955,23 +966,23 @@ function Home() {
                 <div>
                   <h3 className="text-[15px] font-bold text-slate-900 dark:text-slate-100 mb-3">Tools & DevOps</h3>
                   <div className="flex flex-wrap gap-2">
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-git-alt text-orange-600 text-sm"></i> Git
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-github text-black dark:text-white text-sm"></i> GitHub
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fas fa-space-shuttle text-orange-500 text-sm"></i> Postman
                     </span>
-                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.4 hover:shadow-md transition-all duration-300 cursor-default">
+                    <span className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white dark:bg-black text-[12px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                       <i className="fab fa-microsoft text-blue-500 text-sm"></i> Azure DevOps
                     </span>
                   </div>
                 </div>
               </section>
               {/* Featured Projects */}
-              <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none">
+              <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-folder-open text-[17px] text-black dark:text-white"></i> Featured Projects
@@ -991,7 +1002,7 @@ function Home() {
           <div className="contents md:block min-w-0 md:space-y-16">
             <div className="contents md:block min-w-0 md:space-y-3.5">
               {/* Experience */}
-              <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
+              <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-briefcase text-[17px] text-black dark:text-white"></i> Experience
                 </h2>
@@ -1022,7 +1033,7 @@ function Home() {
               </section>
 
               {/* Education */}
-              <section className="order-2 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
+              <section className="order-2 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-graduation-cap text-[17px] text-black dark:text-white"></i> Education
                 </h2>
@@ -1037,7 +1048,7 @@ function Home() {
               </section>
 
               {/* Certificates */}
-              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
+              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-certificate text-[17px] text-black dark:text-white"></i> Certifications
@@ -1046,7 +1057,7 @@ function Home() {
                 </div>
                 <div className="space-y-4">
                   {certificates.map((cert, i) => (
-                    <div key={i} className="p-4 bg-white dark:bg-black border border-slate-100 dark:border-[#333] flex flex-col justify-between gap-2">
+                    <div key={i} className="p-4 bg-white dark:bg-black border border-slate-100 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors flex flex-col justify-between gap-2">
                       <div>
                         <h3 className="text-sm font-bold text-slate-900 dark:text-white">{cert.title}</h3>
                         <p className="text-xs text-slate-800 dark:text-slate-200 mt-1">{cert.desc}</p>
@@ -1057,7 +1068,7 @@ function Home() {
               </section>
 
               {/* Social Links */}
-              <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none md:-ml-4">
+              <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-link text-[17px] text-black dark:text-white"></i> Social Links
                 </h2>
@@ -1096,7 +1107,7 @@ function Home() {
         {/* Bottom Section: Connect & Contact */}
         <div className="mt-4">
           {/* Direct Message */}
-          <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none h-full">
+          <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none h-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
 
               {/* Left Side: Let's work together */}
@@ -1136,7 +1147,7 @@ function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-4 mt-4 md:mt-4">
           {/* Left: Beyond the Screen */}
           <div className="min-w-0 h-full flex flex-col">
-            <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] dark:shadow-none flex-1 flex flex-col">
+            <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none flex-1 flex flex-col">
               <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                 Beyond the Screen
               </h2>
