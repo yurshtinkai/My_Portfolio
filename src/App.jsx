@@ -119,7 +119,7 @@ function ContactForm() {
       <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="w-full p-2.5 bg-white dark:bg-black border border-slate-200 dark:border-[#333] focus:outline-none focus:border-slate-400 dark:focus:border-slate-500 text-sm" />
       <textarea name="message" placeholder="Your Message" rows="4" value={formData.message} onChange={handleChange} className="w-full p-2.5 bg-white dark:bg-black border border-slate-200 dark:border-[#333] focus:outline-none focus:border-slate-400 dark:focus:border-slate-500 text-sm resize-none"></textarea>
 
-      <button type="submit" disabled={isLoading} className="w-full py-2.5 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm font-medium hover:bg-slate-800 dark:hover:bg-white transition-colors">
+      <button type="submit" disabled={isLoading} className="w-full py-2.5 bg-black dark:bg-white hover:-translate-y-0.5 hover:shadow-md transition-all duration-300 cursor-default text-white dark:text-slate-900 text-sm font-medium dark:hover:bg-white">
         {isLoading ? 'Sending...' : 'Send Message'}
       </button>
     </form>
@@ -256,7 +256,7 @@ const GallerySection = () => {
 
   return (
     <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none h-full flex flex-col">
-      <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+      <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
         <i className="fas fa-images text-[17px] text-black dark:text-white"></i> Gallery
       </h2>
 
@@ -358,6 +358,15 @@ function Home() {
   const { theme, toggle } = useDarkMode();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [selectedCertImage, setSelectedCertImage] = useState(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedCertImage && e.key === 'Escape') setSelectedCertImage(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedCertImage]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -383,9 +392,9 @@ function Home() {
   const tools = ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'Laravel', '.NET', 'C#', 'MySQL', 'Firebase', 'Git', 'GitHub', 'Postman', 'Azure DevOps'];
 
   const certificates = [
-    { title: "Internship – Management Information Systems Office", desc: "Certificate of Completion • MIS Office, Mandaue City" },
-    { title: "Best Poster Presenter – Online Record Management System", desc: "Certificate of Recognition • Benedicto College Research Congress (2025)" },
-    { title: "Director's Lister", desc: "Certificate of Recognition • Benedicto College (2025)" }
+    { title: "Internship – Management Information Systems Office", desc: "Certificate of Completion • MIS Office, Mandaue City", image: "/cert1.jpg" },
+    { title: "Best Poster Presenter – Online Record Management System", desc: "Certificate of Recognition • Benedicto College Research Congress (2025)", image: "/cert2.jpg" },
+    { title: "Director's Lister", desc: "Certificate of Recognition • Benedicto College (2025)", image: "/cert3.jpg" }
   ];
 
   const experiences = [
@@ -887,7 +896,7 @@ function Home() {
             <div className="contents md:block min-w-0 md:space-y-3">
               {/* About */}
               <section className="order-1 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors  dark:shadow-none">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="far fa-user text-[17px] text-black dark:text-white"></i> About
                 </h2>
                 <div className="space-y-4 text-black dark:text-slate-100 leading-relaxed text-[14.5px]">
@@ -900,10 +909,10 @@ function Home() {
               {/* Tech Stack */}
               <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                  <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-cog text-[17px] text-black dark:text-white"></i> Tech Stack
                   </h2>
-                  <Link to="/tech-stack" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
+                  <Link to="/tech-stack" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
 
                 {/* Frontend */}
@@ -984,10 +993,10 @@ function Home() {
               {/* Featured Projects */}
               <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                  <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-folder-open text-[17px] text-black dark:text-white"></i> Featured Projects
                   </h2>
-                  <Link to="/projects" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
+                  <Link to="/projects" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                   {projects.filter(p => ['Registrar System [Capstone]', 'Modern Notepad', 'Bagkuning E-Commerce', 'Inventory System'].includes(p.title)).map((proj, i) => (
@@ -1003,7 +1012,7 @@ function Home() {
             <div className="contents md:block min-w-0 md:space-y-3.5">
               {/* Experience */}
               <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-briefcase text-[17px] text-black dark:text-white"></i> Experience
                 </h2>
 
@@ -1034,7 +1043,7 @@ function Home() {
 
               {/* Education */}
               <section className="order-2 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-graduation-cap text-[17px] text-black dark:text-white"></i> Education
                 </h2>
                 <div className="space-y-0.1">
@@ -1050,14 +1059,18 @@ function Home() {
               {/* Certificates */}
               <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                  <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-certificate text-[17px] text-black dark:text-white"></i> Certifications
                   </h2>
-                  <Link to="/certification" className="-mt-4 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
+                  <Link to="/certification" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
                 <div className="space-y-4">
                   {certificates.map((cert, i) => (
-                    <div key={i} className="p-4 bg-white dark:bg-black border border-slate-100 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors flex flex-col justify-between gap-2">
+                    <div 
+                      key={i} 
+                      onClick={() => setSelectedCertImage(cert.image)}
+                      className="p-4 bg-white dark:bg-black border border-slate-100 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors flex flex-col justify-between gap-2 cursor-pointer"
+                    >
                       <div>
                         <h3 className="text-sm font-bold text-slate-900 dark:text-white">{cert.title}</h3>
                         <p className="text-xs text-slate-800 dark:text-slate-200 mt-1">{cert.desc}</p>
@@ -1067,9 +1080,36 @@ function Home() {
                 </div>
               </section>
 
+              {/* Certificate Lightbox Overlay (Single Image, No Nav) */}
+              {selectedCertImage && createPortal(
+                <div className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setSelectedCertImage(null)}>
+                  {/* Top Right: Close */}
+                  <button
+                    onClick={() => setSelectedCertImage(null)}
+                    className="absolute top-4 right-4 w-10 h-10 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
+                  >
+                    <i className="fas fa-times"></i>
+                  </button>
+
+                  {/* Main Image */}
+                  <img
+                    src={selectedCertImage}
+                    alt="Certificate Enlarged"
+                    className="max-h-[85vh] max-w-[90vw] object-contain shadow-2xl animate-fade-in-up"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+
+                  {/* Bottom: Instructions */}
+                  <div className="hidden md:block absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-[#222222] px-5 py-2.5 rounded-none font-medium tracking-wide z-10">
+                    ESC to close
+                  </div>
+                </div>,
+                document.body
+              )}
+
               {/* Social Links */}
               <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-link text-[17px] text-black dark:text-white"></i> Social Links
                 </h2>
 
@@ -1133,7 +1173,7 @@ function Home() {
 
               {/* Right Side: Direct Message */}
               <div>
-                <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                <h2 className="-mt-3 md:-mt-4 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="far fa-paper-plane text-[17px] text-black dark:text-white"></i> Direct Message
                 </h2>
                 <ContactForm />
@@ -1148,7 +1188,7 @@ function Home() {
           {/* Left: Beyond the Screen */}
           <div className="min-w-0 h-full flex flex-col">
             <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none flex-1 flex flex-col">
-              <h2 className="-mt-4 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+              <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                 Beyond the Screen
               </h2>
               <div className="flex flex-col flex-1 justify-between">
