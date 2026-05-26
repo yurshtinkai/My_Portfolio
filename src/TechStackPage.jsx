@@ -68,19 +68,19 @@ export default function TechStackPage() {
       <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-16 md:pt-7 md:pb-24">
         <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
 
-          <Link to="/" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
+          <Link to="/#tech-stack" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Home
           </Link>
 
-          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-center">Tech Stack</h1>
+          <h1 className="text-[20px] md:text-[25px] font-bold tracking-tight text-center">Tech Stack</h1>
 
         </div>
 
         <div className="space-y-12 pl-4 md:pl-0">
           {techCategories.map((cat, idx) => (
             <section key={idx}>
-              <h2 className="text-[17px] md:text-lg font-bold mb-4">{cat.name}</h2>
+              <h2 className="text-[16px] font-bold mb-4">{cat.name}</h2>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {cat.items.map((tech, i) => (
                   <span key={i} className="flex items-center gap-1.5 px-3 py-1.5 bg-white dark:bg-black text-[13px] font-medium text-slate-800 dark:text-slate-100 border border-slate-100 dark:border-[#333] hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">

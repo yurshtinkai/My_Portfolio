@@ -101,11 +101,11 @@ export default function ProjectsPage() {
 
         {/* Header Section */}
         <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
-          <Link to="/" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
+          <Link to="/#projects" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Home
           </Link>
-          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-center">All Projects</h1>
+          <h1 className="text-[20px] md:text-[26px] font-bold tracking-tight text-center">All Projects</h1>
         </div>
 
         {/* 2-Column Grid Layout for Projects */}

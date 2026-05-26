@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import emailjs from '@emailjs/browser';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import TechStackPage from './TechStackPage';
 import CertificationPage from './CertificationPage';
 import ProjectsPage from './ProjectsPage';
@@ -24,7 +24,16 @@ export function useDarkMode() {
 
 // --- VALIDATION LOGIC ---
 function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // Blocklist to catch obvious fake emails
+  const blockedWords = ['fake', 'test', 'example', 'dummy', 'spam', 'asdf', '1234'];
+  const lowerEmail = email.toLowerCase();
+  
+  if (blockedWords.some(word => lowerEmail.includes(word))) {
+    return false; // Automatically fail if it contains a fake word
+  }
+
+  // Strictly enforce that the email must be a valid @gmail.com address
+  const emailRegex = /^[a-zA-Z0-9.]+@gmail\.com$/i;
   return emailRegex.test(email);
 }
 
@@ -82,7 +91,11 @@ function ContactForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus(null), 3000);
+      return;
+    }
     setIsLoading(true);
     try {
       const serviceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || "YOUR_SERVICE_ID";
@@ -369,8 +382,23 @@ const GallerySection = () => {
 // --- MAIN APP ---
 function Home() {
   const { theme, toggle } = useDarkMode();
+  const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    if (location.hash) {
+      // Small timeout ensures DOM is ready before trying to find the element
+      setTimeout(() => {
+        const element = document.querySelector(location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'instant', block: 'start' });
+          // Clean up the URL by removing the hash without reloading
+          window.history.replaceState(null, '', window.location.pathname);
+        }
+      }, 10);
+    }
+  }, [location]);
   const [selectedCertImage, setSelectedCertImage] = useState(null);
 
   useEffect(() => {
@@ -920,7 +948,7 @@ function Home() {
               </section>
 
               {/* Tech Stack */}
-              <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
+              <section id="tech-stack" className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-cog text-[15px] md:text-[17px] text-black dark:text-white"></i> Tech Stack
@@ -1070,7 +1098,7 @@ function Home() {
               </section>
 
               {/* Certificates */}
-              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none md:-ml-4">
+              <section id="certifications" className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none md:-ml-4">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-certificate text-[15px] md:text-[17px] text-black dark:text-white"></i> Certifications
@@ -1172,33 +1200,33 @@ function Home() {
                   </svg> Let's work together
                 </h2>
                 
-                <p className="text-[14.5px] text-black dark:text-slate-200 leading-relaxed font-medium">
+                <p className="text-[14.5px] text-black dark:text-slate-100 leading-relaxed font-medium">
                   I'm currently open to new opportunities and collaborations. Feel free to reach out if you have a project in mind or just want to connect.
                 </p>
 
                 <div className="pt-2 flex flex-col gap-4">
-                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
-                    <i className="far fa-envelope text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
+                    <i className="far fa-envelope text-[18px] w-6 text-center text-black dark:text-slate-100"></i>
                     <a href="mailto:lourdangeloubufete17@gmail.com" className="hover:underline">lourdangeloubufete17@gmail.com</a>
                   </div>
                   
-                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
-                    <i className="fas fa-phone-alt text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
+                    <i className="fas fa-phone-alt text-[18px] w-6 text-center text-black dark:text-slate-100"></i>
                     <span>+63 966 804 4546</span>
                   </div>
 
-                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
-                    <i className="fas fa-map-marker-alt text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
+                    <i className="fas fa-map-marker-alt text-[18px] w-6 text-center text-black dark:text-slate-100"></i>
                     <span>Cubacub Mandaue City</span>
                   </div>
 
-                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
-                    <i className="fab fa-linkedin text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
+                    <i className="fab fa-linkedin text-[18px] w-6 text-center text-black dark:text-slate-100"></i>
                     <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:underline">linkedin.com/in/lourdangeloubufete</a>
                   </div>
 
-                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
-                    <i className="fab fa-github text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
+                    <i className="fab fa-github text-[18px] w-6 text-center text-black dark:text-slate-100"></i>
                     <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="hover:underline">github.com/yurshtinkai</a>
                   </div>
                 </div>
@@ -1287,9 +1315,26 @@ function Home() {
   );
 }
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Attempt instant scroll to bypass any CSS smooth scrolling
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Fallback for browsers that don't support 'instant'
+    if (document.documentElement.scrollTop > 0) {
+       document.documentElement.scrollTop = 0;
+       document.body.scrollTop = 0;
+    }
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tech-stack" element={<TechStackPage />} />
