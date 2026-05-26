@@ -915,7 +915,7 @@ function Home() {
 
             {/* Actions (Sharp Corners) */}
             <div className="flex flex-wrap gap-1 md:gap-2 mt-2">
-              <Link to="/projects" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex whitespace-nowrap">
+              <Link to="/projects" state={{ fromTop: true }} className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-black dark:bg-white text-white dark:text-black text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md cursor-pointer flex whitespace-nowrap">
                 <i className="far fa-calendar-alt text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> View Projects
               </Link>
               <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md flex whitespace-nowrap">
@@ -1317,6 +1317,13 @@ function Home() {
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    // Prevent the browser from automatically restoring scroll position on page refresh
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+  }, []);
 
   useEffect(() => {
     // Attempt instant scroll to bypass any CSS smooth scrolling

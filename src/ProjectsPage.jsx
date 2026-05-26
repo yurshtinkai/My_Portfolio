@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDarkMode } from './App';
 import { projects } from './data/projects';
 
@@ -92,16 +92,18 @@ const LocalProjectCard = ({ proj }) => {
 };
 
 export default function ProjectsPage() {
+  const location = useLocation();
+  const backTo = location.state?.fromTop ? "/" : "/#projects";
   // Call useDarkMode to ensure the html element's dark class is synced
   useDarkMode();
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
-      <div className="max-w-5xl mx-auto pt-2 md:pt-1">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:px-12 md:pb-12 md:pt-6 font-sans transition-colors duration-300 relative pb-24">
+      <div className="max-w-5xl mx-auto pt-2 md:pt-0">
 
         {/* Header Section */}
         <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
-          <Link to="/#projects" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
+          <Link to={backTo} className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Home
           </Link>

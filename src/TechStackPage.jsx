@@ -65,7 +65,7 @@ export default function TechStackPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans transition-colors duration-300 relative">
-      <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-16 md:pt-7 md:pb-24">
+      <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-16 md:pt-6 md:pb-24">
         <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
 
           <Link to="/#tech-stack" className="md:absolute left-0 mb-4 md:mb-0 text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors flex items-center gap-2 text-sm font-medium w-fit">
