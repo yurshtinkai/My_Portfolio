@@ -61,7 +61,10 @@ function ContactForm() {
   }, []);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if ((name === 'firstName' || name === 'lastName') && value.length > 0) {
+      value = value.charAt(0).toUpperCase() + value.slice(1);
+    }
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
     if (submitStatus) setSubmitStatus(null);
@@ -109,8 +112,18 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {submitStatus === 'success' && <div className="p-3 text-sm bg-green-50 text-green-700">Message sent!</div>}
-      {submitStatus === 'error' && <div className="p-3 text-sm bg-red-50 text-red-700">Failed to send message.</div>}
+      {submitStatus && createPortal(
+        <div className={`fixed top-6 right-6 px-5 py-3 shadow-xl z-[999] border transition-all text-[14px] font-bold flex items-center gap-2
+          ${submitStatus === 'success' ? 'bg-white dark:bg-black text-green-600 border-green-200 dark:border-green-900/50' : 'bg-white dark:bg-black text-red-600 border-red-200 dark:border-red-900/50 animate-shrink-vibrate'}`}
+        >
+          {submitStatus === 'success' ? (
+            <><i className="fas fa-check-circle"></i> Message sent!</>
+          ) : (
+            <><i className="fas fa-exclamation-circle"></i> Failed to send message.</>
+          )}
+        </div>,
+        document.body
+      )}
 
       <div className="flex gap-4">
         <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="w-full p-2.5 bg-white dark:bg-black border border-slate-200 dark:border-[#333] focus:outline-none focus:border-slate-400 dark:focus:border-slate-500 text-sm" />
@@ -256,8 +269,8 @@ const GallerySection = () => {
 
   return (
     <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none h-full flex flex-col">
-      <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-        <i className="fas fa-images text-[17px] text-black dark:text-white"></i> Gallery
+      <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+        <i className="fas fa-images text-[15px] md:text-[17px] text-black dark:text-white"></i> Gallery
       </h2>
 
       <div className="relative group">
@@ -896,8 +909,8 @@ function Home() {
             <div className="contents md:block min-w-0 md:space-y-3">
               {/* About */}
               <section className="order-1 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors  dark:shadow-none">
-                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="far fa-user text-[17px] text-black dark:text-white"></i> About
+                <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="far fa-user text-[15px] md:text-[17px] text-black dark:text-white"></i> About
                 </h2>
                 <div className="space-y-4 text-black dark:text-slate-100 leading-relaxed text-[14.5px]">
                   <p>I am a Full Stack Web Developer with a strong interest in leveraging technology to solve real-world problems. I specialize in transforming complex ideas into intuitive, efficient, and user-friendly digital solutions.</p>
@@ -909,8 +922,8 @@ function Home() {
               {/* Tech Stack */}
               <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
-                    <i className="fas fa-cog text-[17px] text-black dark:text-white"></i> Tech Stack
+                  <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fas fa-cog text-[15px] md:text-[17px] text-black dark:text-white"></i> Tech Stack
                   </h2>
                   <Link to="/tech-stack" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
@@ -991,10 +1004,10 @@ function Home() {
                 </div>
               </section>
               {/* Featured Projects */}
-              <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
+              <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
-                    <i className="fas fa-folder-open text-[17px] text-black dark:text-white"></i> Featured Projects
+                  <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fas fa-folder-open text-[15px] md:text-[17px] text-black dark:text-white"></i> Featured Projects
                   </h2>
                   <Link to="/projects" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
@@ -1012,8 +1025,8 @@ function Home() {
             <div className="contents md:block min-w-0 md:space-y-3.5">
               {/* Experience */}
               <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
-                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="fas fa-briefcase text-[17px] text-black dark:text-white"></i> Experience
+                <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="fas fa-briefcase text-[15px] md:text-[17px] text-black dark:text-white"></i> Experience
                 </h2>
 
                 {/* --- TIMELINE STRUCTURE STARTS HERE --- */}
@@ -1043,8 +1056,8 @@ function Home() {
 
               {/* Education */}
               <section className="order-2 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
-                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="fas fa-graduation-cap text-[17px] text-black dark:text-white"></i> Education
+                <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="fas fa-graduation-cap text-[15px] md:text-[17px] text-black dark:text-white"></i> Education
                 </h2>
                 <div className="space-y-0.1">
                   <div className="flex justify-between items-start">
@@ -1057,10 +1070,10 @@ function Home() {
               </section>
 
               {/* Certificates */}
-              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
+              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none md:-ml-4">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
-                  <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
-                    <i className="fas fa-certificate text-[17px] text-black dark:text-white"></i> Certifications
+                  <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fas fa-certificate text-[15px] md:text-[17px] text-black dark:text-white"></i> Certifications
                   </h2>
                   <Link to="/certification" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
@@ -1109,8 +1122,8 @@ function Home() {
 
               {/* Social Links */}
               <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
-                <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="fas fa-link text-[17px] text-black dark:text-white"></i> Social Links
+                <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="fas fa-link text-[15px] md:text-[17px] text-black dark:text-white"></i> Social Links
                 </h2>
 
                 <p className="text-[13px] font-medium text-black dark:text-slate-100 mb-3">Follow me on</p>
@@ -1152,29 +1165,49 @@ function Home() {
 
               {/* Left Side: Let's work together */}
               <div className="space-y-6">
-                <h2 className="-mt-2 md:-mt-3 text-[32px] md:text-[25px] font-bold text-black dark:text-white tracking-tight">
-                  Let's work <span className="text-slate-400 dark:text-slate-500">together.</span>
+                <h2 className="-mt-3 md:-mt-3 text-[18px] md:text-[21px] font-bold text-black dark:text-white flex items-center gap-3">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 text-black dark:text-white">
+                    <path d="M16 7C16 5.343 14.657 4 13 4H7C5.343 4 4 5.343 4 7V11C4 12.657 5.343 14 7 14V17.5L10.5 14H13C14.657 14 16 12.657 16 11V7Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="fill-slate-100 dark:fill-[#222]" />
+                    <path d="M10 12.5C10 11.119 11.119 10 12.5 10H17.5C18.881 10 20 11.119 20 12.5V15.5C20 16.881 18.881 18 17.5 18V21.5L14.5 18H12.5C11.119 18 10 16.881 10 15.5V12.5Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="fill-white dark:fill-black" />
+                  </svg> Let's work together
                 </h2>
-                <p className="text-[14px] text-black dark:text-slate-100 leading-relaxed">
-                  Available for freelance web development, full-stack development, and custom system projects. Passionate about building responsive, user-friendly, and scalable web applications that help businesses and organizations improve their digital presence and workflow efficiency. Open to collaborating on innovative ideas, system development, and modern web solutions using the latest technologies.
+                
+                <p className="text-[14.5px] text-black dark:text-slate-200 leading-relaxed font-medium">
+                  I'm currently open to new opportunities and collaborations. Feel free to reach out if you have a project in mind or just want to connect.
                 </p>
-                <div className="pt-2">
-                  <a href="mailto:lourdangeloubufete17@gmail.com" className="inline-flex flex-col group cursor-pointer">
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <i className="far fa-envelope text-[18px] text-slate-800 dark:text-slate-200"></i>
-                      <span className="text-[15px] text-slate-800 dark:text-slate-200">Email</span>
-                    </div>
-                    <span className="text-[16px] text-black dark:text-white">
-                      lourdangeloubufete17@gmail.com
-                    </span>
-                  </a>
+
+                <div className="pt-2 flex flex-col gap-4">
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
+                    <i className="far fa-envelope text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                    <a href="mailto:lourdangeloubufete17@gmail.com" className="hover:underline">lourdangeloubufete17@gmail.com</a>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
+                    <i className="fas fa-phone-alt text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                    <span>+63 966 804 4546</span>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
+                    <i className="fas fa-map-marker-alt text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                    <span>Cubacub Mandaue City</span>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
+                    <i className="fab fa-linkedin text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                    <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:underline">linkedin.com/in/lourdangeloubufete</a>
+                  </div>
+
+                  <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-200 font-medium">
+                    <i className="fab fa-github text-[18px] w-6 text-center text-slate-700 dark:text-slate-300"></i>
+                    <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="hover:underline">github.com/yurshtinkai</a>
+                  </div>
                 </div>
               </div>
 
               {/* Right Side: Direct Message */}
               <div>
-                <h2 className="-mt-3 md:-mt-4 text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
-                  <i className="far fa-paper-plane text-[17px] text-black dark:text-white"></i> Direct Message
+                <h2 className="-mt-3 md:-mt-4 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+                  <i className="far fa-paper-plane text-[15px] md:text-[17px] text-black dark:text-white"></i> Direct Message
                 </h2>
                 <ContactForm />
               </div>
@@ -1188,7 +1221,7 @@ function Home() {
           {/* Left: Beyond the Screen */}
           <div className="min-w-0 h-full flex flex-col">
             <section className="bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none flex-1 flex flex-col">
-              <h2 className="-mt-3 md:-mt-5 text-[21px] font-bold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
+              <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-5 pb-3 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                 Beyond the Screen
               </h2>
               <div className="flex flex-col flex-1 justify-between">

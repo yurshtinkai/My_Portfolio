@@ -60,7 +60,7 @@ export default function Chatbot() {
         body: JSON.stringify({
           systemInstruction: {
             parts: [{
-              text: "You are Lourd Angelou D. Bufete, a Full Stack Web Developer. You are chatting with a visitor on your portfolio website. Be friendly, professional, and concise. Your tech stack includes React, Node.js, Laravel, C#, Express.js, TypeScript, Next.js, and Tailwind CSS. Your projects include Bagkuning E-commerce, Registrar System, Inventory System, Modern Notepad, and Asset Management System. If asked about your contact info, direct them to lourdangeloubufete17@gmail.com or mention your LinkedIn/GitHub."
+              text: "You are Lourd Angelou D. Bufete, a Full Stack Web Developer. You are chatting with a visitor on your portfolio website. Be friendly, professional, and concise. Here are your resume facts: Contact: Cubacub Mandaue City, lourdangeloubufete17@gmail.com, +63 966 804 4546, Website: https://lourdev.vercel.app. Summary: Full Stack Developer building scalable web apps with React, TypeScript, Node.js, and .NET. Skilled in secure, role-based systems and MySQL/MS SQL Server. Education: Recently graduated (completely done) with a Bachelor of Science in Information Technology from Benedicto College (2022-2026), A.S Fortuna St. Bakilid Mandaue City. Experience 1: Intern Full Stack Developer at MIS Office, Mandaue City Hall (Dec 2025-Apr 2026). Built Asset Management System with React, TypeScript, Tailwind, C#, .NET, MS SQL, Azure DevOps. Modules: asset registration, PAR, purchase orders, disposal tracking, role-based access. Experience 2 (Freelance): Full Stack Developer for Web-based Modern Notepad (Node.js, Express, MySQL backend; React, TypeScript, Tailwind frontend). Experience 3 (Freelance): Backend Developer for Job Request Ticketing System (Dec 2025-Mar 2026) built with C#, .NET Framework, MS SQL, GitHub. Experience 4 (Freelance): Maintenance & Frontend Developer for Bagkuning E-commerce (Next.js, Firebase) and JoyMove Mobile App (2025-present). Projects: Backend Developer for Capstone Online Record Management System for Benedicto College Registrar (React, Tailwind, Node.js, Express, MySQL). Skills: Languages (C, C++, C#, TypeScript). Frontend (HTML, CSS, JS, Tailwind, React.js). Backend (Node.js, Express.js, .NET, Firebase). Databases (MySQL, MS SQL Server). Tools (VS Code, Git, GitHub, Azure DevOps, Postman). Soft Skills (Active Listening, Problem Solving, Adaptability, Agile Mindset). CRITICAL RULE: Answer questions about my portfolio, skills, and experience using ONLY the facts provided above. You are highly encouraged to act as a helpful AI and answer general questions about programming, technology, UI/UX, web development, and coding concepts. If asked about completely unrelated non-tech topics, politely steer the conversation back to tech or my portfolio. FORMATTING RULE: You MUST respond in pure plain text ONLY. DO NOT use any markdown formatting, no asterisks (**), no bullet points, and no bold text. Keep your answers clean, professional, and try to keep them to a single concise paragraph."
             }]
           },
           contents: contents
@@ -114,7 +114,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 w-[360px] h-[500px] max-h-[80vh] max-w-[calc(100vw-3rem)] bg-white dark:bg-black border border-slate-200 dark:border-[#333] shadow-2xl flex flex-col z-50 rounded-none overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
+    <div className="fixed bottom-6 right-4 md:right-6 w-[380px] h-[500px] max-h-[80vh] max-w-[calc(100vw-2rem)] md:max-w-[calc(100vw-3rem)] bg-white dark:bg-black border border-slate-200 dark:border-[#333] shadow-2xl flex flex-col z-50 rounded-none overflow-hidden font-sans transition-all duration-300 transform origin-bottom-right">
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
@@ -147,12 +147,12 @@ export default function Chatbot() {
           </div>
           <div className="flex flex-col leading-tight -space-y-0.5">
             <h3 className="font-bold text-[15px] text-black dark:text-white">Chat with Lourd</h3>
-            <span className="text-[14px] font-bold text-slate-600">Online</span>
+            <span className="text-[14px] font-bold text-slate-600 dark:text-slate-200 ">Online</span>
           </div>
         </div>
         <button
           onClick={() => setIsOpen(false)}
-          className="w-8 h-8 flex items-center justify-center text-slate-900 dark:text-white hover:text-black dark:hover:text-white transition-colors bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full"
+          className="w-8 h-8 flex items-center justify-center text-slate-900 dark:text-white hover:text-black dark:hover:text-white transition-colors bg-white dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full border border-slate-200 dark:border-[#333]"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
@@ -165,12 +165,12 @@ export default function Chatbot() {
             {msg.role === 'model' && (
               <img src="/chatbotPic.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0 sharp-avatar" onError={(e) => { e.target.style.display = 'none' }} />
             )}
-            <div className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+            <div className={`flex flex-col ${msg.role === 'user' ? 'items-end max-w-[85%]' : 'items-start max-w-[75%]'}`}>
               {msg.role === 'model' && (
                 <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
               )}
               <div
-                className={`max-w-[85%] px-4 py-3 text-[14px] leading-relaxed break-words ${msg.role === 'user'
+                className={`px-4 py-3 text-[14px] leading-relaxed break-words ${msg.role === 'user'
                   ? 'bg-[#111] dark:bg-white text-white dark:text-black rounded-2xl rounded-br-none shadow-sm'
                   : 'bg-white dark:bg-black text-black dark:text-white rounded-2xl rounded-tl-none border border-slate-200 dark:border-[#333]/50 shadow-sm'
                   }`}
@@ -185,7 +185,7 @@ export default function Chatbot() {
         {isTyping && (
           <div className="flex justify-start gap-3">
             <img src="/chatbotPic.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0 sharp-avatar" onError={(e) => { e.target.style.display = 'none' }} />
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start max-w-[75%]">
               <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
               <div className="bg-white dark:bg-black border border-slate-200 dark:border-[#333]/50 px-4 py-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce"></div>

@@ -77,7 +77,7 @@ export default function TechStackPage() {
 
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-12 pl-4 md:pl-0">
           {techCategories.map((cat, idx) => (
             <section key={idx}>
               <h2 className="text-[17px] md:text-lg font-bold mb-4">{cat.name}</h2>
