@@ -42,8 +42,6 @@ export default function CertificationPage() {
     const handleKeyDown = (e) => {
       if (lightboxIndex === null) return;
       if (e.key === 'Escape') setLightboxIndex(null);
-      if (e.key === 'ArrowLeft') setLightboxIndex((prev) => (prev > 0 ? prev - 1 : certificates.length - 1));
-      if (e.key === 'ArrowRight') setLightboxIndex((prev) => (prev < certificates.length - 1 ? prev + 1 : 0));
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => {
@@ -53,7 +51,7 @@ export default function CertificationPage() {
   }, [lightboxIndex, certificates.length]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:p-12 font-sans transition-colors duration-300 relative pb-24">
+    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:px-12 md:pb-12 md:pt-6 font-sans transition-colors duration-300 relative pb-24">
       <div className="max-w-5xl mx-auto pt-2 md:pt-1">
         <div className="relative flex flex-col md:flex-row md:items-center justify-center mb-10 pb-5 border-b border-slate-200 dark:border-[#333]">
 
@@ -62,7 +60,7 @@ export default function CertificationPage() {
             Back to Home
           </Link>
 
-          <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight text-center">Certifications</h1>
+          <h1 className="text-[20px] md:text-[26px] font-bold tracking-tight text-center">Certifications</h1>
 
         </div>
 
@@ -83,11 +81,18 @@ export default function CertificationPage() {
                 <img
                   src={cert.image}
                   alt={cert.title}
-                  onClick={() => setLightboxIndex(idx)}
-                  className="w-full h-full object-cover relative z-10 opacity-0 transition-opacity duration-300 cursor-pointer"
+                  className="w-full h-full object-cover relative z-10 opacity-0 transition-opacity duration-300"
                   onLoad={(e) => e.target.classList.remove('opacity-0')}
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
+
+                {/* Hover Overlay with Magnifying Glass */}
+                <div 
+                  className="absolute inset-0 z-20 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer"
+                  onClick={() => setLightboxIndex(idx)}
+                >
+                  <i className="fas fa-search text-white text-3xl drop-shadow-md transform scale-50 group-hover:scale-100 transition-transform duration-300 delay-75"></i>
+                </div>
               </div>
 
               {/* Text Container */}
@@ -104,28 +109,12 @@ export default function CertificationPage() {
       {/* Lightbox Overlay */}
       {lightboxIndex !== null && createPortal(
         <div className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-sm flex items-center justify-center p-4">
-          {/* Top Left: Counter */}
-          <div className="absolute top-4 left-4 text-white bg-[#222222] px-4 py-2 text-sm font-bold rounded-none">
-            {lightboxIndex + 1} / {certificates.length}
-          </div>
-
           {/* Top Right: Close */}
           <button
             onClick={() => setLightboxIndex(null)}
             className="absolute top-4 right-4 w-10 h-10 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
           >
             <i className="fas fa-times"></i>
-          </button>
-
-          {/* Left: Prev */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxIndex((prev) => (prev > 0 ? prev - 1 : certificates.length - 1));
-            }}
-            className="absolute z-10 left-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
-          >
-            <i className="fas fa-chevron-left"></i>
           </button>
 
           {/* Main Image */}
@@ -136,20 +125,9 @@ export default function CertificationPage() {
             onClick={(e) => e.stopPropagation()}
           />
 
-          {/* Right: Next */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setLightboxIndex((prev) => (prev < certificates.length - 1 ? prev + 1 : 0));
-            }}
-            className="absolute z-10 right-0 top-1/2 -translate-y-1/2 w-12 h-16 bg-[#222222] flex items-center justify-center text-white/80 hover:text-white hover:bg-[#333333] transition-colors rounded-none"
-          >
-            <i className="fas fa-chevron-right"></i>
-          </button>
-
           {/* Bottom: Instructions */}
           <div className="hidden md:block absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm bg-[#222222] px-5 py-2.5 rounded-none font-medium tracking-wide z-10">
-            Use arrow keys to navigate • ESC to close
+            Press ESC to close
           </div>
         </div>,
         document.body

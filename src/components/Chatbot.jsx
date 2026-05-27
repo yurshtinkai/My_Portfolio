@@ -147,7 +147,7 @@ export default function Chatbot() {
           </div>
           <div className="flex flex-col leading-tight -space-y-0.5">
             <h3 className="font-bold text-[15px] text-black dark:text-white">Chat with Lourd</h3>
-            <span className="text-[14px] font-bold text-slate-600 dark:text-slate-200 ">Online</span>
+            <span className="text-[14px] font-medium text-black dark:text-slate-100 ">Online</span>
           </div>
         </div>
         <button
@@ -167,7 +167,7 @@ export default function Chatbot() {
             )}
             <div className={`flex flex-col ${msg.role === 'user' ? 'items-end max-w-[85%]' : 'items-start max-w-[75%]'}`}>
               {msg.role === 'model' && (
-                <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
+                <span className="text-[12px] font-medium text-slate-700 dark:text-slate-200 mb-1 ml-1">Lourd Angelou</span>
               )}
               <div
                 className={`px-4 py-3 text-[14px] leading-relaxed break-words ${msg.role === 'user'
@@ -177,7 +177,7 @@ export default function Chatbot() {
               >
                 {msg.text}
               </div>
-              <span className="text-[10px] text-slate-400 dark:text-slate-500 mt-1">{msg.time}</span>
+              <span className="text-[10px] text-slate-500 dark:text-slate-200 mt-1">{msg.time}</span>
             </div>
           </div>
         ))}
@@ -186,7 +186,7 @@ export default function Chatbot() {
           <div className="flex justify-start gap-3">
             <img src="/chatbotPic.jpg" alt="Lourd" className="w-8 h-8 rounded-full border border-slate-200 dark:border-[#333] object-cover mt-1 shrink-0 sharp-avatar" onError={(e) => { e.target.style.display = 'none' }} />
             <div className="flex flex-col items-start max-w-[75%]">
-              <span className="text-[12px] font-medium text-slate-500 dark:text-slate-400 mb-1 ml-1">Lourd Angelou</span>
+              <span className="text-[12px] font-medium text-slate-700 dark:text-slate-200 mb-1 ml-1">Lourd Angelou</span>
               <div className="bg-white dark:bg-black border border-slate-200 dark:border-[#333]/50 px-4 py-4 rounded-2xl rounded-tl-none shadow-sm flex items-center gap-1.5">
                 <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce"></div>
                 <div className="w-1.5 h-1.5 bg-slate-300 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></div>
@@ -206,7 +206,7 @@ export default function Chatbot() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            className="flex-1 w-10 h-10 bg-white dark:bg-black text-black dark:text-white text-[14px] px-4 py-2.5 border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-[#111] dark:focus:border-[#111] transition-colors"
+            className="flex-1 w-10 h-10 bg-white dark:bg-black text-black dark:text-white text-[14px] px-4 py-2.5 border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-slate-400 dark:focus:border-slate-500 transition-colors"
           />
           <button
             type="submit"

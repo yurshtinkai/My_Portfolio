@@ -417,6 +417,8 @@ function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const antZigzagPath = Array.from({ length: 33 }).map((_, i) => `${i === 0 ? 'M' : 'L'} ${i * 32} ${i % 2 === 0 ? 15 : 5}`).join(' ');
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -454,7 +456,7 @@ function Home() {
 
 
       {/* Max Width Container */}
-      <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-16 md:pt-7 md:pb-24 animate-fade-in-up">
+      <div className="max-w-[1024px] mx-auto px-3 sm:px-6 pt-6 pb-4 md:pt-7 md:pb-4 animate-fade-in-up">
 
         {/* Profile Header (Horizontal layout matching screenshot) */}
         <header className="mb-4 md:mb-6 flex flex-row gap-2.5 min-[400px]:gap-4 md:gap-8 items-start">
@@ -1088,11 +1090,11 @@ function Home() {
                   <i className="fas fa-graduation-cap text-[15px] md:text-[17px] text-black dark:text-white"></i> Education
                 </h2>
                 <div className="space-y-0.1">
+                    <h3 className="text-[15px] font-bold text-black dark:text-white leading-tight">BS Information Technology</h3>
                   <div className="flex justify-between items-start">
-                    <h3 className="text-[16px] font-bold text-black dark:text-white leading-tight">Benedicto College</h3>
-                    <span className="font-bold text-black dark:text-white text-[15px]">2022-2026</span>
+                  <p className="text-[14px] text-black dark:text-slate-100">Benedicto College</p>
+                  <span className="text-[14px] text-black dark:text-white">2022-2026</span>
                   </div>
-                  <p className="text-[14px] text-black dark:text-slate-100">Bachelor of Science in Information Technology</p>
                   <p className="text-[14px] text-black dark:text-slate-100">A.S Fortuna St. Barangay Bakilid Mandaue City</p>
                 </div>
               </section>
@@ -1275,7 +1277,7 @@ function Home() {
                     <div className="flex h-full w-max animate-slide-left hover:[animation-play-state:paused]">
                       {[1, 2].map((set) => (
                         <div key={set} className="flex h-full gap-3 pr-3 shrink-0">
-                          {['/image1.jpg', '/image2.jpeg', '/image3.jpeg', '/image4.jpg', '/image5.jpg', '/image6.jpeg', '/image8.jpg'].map((src, i) => (
+                          {['/image1.jpg', '/image2.jpeg', '/image3.jpeg', '/image4.jpg', '/image5.jpg', '/image6.jpeg'].map((src, i) => (
                             <div key={i} className="h-full aspect-[4/5] overflow-hidden border border-slate-200 dark:border-[#333] relative shadow-sm shrink-0">
                               <img src={src} className="absolute inset-0 w-full h-full object-cover" alt={`Beyond the Screen ${i + 1}`} />
                             </div>
@@ -1295,9 +1297,31 @@ function Home() {
           </div>
         </div>
         {/* Footer */}
-        <footer className="mt-24 pt-8 border-t border-slate-200 dark:border-[#333] text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-black dark:text-slate-100">
+        <footer className="relative mt-24 pt-8 pb-10 border-t border-slate-200 dark:border-[#333] text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-black dark:text-slate-100">
           <p>&copy; {new Date().getFullYear()} Lourd Angelou D. Bufete. All Rights Reserved.</p>
-          <p>Built with React & Tailwind CSS.</p>
+          <p>Built with React, Tailwind CSS, and modern web technologies.</p>
+
+          {/* Full Width Zigzag Line BELOW the text */}
+          <div className="absolute left-0 right-0 bottom-1 pointer-events-none opacity-40 dark:opacity-30 overflow-visible">
+            <svg viewBox="0 0 1024 20" className="w-full h-[20px]" preserveAspectRatio="none">
+              <path id="zigzagPath" d={antZigzagPath} fill="none" stroke="currentColor" strokeWidth="1" />
+              
+              {/* The Ant Group */}
+              <g fill="currentColor">
+                {/* Ant Body (Head, Thorax, Abdomen) */}
+                <circle cx="0" cy="0" r="2.5" />
+                <circle cx="-5" cy="0" r="2" />
+                <circle cx="-11" cy="0" r="3.5" />
+                {/* Legs & Antennae */}
+                <path d="M -5 0 L -3 -5 M -5 0 L -3 5 M -8 0 L -8 -5 M -8 0 L -8 5 M -1.5 0 L 2 -5 M -1.5 0 L 2 5 M 1 0 L 4 -3 M 1 0 L 4 3" stroke="currentColor" strokeWidth="1" fill="none" />
+                
+                {/* Motion Animation that strictly follows the path */}
+                <animateMotion dur="15s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#zigzagPath" />
+                </animateMotion>
+              </g>
+            </svg>
+          </div>
         </footer>
       </div>
 
