@@ -464,14 +464,15 @@ function Home() {
           <img
             src="/ProfilePic.jpg"
             alt="Lourd Angelou D. Bufete"
-            className="w-[140px] h-[140px] min-[375px]:w-[150px] min-[375px]:h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[195px] md:h-[195px] rounded-none object-cover shrink-0"
+            className="w-[140px] h-[140px] min-[375px]:w-[150px] min-[375px]:h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[185px] md:h-[185px] rounded-none object-cover shrink-0 contrast-[1.03] saturate-[1.05]"
+            style={{ imageRendering: 'high-quality', transform: 'translateZ(0)', willChange: 'transform' }}
           />
 
           {/* Info Block */}
           <div className="flex-1 w-full pt-0 md:pt-3 min-w-0">
             {/* Name Row */}
             <div className="relative mb-1 md:mb-1.5 flex justify-between items-start md:items-center gap-1 md:gap-2">
-              <h1 className="text-[14.6px] min-[400px]:text-[17px] sm:text-[24px] md:text-[32px] leading-tight font-bold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
+              <h1 className="text-[14.6px] min-[400px]:text-[17px] sm:text-[24px] md:text-[29px] leading-tight font-bold text-black dark:text-white tracking-tight flex items-center gap-1 md:gap-2 whitespace-nowrap">
                 <span className="truncate">Lourd Angelou D. Bufete</span>
                 <svg className="w-[12px] h-[12px] sm:w-[14px] sm:h-[14px] md:w-[20px] md:h-[20px] text-[#1877F2] shrink-0" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.5 12.5c0-1.58-.875-2.93-2.14-3.66.24-1.5-.18-3.08-1.23-4.14-1.06-1.05-2.65-1.47-4.15-1.22-.73-1.26-2.09-2.14-3.67-2.14s-2.94.88-3.67 2.14c-1.5-.25-3.09.17-4.15 1.22-1.05 1.06-1.47 2.65-1.23 4.15-1.26.73-2.14 2.08-2.14 3.66s.88 2.94 2.14 3.67c-.24 1.5.18 3.08 1.23 4.14 1.06 1.05 2.65 1.47 4.15 1.23.73 1.26 2.08 2.14 3.67 2.14s2.94-.88 3.67-2.14c1.5.24 3.09-.18 4.15-1.23 1.05-1.06 1.47-2.65 1.23-4.14 1.26-.73 2.14-2.09 2.14-3.67zm-12.75 3.9l-3.5-3.5 1.41-1.41 2.09 2.08 6.09-6.08 1.41 1.42-7.5 7.5z" />
