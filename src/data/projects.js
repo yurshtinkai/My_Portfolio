@@ -5,7 +5,7 @@ export const projects = [
     detailedDesc: 'An Online Record Management System for the Registrar at Benedicto College designed to digitize and streamline school operations. It enables the registrar to manage student records and automatically generate requested documents while allowing students to conveniently submit requests online.',
     techStack: ['React.js', 'Tailwind CSS', 'Node.js', 'Express.js', 'MySQL'],
     demo: 'https://benedictocollege-rms.onrender.com',
-    source: 'https://github.com/yurshtinkai/REGISTRAR-RMS-FRONTEND',
+    source: 'https://github.com/yurshtinkai/REGISTRAR-RMS-BACKEND',
     aspect: '1899/908',
     images: [
       '/registrarPic1.png',
@@ -40,7 +40,7 @@ export const projects = [
     title: 'Modern Notepad',
     desc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease.',
     detailedDesc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease. It features secure user authentication, real-time data syncing via Firebase cloud storage, and an intuitive search function to quickly locate specific entries. The sleek, modern UI was crafted using React.js and Tailwind CSS to ensure a smooth experience across all devices.',
-    techStack: ['React.js', 'Tailwind CSS', 'Firebase'],
+    techStack: ['React.js','TypeScript', 'Tailwind CSS', 'Firebase'],
     demo: 'https://modernotepad.vercel.app',
     source: 'https://github.com/yurshtinkai/notepad',
     aspect: '1365/632',
@@ -70,9 +70,9 @@ export const projects = [
     title: 'Asset Management System',
     desc: 'A comprehensive management tool for tracking organizational assets and resources.',
     detailedDesc: 'Designed and developed an Asset Management System for the MIS Office that enhances asset tracking, monitoring, and operational efficiency. Implemented core modules for asset registration, purchase order management, asset assignment (PAR), issue reporting, and disposal tracking. Built role-based features for admin and employee users to streamline asset accountability and reporting processes.',
-    techStack: ['React.js', 'TypeScript', 'Tailwind CSS', 'C#', '.NET', 'MS SQL'],
+    techStack: ['React.js', 'TypeScript', 'Tailwind CSS', 'C#', '.NET', 'MS SQL', 'Azure DevOps'],
     demo: '#',
-    source: '#',
+    source: 'https://dev.azure.com/mis-projects/',
     aspect: '1365/635',
     images: [
       '/AMSpic0.png',
@@ -92,7 +92,7 @@ export const projects = [
     detailedDesc: 'Developed backend functionalities for a Job Request Ticketing System, a platform designed to manage, track, and resolve job requests efficiently. Built API endpoints and handled data management using C#, .NET, and Microsoft SQL Server to support request processing and status updates.',
     techStack: ['React.js', 'Tailwind CSS', 'C#', '.NET', 'MS SQL'],
     demo: '#',
-    source: '#',
+    source: 'https://github.com/Inodel/Job-Request-Management-System',
     aspect: '1350/637',
     images: [
       '/jobrequestPic1.png',
@@ -109,7 +109,7 @@ export const projects = [
     desc: 'A unified mobility and logistics platform that provides both passenger transportation and parcel delivery services, featuring real-time tracking and an intuitive user interface.',
     techStack: ['Next.js', 'Flutter', 'Firebase'],
     demo: '#',
-    source: '#',
+    source: 'https://github.com/Inodel/Lolo-move',
     aspect: '16/9',
     images: [
       '/rideApp1.png',
