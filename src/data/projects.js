@@ -51,20 +51,21 @@ export const projects = [
     ]
   },
   {
-    title: 'Inventory System',
-    desc: 'A web-based inventory and monitoring system tailored for computer laboratories.',
-    detailedDesc: 'A web-based inventory and monitoring system for computer laboratories at Benedicto College. Designed to efficiently track PCs, peripherals, and laboratory equipment, the system helps monitor stock availability, identify damaged items, and generate reports for maintenance and auditing purposes. It also features role-based access control for secure and organized management.',
-    techStack: ['Laravel', 'MySQL'],
-    demo: 'https://benedictocollege-inventory.onrender.com/',
-    source: 'https://github.com/yurshtinkai/Laravel-Inventory_system',
-    aspect: '1520/681',
+    title: 'JoyMove Mobile app',
+    subtitle: 'DELIVERY, TRANSPORT AND ORDERS',
+    desc: 'A platform for delivery, transportation, and order. Currently under development.',
+    detailedDesc: 'A unified mobility and logistics platform that provides both passenger transportation and parcel delivery services, featuring real-time tracking and an intuitive user interface. It is currently deployed and actively operating in Brunei.',
+    techStack: ['Next.js', 'Flutter', 'Firebase'],
+    demo: 'https://jmvdmn.vercel.app/login',
+    source: 'https://github.com/Inodel/Lolo-move',
+    aspect: '1365/632',
     images: [
-      '/inventoryPic1.png',
-      '/inventoryPic2.png',
-      '/inventoryPic3.png',
-      '/inventoryPic4.png',
-      '/inventoryPic5.png'
-    ]
+      'joymove-bg.png',
+      '/rideApp1.png',
+      '/rideApp2.png',
+      '/rideApp3.png',
+      '/rideApp4.png'
+    ] // Add the image paths here
   },
   {
     title: 'Asset Management System',
@@ -104,18 +105,19 @@ export const projects = [
     ]
   },
   {
-    title: 'JoyMove Mobile app',
-    subtitle: 'DELIVERY, TRANSPORT AND ORDERS',
-    desc: 'A unified mobility and logistics platform that provides both passenger transportation and parcel delivery services, featuring real-time tracking and an intuitive user interface.',
-    techStack: ['Next.js', 'Flutter', 'Firebase'],
-    demo: '#',
-    source: 'https://github.com/Inodel/Lolo-move',
-    aspect: '16/9',
+    title: 'Inventory System',
+    desc: 'A web-based inventory and monitoring system tailored for computer laboratories.',
+    detailedDesc: 'A web-based inventory and monitoring system for computer laboratories at Benedicto College. Designed to efficiently track PCs, peripherals, and laboratory equipment, the system helps monitor stock availability, identify damaged items, and generate reports for maintenance and auditing purposes. It also features role-based access control for secure and organized management.',
+    techStack: ['Laravel', 'MySQL'],
+    demo: 'https://benedictocollege-inventory.onrender.com/',
+    source: 'https://github.com/yurshtinkai/Laravel-Inventory_system',
+    aspect: '1520/681',
     images: [
-      '/rideApp1.png',
-      '/rideApp2.png',
-      '/rideApp3.png',
-      '/rideApp4.png'
-    ] // Add the image paths here
+      '/inventoryPic1.png',
+      '/inventoryPic2.png',
+      '/inventoryPic3.png',
+      '/inventoryPic4.png',
+      '/inventoryPic5.png'
+    ]
   }
 ];

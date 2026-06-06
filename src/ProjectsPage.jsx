@@ -47,14 +47,14 @@ const LocalProjectCard = ({ proj }) => {
       <div className="p-5 flex-grow flex flex-col">
         <h3 className={`text-base font-bold text-slate-900 dark:text-white transition-colors ${proj.subtitle ? 'mb-1' : 'mb-2'}`}>{proj.title}</h3>
         {proj.subtitle && (
-          <p className="text-xs font-bold text-sky-500 dark:text-sky-400 mb-2 tracking-wide uppercase">{proj.subtitle}</p>
+          <p className="text-xs font-bold text-black dark:text-white mb-2 tracking-wide uppercase">{proj.subtitle}</p>
         )}
         <p className={`text-sm text-black dark:text-slate-200 ${proj.techStack ? 'mb-4' : 'mb-4'}`}>{proj.detailedDesc || proj.desc}</p>
 
         {proj.techStack && (
-          <div className="mt-auto mb-4 flex flex-wrap gap-1.5">
+          <div className="mt-auto mb-4 flex gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {proj.techStack.map((tech, idx) => (
-              <span key={idx} className="px-2 py-0.5 bg-slate-white dark:bg-black text-black dark:text-slate-100 text-[11px] font-semibold border border-slate-200 dark:border-[#333]">
+              <span key={idx} className="px-2 py-0.5 bg-slate-white dark:bg-black text-black dark:text-slate-100 text-[11px] font-semibold border border-slate-200 dark:border-[#333] shrink-0 hover:-translate-y-0.5 hover:shadow-md hover:border-slate-300 dark:hover:border-[#555] transition-all duration-300 cursor-default">
                 {tech}
               </span>
             ))}
@@ -63,9 +63,9 @@ const LocalProjectCard = ({ proj }) => {
 
         <div className={proj.techStack ? "flex items-center gap-4 text-sm font-semibold" : "mt-auto flex items-center gap-4 text-sm font-semibold"}>
           {proj.title === 'JoyMove Mobile app' ? (
-            <span className="flex items-center gap-1.5 text-slate-400 dark:text-slate-500 cursor-default">
-              <i className="fas fa-external-link-alt text-[13px]"></i> In Development
-            </span>
+            <a href={proj.demo !== '#' ? proj.demo : '#'} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">
+              <i className="fas fa-external-link-alt text-[13px]"></i> Admin Live Site
+            </a>
           ) : proj.demo === '#' ? (
             <span className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 cursor-default">
               <i className="fas fa-external-link-alt text-[13px]"></i> Visit Live Site
@@ -97,6 +97,20 @@ export default function ProjectsPage() {
   // Call useDarkMode to ensure the html element's dark class is synced
   useDarkMode();
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white p-6 md:px-12 md:pb-12 md:pt-6 font-sans transition-colors duration-300 relative pb-24">
       <div className="max-w-5xl mx-auto pt-2 md:pt-0">
@@ -118,6 +132,17 @@ export default function ProjectsPage() {
         </div>
 
       </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-[88px] right-6 w-[47px] h-[45px] bg-black dark:bg-white text-white dark:text-black flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_14px_rgba(255,255,255,0.1)] hover:-translate-y-1 transition-all duration-300 z-40 cursor-pointer"
+          aria-label="Scroll to top"
+        >
+          <i className="fas fa-chevron-up text-lg"></i>
+        </button>
+      )}
     </div>
   );
 }

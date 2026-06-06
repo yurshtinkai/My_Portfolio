@@ -198,8 +198,12 @@ export const ProjectCard = ({ proj }) => {
         <h3 className="text-[15px] font-bold text-slate-900 dark:text-white mb-1.5 transition-colors">{proj.title}</h3>
         <p className="text-[13px] text-black dark:text-slate-100 flex-grow leading-relaxed">{proj.desc}</p>
 
-        <div className="flex items-center gap-3.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 mt-4 pt-3 border-t border-slate-100 dark:border-[#333]">
-          {proj.demo === '#' ? (
+        <div className="flex items-center gap-3.5 text-[12px] font-semibold text-slate-700 dark:text-slate-300 mt-4 pt-3 border-t border-slate-200 dark:border-[#333]">
+          {proj.title === 'JoyMove Mobile app' ? (
+            <a href={proj.demo !== '#' ? proj.demo : '#'} target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors">
+              <i className="fas fa-external-link-alt text-xs"></i> Admin Live Site
+            </a>
+          ) : proj.demo === '#' ? (
             <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 cursor-default">
               <i className="fas fa-external-link-alt text-xs"></i> Visit Live Site
             </span>
@@ -1043,7 +1047,7 @@ function Home() {
                   <Link to="/projects" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">View All &gt;</Link>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                  {projects.filter(p => ['Registrar System [Capstone]', 'Modern Notepad', 'Bagkuning E-Commerce', 'Inventory System'].includes(p.title)).map((proj, i) => (
+                  {projects.filter(p => ['Registrar System [Capstone]', 'Modern Notepad', 'Bagkuning E-Commerce', 'JoyMove Mobile app'].includes(p.title)).map((proj, i) => (
                     <ProjectCard key={i} proj={proj} />
                   ))}
                 </div>
