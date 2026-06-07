@@ -51,9 +51,9 @@ export const projects = [
     ]
   },
   {
-    title: 'JoyMove Mobile app',
+    title: 'JoyMove App',
     subtitle: 'DELIVERY, TRANSPORT AND ORDERS',
-    desc: 'A platform for delivery, transportation, and order. Currently under development.',
+    desc: 'A platform for delivery, transport, and order. Currently under development.',
     detailedDesc: 'A unified mobility and logistics platform that provides both passenger transportation and parcel delivery services, featuring real-time tracking and an intuitive user interface. It is currently deployed and actively operating in Brunei.',
     techStack: ['Next.js', 'Flutter', 'Firebase'],
     demo: 'https://jmvdmn.vercel.app/login',

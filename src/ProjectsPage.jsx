@@ -62,7 +62,7 @@ const LocalProjectCard = ({ proj }) => {
         )}
 
         <div className={proj.techStack ? "flex items-center gap-4 text-sm font-semibold" : "mt-auto flex items-center gap-4 text-sm font-semibold"}>
-          {proj.title === 'JoyMove Mobile app' ? (
+          {proj.title === 'JoyMove App' ? (
             <a href={proj.demo !== '#' ? proj.demo : '#'} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-700 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">
               <i className="fas fa-external-link-alt text-[13px]"></i> Admin Live Site
             </a>
