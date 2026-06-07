@@ -404,6 +404,18 @@ function Home() {
     }
   }, [location]);
   const [selectedCertImage, setSelectedCertImage] = useState(null);
+  const [showResumeMenu, setShowResumeMenu] = useState(false);
+  const resumeMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (resumeMenuRef.current && !resumeMenuRef.current.contains(e.target)) {
+        setShowResumeMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -928,10 +940,44 @@ function Home() {
               <a href="mailto:lourdangeloubufete17@gmail.com" className="flex-1 sm:flex-none justify-center items-center gap-1 md:gap-2 px-1 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[9.5px] min-[400px]:text-[11px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md flex whitespace-nowrap">
                 <i className="far fa-envelope text-[9.5px] min-[400px]:text-[11px] md:text-[13px]"></i> Send Email
               </a>
-              <a href="/BUFETE-RESUME.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto mt-0.5 sm:mt-0 flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md whitespace-nowrap">
-                <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[10px] min-[400px]:text-[11px] md:text-[13px]"></i> Resume</span>
-                <i className="fas fa-chevron-right text-[8px] md:text-[10px] text-black dark:text-white"></i>
-              </a>
+              <div className="relative w-full sm:w-auto mt-0.5 sm:mt-0" ref={resumeMenuRef}>
+                <button 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setShowResumeMenu(!showResumeMenu);
+                  }}
+                  className="w-full flex items-center justify-between gap-2 md:gap-6 px-2 min-[400px]:px-3 py-1.5 md:px-4 md:py-2 bg-white dark:bg-black text-black dark:text-white text-[10px] min-[400px]:text-[12px] md:text-[13px] font-bold border border-slate-200 dark:border-[#333] rounded-none transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md whitespace-nowrap"
+                >
+                  <span className="flex items-center gap-1.5 md:gap-2"><i className="far fa-file-alt text-[10px] min-[400px]:text-[11px] md:text-[13px]"></i> Resume</span>
+                  <div className="flex items-center gap-2.5 md:gap-3">
+                    <div className="w-[1.5px] h-3.5 md:h-4 bg-white dark:bg-black"></div>
+                    <i className={`fas fa-chevron-${showResumeMenu ? 'down' : 'right'} text-[8px] md:text-[10px] text-black dark:text-white transition-transform duration-200`}></i>
+                  </div>
+                </button>
+
+                {/* Dropdown Menu */}
+                {showResumeMenu && (
+                  <div className="absolute right-0 top-full mt-1 w-full sm:w-36 bg-white dark:bg-black border border-slate-200 dark:border-[#333] shadow-lg z-50 rounded-none">
+                    <a 
+                      href="/BUFETE-RESUME.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      onClick={() => setShowResumeMenu(false)}
+                      className="flex items-center gap-2 px-4 py-2.5 text-[12px] font-bold text-black dark:text-white hover:bg-slate-50 dark:hover:bg-[#111] transition-colors"
+                    >
+                      <i className="far fa-eye w-4 text-center"></i> View
+                    </a>
+                    <a 
+                      href="/BUFETE-RESUME.pdf" 
+                      download="BUFETE-RESUME.pdf"
+                      onClick={() => setShowResumeMenu(false)}
+                      className="flex items-center gap-2 px-4 py-2.5 text-[12px] font-bold text-black dark:text-white hover:bg-slate-50 dark:hover:bg-[#111] transition-colors border-t border-slate-100 dark:border-[#222]"
+                    >
+                      <i className="fas fa-download w-4 text-center"></i> Download
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </header>
