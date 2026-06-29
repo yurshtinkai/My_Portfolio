@@ -37,17 +37,21 @@ export const projects = [
     ]
   },
   {
-    title: 'Modern Notepad',
-    desc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease.',
-    detailedDesc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease. It features secure user authentication, real-time data syncing via Firebase cloud storage, and an intuitive search function to quickly locate specific entries. The sleek, modern UI was crafted using React.js and Tailwind CSS to ensure a smooth experience across all devices.',
-    techStack: ['React.js','TypeScript', 'Tailwind CSS', 'Firebase'],
-    demo: 'https://modernotepad.vercel.app',
-    source: 'https://github.com/yurshtinkai/notepad',
+    title: 'Cala De Oro Beach Resort Management System',
+    desc: 'A comprehensive property system designed to digitize and streamline daily resort operations.',
+    detailedDesc: 'A comprehensive property management system designed to digitize and streamline daily resort operations. It features a real-time interactive dashboard for managing guest check-ins and bookings, automatically handles complex profit-sharing calculations for stakeholders, and instantly generates detailed financial collection reports for accurate revenue tracking.',
+    techStack: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Firebase'],
+    demo: 'https://cala-de-oro-resort.firebaseapp.com/',
+    source: 'https://github.com/yurshtinkai/CalaDeOro-Resort',
     aspect: '1365/632',
     images: [
-      '/notepad1.png',
-      '/notepad2.png',
-      '/notepad3.png'
+      '/cala1.png',
+      '/cala2.png',
+      '/cala3.png',
+      '/cala4.png',
+      '/cala5.png',
+      '/cala6.png',
+      '/cala7.png'
     ]
   },
   {
@@ -65,7 +69,21 @@ export const projects = [
       '/rideApp2.png',
       '/rideApp3.png',
       '/rideApp4.png'
-    ] // Add the image paths here
+    ]
+  },
+  {
+    title: 'Modern Notepad',
+    desc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease.',
+    detailedDesc: 'A web-based note-taking app that lets users create, edit, and organize notes with ease. It features secure user authentication, real-time data syncing via Firebase cloud storage, and an intuitive search function to quickly locate specific entries. The sleek, modern UI was crafted using React.js and Tailwind CSS to ensure a smooth experience across all devices.',
+    techStack: ['React.js','TypeScript', 'Tailwind CSS', 'Firebase'],
+    demo: 'https://modernotepad.vercel.app',
+    source: 'https://github.com/yurshtinkai/notepad',
+    aspect: '1365/632',
+    images: [
+      '/notepad1.png',
+      '/notepad2.png',
+      '/notepad3.png'
+    ]
   },
   {
     title: 'Asset Management System',
