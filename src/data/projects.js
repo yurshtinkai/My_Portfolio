@@ -41,7 +41,7 @@ export const projects = [
     desc: 'A comprehensive property system designed to digitize and streamline daily resort operations.',
     detailedDesc: 'A comprehensive property management system designed to digitize and streamline daily resort operations. It features a real-time interactive dashboard for managing guest check-ins and bookings, automatically handles complex profit-sharing calculations for stakeholders, and instantly generates detailed financial collection reports for accurate revenue tracking.',
     techStack: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Firebase'],
-    demo: 'https://cala-de-oro-resort.firebaseapp.com/',
+    demo: 'https://caladeoro.pages.dev/',
     source: 'https://github.com/yurshtinkai/CalaDeOro-Resort',
     aspect: '1365/632',
     images: [
