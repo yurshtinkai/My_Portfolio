@@ -900,7 +900,7 @@ function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                   </svg>
-                  Cubacub Mandaue City
+                  Cubacub, Mandaue City, Cebu
                 </span>
                 <span className="font-normal hidden sm:inline px-1">|</span>
                 <span className="flex items-center gap-1 md:gap-1.5 whitespace-nowrap">
@@ -931,7 +931,7 @@ function Home() {
 
             {/* Roles */}
             <div className="relative text-black dark:text-white mb-2 md:mb-6 text-[11.5px] min-[375px]:text-[13px] sm:text-[13px] md:text-[16px] font-medium tracking-wide leading-tight">
-              Full Stack Web Developer <span className="hidden sm:inline"> | Freelancer | Innovator</span>
+              Full Stack Web Developer <span className="hidden sm:inline"> | Programmer | Freelancer</span>
             </div>
 
             {/* Actions (Sharp Corners) */}
@@ -1272,7 +1272,7 @@ function Home() {
 
                   <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
                     <i className="fas fa-map-marker-alt text-[18px] w-6 text-center text-black dark:text-slate-100"></i>
-                    <span>Cubacub Mandaue City</span>
+                    <span>Cubacub, Mandaue City, Cebu</span>
                   </div>
 
                   <div className="flex items-center gap-4 text-[14.5px] text-black dark:text-slate-100 font-medium">
