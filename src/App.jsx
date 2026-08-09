@@ -7,6 +7,7 @@ import CertificationPage from './CertificationPage';
 import ProjectsPage from './ProjectsPage';
 import Chatbot from './components/Chatbot';
 import { projects } from './data/projects';
+import { GitHubCalendar } from 'react-github-calendar';
 
 // --- MINIMALIST HOOKS ---
 export function useDarkMode() {
@@ -480,7 +481,7 @@ function Home() {
         <header className="mb-4 md:mb-6 flex flex-row gap-2.5 min-[400px]:gap-4 md:gap-8 items-start">
           {/* Avatar (Square, no rounded corners) */}
           <img
-            src="/ProfilePic.jpg"
+            src="/ProfilePic4.png"
             alt="Lourd Angelou D. Bufete"
             className="w-[140px] h-[140px] min-[375px]:w-[150px] min-[375px]:h-[150px] min-[400px]:w-[158px] min-[400px]:h-[158px] md:w-[185px] md:h-[185px] rounded-none object-cover shrink-0 contrast-[1.03] saturate-[1.05]"
             style={{ imageRendering: 'high-quality', transform: 'translateZ(0)', willChange: 'transform' }}
@@ -1100,14 +1101,68 @@ function Home() {
                   ))}
                 </div>
               </section>
+
+              {/* GitHub Contributions */}
+              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none">
+                <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
+                  <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
+                    <i className="fab fa-github text-[15px] md:text-[17px] text-black dark:text-white"></i> GitHub Contributions
+                  </h2>
+                  <a href="https://github.com/yurshtinkai" target="_blank" rel="noreferrer" className="-mt-3 md:-mt-5 text-sm font-semibold text-slate-600 dark:text-slate-200 hover:text-black dark:hover:text-white transition-colors">
+                    @yurshtinkai <i className="fas fa-external-link-alt text-xs ml-1"></i>
+                  </a>
+                </div>
+                <div className="flex justify-center overflow-x-auto custom-scrollbar pb-2 w-full max-w-full">
+                  <GitHubCalendar 
+                    username="yurshtinkai" 
+                    colorScheme={theme === 'dark' ? 'dark' : 'light'} 
+                    fontSize={12}
+                    blockSize={12}
+                    blockMargin={4}
+                  />
+                </div>
+              </section>
             </div>
           </div>
 
           {/* Right Column (Sidebar) */}
           <div className="contents md:block min-w-0 md:space-y-16">
             <div className="contents md:block min-w-0 md:space-y-3.5">
+              {/* Current Employment */}
+              <section className="order-2 md:order-none bg-white dark:bg-black rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4 flex flex-col overflow-hidden">
+                {/* Header Container */}
+                <div className="pt-0 pb-4 px-5 md:px-6 flex flex-col items-start text-left relative">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-blue-500/5 dark:bg-blue-500/10 rounded-bl-full -z-10"></div>
+                  
+                  <div className="w-full flex justify-between items-start mb-2">
+                    <img src="/geodataPic.png" alt="Geodata Solutions Inc Logo" className="h-12 object-contain -ml-1" />
+                    
+                    <a href="https://geosolutions.com.ph/" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 hover:text-black dark:hover:text-white text-[12px] font-semibold transition-colors duration-300 mt-2">
+                      Visit <i className="fas fa-external-link-alt text-[10px]"></i>
+                    </a>
+                  </div>
+                  
+                  <h3 className="text-[17px] font-bold text-black dark:text-white leading-tight">Programmer</h3>
+                  <p className="mt-1 text-[13px] text-slate-700 dark:text-slate-300">
+                    Currently Employed at <span className="font-semibold text-black dark:text-white">Geodata Solutions Inc.</span>
+                  </p>
+                </div>
+                
+                {/* Clear Video Section */}
+                <div className="relative w-full border-t border-slate-200 dark:border-[#333] bg-slate-100 dark:bg-slate-900">
+                  <video 
+                    src="/screenRecordGeodata.mp4" 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                    className="w-full h-auto object-cover block"
+                  />
+                </div>
+              </section>
+
               {/* Experience */}
-              <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
+              <section className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-briefcase text-[15px] md:text-[17px] text-black dark:text-white"></i> Experience
                 </h2>
@@ -1138,7 +1193,7 @@ function Home() {
               </section>
 
               {/* Education */}
-              <section className="order-2 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
+              <section className="order-3 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-6 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-graduation-cap text-[15px] md:text-[17px] text-black dark:text-white"></i> Education
                 </h2>

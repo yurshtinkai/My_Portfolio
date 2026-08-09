@@ -11,6 +11,27 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; /* slate-300 */
+  border-radius: 10px;
+}
+
+/* Dark Mode Scrollbars */
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a; /* slate-900 */
+}
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #334155; /* slate-700 */
+  border: 2px solid #0f172a;
+}
 /* Light Mode Animated Gradient */
 .animated-gradient {
   background: linear-gradient(-45deg, #e0f7fa, #ffffff, #e1effd, #f0f4f8);
