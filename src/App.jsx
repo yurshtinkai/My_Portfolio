@@ -1151,7 +1151,7 @@ function Home() {
                 {/* Clear Video Section */}
                 <div className="relative w-full border-t border-slate-200 dark:border-[#333] bg-slate-100 dark:bg-slate-900">
                   <video 
-                    src="/screenRecordGeodata.mp4" 
+                    src="/screenRecordGeodata.webm" 
                     autoPlay 
                     loop 
                     muted 
