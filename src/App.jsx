@@ -1004,7 +1004,7 @@ function Home() {
               </section>
 
               {/* Tech Stack */}
-              <section id="tech-stack" className="order-4 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
+              <section id="tech-stack" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-cog text-[15px] md:text-[17px] text-black dark:text-white"></i> Tech Stack
@@ -1088,7 +1088,7 @@ function Home() {
                 </div>
               </section>
               {/* Featured Projects */}
-              <section id="projects" className="order-5 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none">
+              <section id="projects" className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-folder-open text-[15px] md:text-[17px] text-black dark:text-white"></i> Featured Projects
@@ -1103,7 +1103,7 @@ function Home() {
               </section>
 
               {/* GitHub Contributions */}
-              <section className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none">
+              <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fab fa-github text-[15px] md:text-[17px] text-black dark:text-white"></i> GitHub Contributions
@@ -1208,7 +1208,7 @@ function Home() {
               </section>
 
               {/* Certificates */}
-              <section id="certifications" className="order-6 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none md:-ml-4">
+              <section id="certifications" className="order-8 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] transition-colors dark:shadow-none md:-ml-4">
                 <div className="flex justify-between items-center mb-5 pb-4 border-b border-slate-200 dark:border-[#333]">
                   <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white capitalize flex items-center gap-3">
                     <i className="fas fa-certificate text-[15px] md:text-[17px] text-black dark:text-white"></i> Certifications
@@ -1259,7 +1259,7 @@ function Home() {
               )}
 
               {/* Social Links */}
-              <section className="order-7 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
+              <section className="order-9 md:order-none bg-white dark:bg-black p-6 md:p-8 rounded-none border border-slate-200 dark:border-[#333] hover:border-slate-300 dark:hover:border-[#555] transition-colors dark:shadow-none md:-ml-4">
                 <h2 className="-mt-3 md:-mt-5 text-[18px] md:text-[21px] font-bold text-black dark:text-white mb-5 pb-4 border-b border-slate-200 dark:border-[#333] capitalize flex items-center gap-3">
                   <i className="fas fa-link text-[15px] md:text-[17px] text-black dark:text-white"></i> Social Links
                 </h2>
